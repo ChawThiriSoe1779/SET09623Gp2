@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/classes/com /tmp/com
+COPY ./target/gp2-0.1.0.1-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "com.napier.gp2.App"]
+ENTRYPOINT ["java", "-jar", "gp2-0.1.0.1-jar-with-dependencies.jar"]
