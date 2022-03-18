@@ -1,4 +1,4 @@
-# Code of Conduct for the Scrum Team Project
+# Code of Conduct for Group 2
 ### 1. With regard to mobile phones
 
    Group member's personal mobile phone usage during project work hours is discouraged, except in extreme cases such as an emergency. Accessing to resources not relating with the project such as social media in working hour can affect the productivity of project.
