@@ -95,7 +95,7 @@ public class App
                 city.population = result.getInt("city.Population");
                 cities.add(city);
             }
-            System.out.println("\nCitites in the world sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCities in the world sorted by largest to smallest population\n===========================================================================================");
             return cities;
         }
         catch (Exception e)
@@ -132,7 +132,7 @@ public class App
                 city.population = result.getInt("city.Population");
                 cities.add(city);
             }
-            System.out.println("\nCitites in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCities in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
             return cities;
         }
         catch (Exception e)
@@ -169,7 +169,44 @@ public class App
                 city.population = result.getInt("city.Population");
                 cities.add(city);
             }
-            System.out.println("\nCitites in the "+region+" region sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCities in the "+region+" region sorted by largest to smallest population\n===========================================================================================");
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Cities in the world database");
+            return null;
+        }
+    }
+
+    public ArrayList<City>getCities_District()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement sql = con.createStatement();
+
+            // Create string for SQL statement
+            String district = "'Gujarat'";
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population FROM city INNER JOIN country on city.CountryCode=country.Code WHERE city.District="+district+" ORDER BY city.Population DESC;";
+
+            // Execute SQL statement
+            ResultSet result = sql.executeQuery(getCityReports);
+
+            // Extract city data
+            ArrayList<City> cities = new ArrayList<City>();
+            while (result.next())
+            {
+                City city = new City();
+                city.name = result.getString("city.Name");
+                city.country = result.getString("country.Name");
+                city.district = result.getString("city.District");
+                city.population = result.getInt("city.Population");
+                cities.add(city);
+            }
+            System.out.println("\nCities in the "+district+" region sorted by largest to smallest population\n===========================================================================================");
             return cities;
         }
         catch (Exception e)
@@ -208,7 +245,8 @@ public class App
 
 //      ArrayList<City> cities = a.getCities_World();
 //        ArrayList<City> cities = a.getCities_Continent();
-        ArrayList<City> cities = a.getCities_Region();
+//        ArrayList<City> cities = a.getCities_Region();
+        ArrayList<City> cities = a.getCities_District();
         a.printCityReport(cities);
 
         // Disconnect from database
