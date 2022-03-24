@@ -212,21 +212,6 @@ public class App
             return null;
         }
     }
-// Funtion to print countries report sorted by largest population to smallest
-    public void printCountriesReport(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s", "Name", "Continent", "Region", "Population", "Capital"));
-        System.out.println("===========================================================================================");
-        // Loop over all countries in the list
-        for (Country coun : countries)
-        {
-            String emp_string =
-                    String.format("%-20s %-20s %-20s %-20s %-20s",
-                            coun.Name, coun.Continent, coun.Region, coun.Population, coun.Capital);
-            System.out.println(emp_string);
-        }
-    }
 
     // Funtion to get top 'n' populated countries in the Continent where n is provided by the user
     public ArrayList<Country> getTopNPopulatedCountries_Continent()
@@ -236,7 +221,7 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             int limitno = 20;       // for N in a list of Top "N" populated country in the world
-            String continent = "'Oceania'";
+            String continent = "Oceania";
             // Create string for SQL statement
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital FROM country  WHERE Continent="+ continent + " ORDER BY Population DESC LIMIT "+limitno;
@@ -265,6 +250,62 @@ public class App
         }
     }
 
+    // Funtion to get top 'n' populated countries in the Region where n is provided by the user
+    public ArrayList<Country> getTopNPopulatedCountries_Region()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            int limitno = 20;       // for N in a list of Top "N" populated country in the world
+            String region = "'Southeast Asia'";
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region="+ region + " ORDER BY Population DESC LIMIT "+limitno;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract countries information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country coun = new Country();
+                coun.Name = rset.getString("Name");
+                coun.Continent = rset.getString("Continent");
+                coun.Region = rset.getString("Region");
+                coun.Population = rset.getInt("Population");
+                coun.Capital = rset.getString("Capital");
+                countries.add(coun);
+            }
+            System.out.println("\nList of Top " + limitno + " Populated Country in the "+ region+" Region\n===========================================================================================");
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country information");
+            return null;
+        }
+    }
+
+// Funtion to print countries report sorted by largest population to smallest
+    public void printCountriesReport(ArrayList<Country> countries)
+    {
+        // Print header
+        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println("===========================================================================================");
+        // Loop over all countries in the list
+        for (Country coun : countries)
+        {
+            String emp_string =
+                    String.format("%-20s %-20s %-20s %-20s %-20s",
+                            coun.Name, coun.Continent, coun.Region, coun.Population, coun.Capital);
+            System.out.println(emp_string);
+        }
+    }
+
+
+
+
 
 
     public static void main(String[] args)
@@ -287,6 +328,9 @@ public class App
         a.printCountriesReport(countries);
         // Top populated Country in the continent
         countries = a.getTopNPopulatedCountries_Continent();
+        a.printCountriesReport(countries);
+        // Top populated Country in the region
+        countries = a.getTopNPopulatedCountries_Region();
         a.printCountriesReport(countries);
         // Disconnect from database
         a.disconnect();
