@@ -351,6 +351,49 @@ public class App
         }
     }
 
+    /*
+    Get a list of top N populated cities in the region.
+    @return A list of top N populated cities
+    @var limitno an integer for N in a list of top "N" populated cities in the region
+    @var region an string for continent in a list of top N populated cities in the "region"
+     */
+    public ArrayList<City> getTopNPopulatedCity_Region()
+    {
+        try
+        {
+            Statement stmt = con.createStatement();  // Create an SQL statement
+            // Create string for SQL statement
+            int limitno = 20;       // for N in a list of Top "N" populated cities in the region
+            String region= "Southeast Asia";        // for continent in a list of Top N populated cities in the "region"
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city INNER JOIN country on city.CountryCode=country.Code "
+                            + "WHERE country.Region='" + region
+                            + "' ORDER BY Population DESC LIMIT " + limitno;
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(getCityReports);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (result.next())
+            {
+                City actiy = new City();
+                actiy.name = result.getString("city.Name");
+                actiy.country = result.getString("country.Name");
+                actiy.district = result.getString("city.District");
+                actiy.population = result.getInt("city.Population");
+                cities.add(actiy);
+            }
+            System.out.println("\nList of Top " + limitno + " Populated City in '" + region +"' Region\n===========================================================================================");
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of top N populated cities in a region!!");
+            return null;
+        }
+    }
+
     /**
      * Prints a list of cities.
      * @param cities The list of cities to print.
@@ -396,7 +439,10 @@ public class App
 //        ArrayList<City> cities = a.getTopNPopulatedCity_World();
 
         // Extract information of top N populated cities in a continent
-        ArrayList<City> cities = a.getTopNPopulatedCity_Continent();
+//        ArrayList<City> cities = a.getTopNPopulatedCity_Continent();
+
+        // Extract information of top N populated cities in a region
+        ArrayList<City> cities = a.getTopNPopulatedCity_Region();
 
         // print city data
         a.printCityReport(cities);
