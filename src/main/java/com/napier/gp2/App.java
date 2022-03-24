@@ -140,6 +140,42 @@ public class App
         }
     }
 
+    // Funtion to get countries in the region from largest population to smallest report data
+    public ArrayList<Country> getCountries_Region()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            String region = "'Caribbean'";
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region="+ region +" ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract countries information
+            ArrayList<Country> countries = new ArrayList<Country>();
+            while (rset.next())
+            {
+                Country coun = new Country();
+                coun.Name = rset.getString("Name");
+                coun.Continent = rset.getString("Continent");
+                coun.Region = rset.getString("Region");
+                coun.Population = rset.getInt("Population");
+                coun.Capital = rset.getString("Capital");
+                countries.add(coun);
+            }
+            System.out.println("\nCountries in the Region sorted by largest to smallest population\n===========================================================================================");
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country information");
+            return null;
+        }
+    }
+
 // Funtion to print countries report sorted by largest population to smallest
     public void printCountriesReport(ArrayList<Country> countries)
     {
@@ -168,6 +204,9 @@ public class App
         a.printCountriesReport(countries);
         // Countries in the continent from largest population to smallest
         countries = a.getCountries_Continent();
+        a.printCountriesReport(countries);
+        // Countries in the region from largest population to smallest
+        countries = a.getCountries_Region();
         a.printCountriesReport(countries);
         // Disconnect from database
         a.disconnect();
