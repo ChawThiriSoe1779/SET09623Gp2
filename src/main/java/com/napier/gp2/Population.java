@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 //Population class with parameter
+
 public class Population {
 //    name of country, continent or region
     public String name;
