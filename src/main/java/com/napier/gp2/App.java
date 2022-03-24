@@ -279,7 +279,7 @@ public class App
         {
             Statement stmt = con.createStatement();  // Create an SQL statement
             // Create string for SQL statement
-            int limitno = 20;       // for N in a list of Top "N" populated cities in the world
+            int limitno = 30;       // for N in a list of Top "N" populated cities in the world
             String getCityReports =
                     "SELECT city.Name, country.Name, city.District, city.Population "
                             + "FROM city INNER JOIN country on city.CountryCode=country.Code "
@@ -363,7 +363,7 @@ public class App
         {
             Statement stmt = con.createStatement();  // Create an SQL statement
             // Create string for SQL statement
-            int limitno = 20;       // for N in a list of Top "N" populated cities in the region
+            int limitno = 13;       // for N in a list of Top "N" populated cities in the region
             String region= "Southeast Asia";        // for region in a list of Top N populated cities in the "region"
             String getCityReports =
                     "SELECT city.Name, country.Name, city.District, city.Population "
@@ -406,7 +406,7 @@ public class App
         {
             Statement stmt = con.createStatement();  // Create an SQL statement
             // Create string for SQL statement
-            int limitno = 20;       // for N in a list of Top "N" populated cities in the region
+            int limitno = 6;       // for N in a list of Top "N" populated cities in the region
             String country= "Denmark";        // for country in a list of Top N populated cities in the "country"
             String getCityReports =
                     "SELECT city.Name, country.Name, city.District, city.Population "
@@ -433,6 +433,49 @@ public class App
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get a list of top N populated cities in a country!!");
+            return null;
+        }
+    }
+
+    /*
+    Get a list of top N populated cities in the district.
+    @return A list of top N populated cities
+    @var limitno an integer for N in a list of top "N" populated cities in the district
+    @var district an string for continent in a list of top N populated cities in the "district"
+     */
+    public ArrayList<City> getTopNPopulatedCity_District()
+    {
+        try
+        {
+            Statement stmt = con.createStatement();  // Create an SQL statement
+            // Create string for SQL statement
+            int limitno = 10;       // for N in a list of Top "N" populated cities in the district
+            String district = "Maharashtra";        // for district in a list of Top N populated cities in the "district"
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city INNER JOIN country on city.CountryCode=country.Code "
+                            + "WHERE city.District='" + district
+                            + "' ORDER BY Population DESC LIMIT " + limitno;
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(getCityReports);
+            // Extract city information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (result.next())
+            {
+                City actiy = new City();
+                actiy.name = result.getString("city.Name");
+                actiy.country = result.getString("country.Name");
+                actiy.district = result.getString("city.District");
+                actiy.population = result.getInt("city.Population");
+                cities.add(actiy);
+            }
+            System.out.println("\nList of Top " + limitno + " Populated City in '" + district +"' District\n===========================================================================================");
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of top N populated cities in a district!!");
             return null;
         }
     }
@@ -488,7 +531,10 @@ public class App
 //        ArrayList<City> cities = a.getTopNPopulatedCity_Region();
 
         // Extract information of top N populated cities in a country
-        ArrayList<City> cities = a.getTopNPopulatedCity_Country();
+//        ArrayList<City> cities = a.getTopNPopulatedCity_Country();
+
+        // Extract information of top N populated cities in a district
+        ArrayList<City> cities = a.getTopNPopulatedCity_District();
 
         // print city data
         a.printCityReport(cities);
