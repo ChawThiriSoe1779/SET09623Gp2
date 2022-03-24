@@ -6,7 +6,7 @@
 
     <groupId>com.napier.gp2</groupId>
     <artifactId>gp2</artifactId>
-    <version>0.1.0.1</version>
+    <version>0.1.0.2</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
