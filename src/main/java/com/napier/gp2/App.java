@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -69,6 +70,59 @@ public class App
         }
     }
 
+    public ArrayList<City>getCities_World()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement sql = con.createStatement();
+
+            // Create string for SQL statement
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population FROM city INNER JOIN country on city.CountryCode=country.Code ORDER BY city.Population DESC;";
+
+            // Execute SQL statement
+            ResultSet result = sql.executeQuery(getCityReports);
+
+            // Extract city data
+            ArrayList<City> cities = new ArrayList<City>();
+            while (result.next())
+            {
+                City city = new City();
+                city.name = result.getString("city.Name");
+                city.country = result.getString("country.Name");
+                city.district = result.getString("city.District");
+                city.population = result.getInt("city.Population");
+                cities.add(city);
+            }
+            System.out.println("\nCitites in the world sorted by largest to smallest population\n===========================================================================================");
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Cities in the world database");
+            return null;
+        }
+    }
+
+    /**
+     * Prints a list of employees.
+     * @param cities The list of employees to print.
+     */
+
+    public void printCityReport(ArrayList<City> cities) {
+        // Print header
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.println("===========================================================================================");
+        // Loop over all cities in the list
+        for (City city : cities) {
+            String city_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            city.name, city.country, city.district, city.population);
+            System.out.println(city_string);
+        }
+    }
 
     public static void main(String[] args)
     {
@@ -78,9 +132,11 @@ public class App
         // Connect to database
         a.connect();
 
-
+        ArrayList<City> cities = a.getCities_World();
+        a.printCityReport(cities);
 
         // Disconnect from database
         a.disconnect();
     }
+
 }
