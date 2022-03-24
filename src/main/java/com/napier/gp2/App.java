@@ -110,6 +110,23 @@ public class App
         }
     }
 
+    /*
+    Print a list of top N populated cities in the world.
+    @param city The list of top N populated cities in the world to print.
+     */
+    public void printCityReport(ArrayList<City> cities) {
+        // Print header
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.println("===========================================================================================");
+        // Loop over all cities in the list
+        for (City city : cities) {
+            String city_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            city.name, city.country, city.district, city.population);
+            System.out.println(city_string);
+        }
+    }
+
 
     public static void main(String[] args)
     {
@@ -121,6 +138,9 @@ public class App
 
         // Extract information of top N populated cities in the world
         ArrayList<City> cities = a.getTopNPopulatedCity_World();
+
+        // Print the list of top N populated cities in the world
+        a.printCityReport(cities);
 
         // Disconnect from database
         a.disconnect();
