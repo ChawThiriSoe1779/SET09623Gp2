@@ -217,7 +217,7 @@ public class App
                 city.population = result.getInt("city.Population");
                 cities.add(city);
             }
-            System.out.println("\nCities in the "+district+" region sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCities in the "+district+" district sorted by largest to smallest population\n===========================================================================================");
             return cities;
         }
         catch (Exception e)
@@ -257,7 +257,7 @@ public class App
                 city.population = result.getInt("city.Population");
                 cities.add(city);
             }
-            System.out.println("\nCities in the "+country+" region sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCities in the "+country+" country sorted by largest to smallest population\n===========================================================================================");
             return cities;
         }
         catch (Exception e)
