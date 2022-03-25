@@ -222,7 +222,7 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             int limitno = 20;       // for N in a list of Top "N" populated country in the world
-            String continent = "Oceania";
+            String continent = "'North America'";
             // Create string for SQL statement
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital FROM country  WHERE Continent="+ continent + " ORDER BY Population DESC LIMIT "+limitno;
