@@ -1,10 +1,19 @@
 package com.napier.gp2;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
-    public static void main(String[] args)
+    /**
+     * Connection to MySQL database.
+     */
+    private Connection con = null;
+
+    /**
+     * Connect to the MySQL database.
+     */
+    public void connect()
     {
         try
         {
@@ -17,22 +26,17 @@ public class App
             System.exit(-1);
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
+        int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
-            System.out.println("Connecting to database...");
+            System.out.println("Connecting to world database...");
             try
             {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "group2");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
-                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
@@ -45,7 +49,13 @@ public class App
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+    }
 
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
         if (con != null)
         {
             try
@@ -59,6 +69,7 @@ public class App
             }
         }
     }
+
     // Funtion to get countries in the world from largest population to smallest report data
     public ArrayList<Country> getCountries_World()
     {
@@ -277,54 +288,7 @@ public class App
         }
     }
 
-// Funtion to print countries report sorted by largest population to smallest
-    public void printCountriesReport(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s", "Name", "Continent", "Region", "Population", "Capital"));
-        System.out.println("===========================================================================================");
-        // Loop over all countries in the list
-        for (Country coun : countries)
-        {
-            String emp_string =
-                    String.format("%-20s %-20s %-20s %-20s %-20s",
-                            coun.Name, coun.Continent, coun.Region, coun.Population, coun.Capital);
-            System.out.println(emp_string);
-        }
-    }
 
-
-
-
-
-
-    public static void main(String[] args)
-    {
-        // Create new Application
-        App a = new App();
-        // Connect to database
-        a.connect();
-        // Countries in the world from largest population to smallest
-        ArrayList<Country> countries = a.getCountries_World();
-        a.printCountriesReport(countries);
-        // Countries in the continent from largest population to smallest
-        countries = a.getCountries_Continent();
-        a.printCountriesReport(countries);
-        // Countries in the region from largest population to smallest
-        countries = a.getCountries_Region();
-        a.printCountriesReport(countries);
-        // Top populated Country in the World
-        countries = a.getTopNPopulatedCountries_World();
-        a.printCountriesReport(countries);
-        // Top populated Country in the continent
-        countries = a.getTopNPopulatedCountries_Continent();
-        a.printCountriesReport(countries);
-        // Top populated Country in the region
-        countries = a.getTopNPopulatedCountries_Region();
-        a.printCountriesReport(countries);
-        // Disconnect from database
-        a.disconnect();
-    }
     /**
      * Function to access all the cities in the world sorted by largest to smallest population.
      */
@@ -736,6 +700,22 @@ public class App
         }
     }
 
+    // Funtion to print countries report sorted by largest population to smallest
+    public void printCountriesReport(ArrayList<Country> countries)
+    {
+        // Print header
+        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println("===========================================================================================");
+        // Loop over all countries in the list
+        for (Country coun : countries)
+        {
+            String emp_string =
+                    String.format("%-20s %-20s %-20s %-20s %-20s",
+                            coun.Name, coun.Continent, coun.Region, coun.Population, coun.Capital);
+            System.out.println(emp_string);
+        }
+    }
+
     /**
      * Prints a list of cities.
      * @param cities The list of cities to print.
@@ -758,9 +738,27 @@ public class App
     {
         // Create new Application
         App a = new App();
-
         // Connect to database
         a.connect();
+
+        // Countries in the world from largest population to smallest
+        ArrayList<Country> countries = a.getCountries_World();
+        a.printCountriesReport(countries);
+        // Countries in the continent from largest population to smallest
+        countries = a.getCountries_Continent();
+        a.printCountriesReport(countries);
+        // Countries in the region from largest population to smallest
+        countries = a.getCountries_Region();
+        a.printCountriesReport(countries);
+        // Top populated Country in the World
+        countries = a.getTopNPopulatedCountries_World();
+        a.printCountriesReport(countries);
+        // Top populated Country in the continent
+        countries = a.getTopNPopulatedCountries_Continent();
+        a.printCountriesReport(countries);
+        // Top populated Country in the region
+        countries = a.getTopNPopulatedCountries_Region();
+        a.printCountriesReport(countries);
 
         // get city data of the world
 //      ArrayList<City> cities = a.getCities_World();
