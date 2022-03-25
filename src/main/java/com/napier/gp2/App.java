@@ -222,7 +222,7 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             int limitno = 20;       // for N in a list of Top "N" populated country in the world
-            String continent = "Oceania";
+            String continent = "'North America'";
             // Create string for SQL statement
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital FROM country  WHERE Continent="+ continent + " ORDER BY Population DESC LIMIT "+limitno;
@@ -761,35 +761,52 @@ public class App
         a.printCountriesReport(countries);
 
         // get city data of the world
-//      ArrayList<City> cities = a.getCities_World();
+        ArrayList<City> cities = a.getCities_World();
+        // print city data
+        a.printCityReport(cities);
 
         // get city data of the continent
-//      ArrayList<City> cities = a.getCities_Continent();
+        cities = a.getCities_Continent();
+        // print city data
+        a.printCityReport(cities);
 
         // get city data of the region
-//      ArrayList<City> cities = a.getCities_Region();
+        cities = a.getCities_Region();
+        // print city data
+        a.printCityReport(cities);
 
         // get city data of the district
-//      ArrayList<City> cities = a.getCities_District();
+        cities = a.getCities_District();
+        // print city data
+        a.printCityReport(cities);
 
         // get city data of the country
-//        ArrayList<City> cities = a.getCities_Country();
+        cities = a.getCities_Country();
+        // print city data
+        a.printCityReport(cities);
 
         // Extract information of top N populated cities in the world
-//        ArrayList<City> cities = a.getTopNPopulatedCity_World();
+        cities = a.getTopNPopulatedCity_World();
+        // print city data
+        a.printCityReport(cities);
 
         // Extract information of top N populated cities in a continent
-//        ArrayList<City> cities = a.getTopNPopulatedCity_Continent();
+        cities = a.getTopNPopulatedCity_Continent();
+        // print city data
+        a.printCityReport(cities);
 
         // Extract information of top N populated cities in a region
-//        ArrayList<City> cities = a.getTopNPopulatedCity_Region();
+        cities = a.getTopNPopulatedCity_Region();
+        // print city data
+        a.printCityReport(cities);
 
         // Extract information of top N populated cities in a country
-//        ArrayList<City> cities = a.getTopNPopulatedCity_Country();
+        cities = a.getTopNPopulatedCity_Country();
+        // print city data
+        a.printCityReport(cities);
 
         // Extract information of top N populated cities in a district
-        ArrayList<City> cities = a.getTopNPopulatedCity_District();
-
+        cities = a.getTopNPopulatedCity_District();
         // print city data
         a.printCityReport(cities);
 
