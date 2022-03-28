@@ -4,15 +4,46 @@ package com.napier.gp2;
 public class City {
 
 //    city name
-    public String name;
+    private String name;
 
 //    country of city
-    public String country;
+    private String country;
 
 //    district of city
-    public String district;
+    private String district;
 
 //    population of city
-    public int population;
+    private int population;
 
+    public void setName(String cname){
+        name =  cname;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setCountry(String ccountry){
+        country = ccountry;
+    }
+
+    public String getCountry(){
+        return country;
+    }
+
+    public void setDistrict(String cdistrict){
+        district = cdistrict;
+    }
+
+    public String getDistrict(){
+        return district;
+    }
+
+    public void setPopulation(int cpopulation){
+        population = cpopulation;
+    }
+
+    public int getPopulation(){
+        return population;
+    }
 }
