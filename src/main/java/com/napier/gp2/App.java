@@ -113,8 +113,10 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the continent sorted by largest to smallest population.
-     */
+     Function to access all the cities in the continent sorted by largest to smallest population
+     @return A list of cities in the continent sorted by largest to smallest population
+     @var continent a string variable for selecting a continent for display cities
+     **/
     public ArrayList<City>getCities_Continent()
     {
         try
@@ -157,8 +159,11 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the region sorted by largest to smallest population.
-     */
+     Function to access all the cities in the region sorted by largest to smallest population
+     @return A list of cities in the region sorted by largest to smallest population
+     @var region a string variable for selecting a region to display cities
+     **/
+
     public ArrayList<City>getCities_Region()
     {
         try
@@ -201,8 +206,10 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the district sorted by largest to smallest population.
-     */
+     Function to access all the cities in the district sorted by largest to smallest population
+     @return A list of cities in the district sorted by largest to smallest population
+     @var district a string variable for selecting district to display cities
+     **/
     public ArrayList<City>getCities_District()
     {
         try
@@ -245,8 +252,11 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the country sorted by largest to smallest population.
-     */
+     Function to access all the cities in the country sorted by largest to smallest population.
+    @return A list of cities in the country sorted by largest to smallest population
+    @var country a string variable for selecting a country to display cities
+     **/
+
     public ArrayList<City>getCities_Country()
     {
         try
@@ -288,7 +298,7 @@ public class App
         }
     }
 
-    /*
+    /***
     Get a list of top N populated cities in the world.
     @return A list of top N populated cities
     @var limitno an integer for "N" in a list of top N populated cities in the world
@@ -332,7 +342,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the continent.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the continent
@@ -379,7 +389,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the region.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the region
@@ -427,7 +437,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the country.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the country
@@ -474,7 +484,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the district.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the district
@@ -539,6 +549,7 @@ public class App
         }
     }
 
+    // main
     public static void main(String[] args)
     {
         // Create new Application
