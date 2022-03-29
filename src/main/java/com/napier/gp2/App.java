@@ -70,8 +70,9 @@ public class App
         }
     }
     /**
-     * Function to access all the cities in the world sorted by largest to smallest population.
-     */
+     Function to access all the cities in the world sorted by largest to smallest population
+     @return A list of cities in the world sorted by largest to smallest population
+     **/
     public ArrayList<City>getCities_World()
     {
         try
