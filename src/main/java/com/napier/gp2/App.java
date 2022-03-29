@@ -310,12 +310,16 @@ public class App
             ArrayList<City> cities = new ArrayList<City>();
             while (result.next())
             {
-                City city = new City();
-                city.name = result.getString("city.Name");
-                city.country = result.getString("country.Name");
-                city.district = result.getString("city.District");
-                city.population = result.getInt("city.Population");
-                cities.add(city);
+                City actiy = new City();
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+                cities.add(actiy);
             }
             System.out.println("\nCities in the world sorted by largest to smallest population\n===========================================================================================");
             return cities;
@@ -329,8 +333,10 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the continent sorted by largest to smallest population.
-     */
+     Function to access all the cities in the continent sorted by largest to smallest population
+     @return A list of cities in the continent sorted by largest to smallest population
+     @var continent a string variable for selecting a continent for display cities
+     **/
     public ArrayList<City>getCities_Continent()
     {
         try
@@ -350,12 +356,16 @@ public class App
             ArrayList<City> cities = new ArrayList<City>();
             while (result.next())
             {
-                City city = new City();
-                city.name = result.getString("city.Name");
-                city.country = result.getString("country.Name");
-                city.district = result.getString("city.District");
-                city.population = result.getInt("city.Population");
-                cities.add(city);
+                City actiy = new City();
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+                cities.add(actiy);
             }
             System.out.println("\nCities in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
             return cities;
@@ -369,8 +379,11 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the region sorted by largest to smallest population.
-     */
+     Function to access all the cities in the region sorted by largest to smallest population
+     @return A list of cities in the region sorted by largest to smallest population
+     @var region a string variable for selecting a region to display cities
+     **/
+
     public ArrayList<City>getCities_Region()
     {
         try
@@ -390,12 +403,16 @@ public class App
             ArrayList<City> cities = new ArrayList<City>();
             while (result.next())
             {
-                City city = new City();
-                city.name = result.getString("city.Name");
-                city.country = result.getString("country.Name");
-                city.district = result.getString("city.District");
-                city.population = result.getInt("city.Population");
-                cities.add(city);
+                City actiy = new City();
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+                cities.add(actiy);
             }
             System.out.println("\nCities in the "+region+" region sorted by largest to smallest population\n===========================================================================================");
             return cities;
@@ -409,8 +426,10 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the district sorted by largest to smallest population.
-     */
+     Function to access all the cities in the district sorted by largest to smallest population
+     @return A list of cities in the district sorted by largest to smallest population
+     @var district a string variable for selecting district to display cities
+     **/
     public ArrayList<City>getCities_District()
     {
         try
@@ -430,12 +449,16 @@ public class App
             ArrayList<City> cities = new ArrayList<City>();
             while (result.next())
             {
-                City city = new City();
-                city.name = result.getString("city.Name");
-                city.country = result.getString("country.Name");
-                city.district = result.getString("city.District");
-                city.population = result.getInt("city.Population");
-                cities.add(city);
+                City actiy = new City();
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+                cities.add(actiy);
             }
             System.out.println("\nCities in the "+district+" district sorted by largest to smallest population\n===========================================================================================");
             return cities;
@@ -449,8 +472,11 @@ public class App
     }
 
     /**
-     * Function to access all the cities in the country sorted by largest to smallest population.
-     */
+     Function to access all the cities in the country sorted by largest to smallest population.
+    @return A list of cities in the country sorted by largest to smallest population
+    @var country a string variable for selecting a country to display cities
+     **/
+
     public ArrayList<City>getCities_Country()
     {
         try
@@ -470,12 +496,16 @@ public class App
             ArrayList<City> cities = new ArrayList<City>();
             while (result.next())
             {
-                City city = new City();
-                city.name = result.getString("city.Name");
-                city.country = result.getString("country.Name");
-                city.district = result.getString("city.District");
-                city.population = result.getInt("city.Population");
-                cities.add(city);
+                City actiy = new City();
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+                cities.add(actiy);
             }
             System.out.println("\nCities in the "+country+" country sorted by largest to smallest population\n===========================================================================================");
             return cities;
@@ -488,7 +518,7 @@ public class App
         }
     }
 
-    /*
+    /***
     Get a list of top N populated cities in the world.
     @return A list of top N populated cities
     @var limitno an integer for "N" in a list of top N populated cities in the world
@@ -511,10 +541,14 @@ public class App
             while (result.next())
             {
                 City actiy = new City();
-                actiy.name = result.getString("city.Name");
-                actiy.country = result.getString("country.Name");
-                actiy.district = result.getString("city.District");
-                actiy.population = result.getInt("city.Population");
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in the World\n===========================================================================================");
@@ -528,7 +562,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the continent.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the continent
@@ -554,10 +588,14 @@ public class App
             while (result.next())
             {
                 City actiy = new City();
-                actiy.name = result.getString("city.Name");
-                actiy.country = result.getString("country.Name");
-                actiy.district = result.getString("city.District");
-                actiy.population = result.getInt("city.Population");
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + continent +"' Continent\n===========================================================================================");
@@ -571,7 +609,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the region.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the region
@@ -597,10 +635,15 @@ public class App
             while (result.next())
             {
                 City actiy = new City();
-                actiy.name = result.getString("city.Name");
-                actiy.country = result.getString("country.Name");
-                actiy.district = result.getString("city.District");
-                actiy.population = result.getInt("city.Population");
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
+
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + region +"' Region\n===========================================================================================");
@@ -614,7 +657,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the country.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the country
@@ -640,10 +683,14 @@ public class App
             while (result.next())
             {
                 City actiy = new City();
-                actiy.name = result.getString("city.Name");
-                actiy.country = result.getString("country.Name");
-                actiy.district = result.getString("city.District");
-                actiy.population = result.getInt("city.Population");
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + country +"' Country\n===========================================================================================");
@@ -657,7 +704,7 @@ public class App
         }
     }
 
-    /*
+    /**
     Get a list of top N populated cities in the district.
     @return A list of top N populated cities
     @var limitno an integer for N in a list of top "N" populated cities in the district
@@ -683,10 +730,14 @@ public class App
             while (result.next())
             {
                 City actiy = new City();
-                actiy.name = result.getString("city.Name");
-                actiy.country = result.getString("country.Name");
-                actiy.district = result.getString("city.District");
-                actiy.population = result.getInt("city.Population");
+                actiy.setName(result.getString("city.Name"));
+                actiy.getName();
+                actiy.setCountry(result.getString("country.Name"));
+                actiy.getCountry();
+                actiy.setDistrict(result.getString("city.District"));
+                actiy.getDistrict();
+                actiy.setPopulation(result.getInt("city.Population"));
+                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + district +"' District\n===========================================================================================");
@@ -729,11 +780,12 @@ public class App
         for (City city : cities) {
             String city_string =
                     String.format("%-25s %-25s %-25s %-25s",
-                            city.name, city.country, city.district, city.population);
+                            city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
             System.out.println(city_string);
         }
     }
 
+    // main
     public static void main(String[] args)
     {
         // Create new Application
