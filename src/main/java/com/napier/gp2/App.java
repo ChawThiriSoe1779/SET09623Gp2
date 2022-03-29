@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -68,7 +69,9 @@ public class App
             }
         }
     }
-    
+
+
+
     public static void main(String[] args)
     {
 
@@ -77,6 +80,8 @@ public class App
 
         // Connect to database
         a.connect();
+
+
 
         // Disconnect from database
         a.disconnect();
