@@ -129,6 +129,20 @@ public class App
     }
 
 
+    public void printPopulationReport(ArrayList<Population> populations) {
+        // Print header
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "Place", "Total Population", "City Population", "Non-City Population"));
+        System.out.println("===========================================================================================");
+        // Loop over all cities in the list
+        for (Population population : populations) {
+            String population_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
+            System.out.println(population_string);
+        }
+    }
+
+
     public static void main(String[] args)
     {
 
@@ -140,6 +154,8 @@ public class App
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
         ArrayList<Population> populations = a.getPopulation_Continent();
+        // print population data
+        a.printPopulationReport(populations);
 
         // Disconnect from database
         a.disconnect();
