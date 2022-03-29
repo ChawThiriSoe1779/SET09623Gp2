@@ -115,6 +115,54 @@ public class App
             return null;
         }
     }
+
+    /**
+     Function to access all the capital cities in the continent sorted by largest to smallest population.
+     @return A list of capital cities in the continent sorted by largest to smallest population
+     @var continent a string variable for selecting a continent to display cities
+     **/
+
+    public ArrayList<Capital>getCapCities_Continent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement sql = con.createStatement();
+
+            // Create string for SQL statement
+            String continent = "'Oceania'";
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population FROM city INNER JOIN country on country.capital = city.ID WHERE country.Continent=" + continent +" ORDER BY Population DESC;";
+
+            // Execute SQL statement
+            ResultSet result = sql.executeQuery(getCityReports);
+
+            // Extract city data
+            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            while (result.next())
+            {
+                Capital ca = new Capital();
+                ca.setName(result.getString("city.Name"));
+                ca.getName();
+                ca.setCountry(result.getString("country.Name"));
+                ca.getCountry();
+                ca.setDistrict(result.getString("city.District"));
+                ca.getDistrict();
+                ca.setPopulation(result.getInt("city.Population"));
+                ca.getPopulation();
+                cap_cities.add(ca);
+            }
+            System.out.println("\nCapital Cities in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
+            return cap_cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get capital cities in the world database");
+            return null;
+        }
+    }
+
 /** Function to Print Capital City
  * @param cap_cities to print list of capital cities **/
     public void printCapCityReport(ArrayList<Capital> cap_cities) {
@@ -144,6 +192,11 @@ public class App
 
         // get capital city data of the world
         ArrayList<Capital> cap_cities = a.getCapCities_World();
+        // print city data
+        a.printCapCityReport(cap_cities);
+
+        // get capital city data of the continent
+        cap_cities = a.getCapCities_Continent();
         // print city data
         a.printCapCityReport(cap_cities);
 
