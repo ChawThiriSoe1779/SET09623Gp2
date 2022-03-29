@@ -228,6 +228,48 @@ public class App
         }
     }
 
+    /***
+    Get a list of top N populated capital cities in the world.
+        @return A list of top N populated capital cities
+    @var limitno an integer for "N" in a list of top N populated capital cities in the world
+     */
+    public ArrayList<Capital> getTopNPopulatedCapCity_World()
+    {
+        try
+        {
+            Statement stmt = con.createStatement();  // Create an SQL statement
+            // Create string for SQL statement
+            int limitno = 30;       // for N in a list of Top "N" populated cities in the world
+            String getCityReports =
+                    "SELECT city.Name, country.Name, city.District, city.Population FROM city INNER JOIN country on country.capital = city.ID ORDER BY Population DESC LIMIT " + limitno;
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(getCityReports);
+            // Extract city data
+            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            while (result.next())
+            {
+                Capital ca = new Capital();
+                ca.setName(result.getString("city.Name"));
+                ca.getName();
+                ca.setCountry(result.getString("country.Name"));
+                ca.getCountry();
+                ca.setDistrict(result.getString("city.District"));
+                ca.getDistrict();
+                ca.setPopulation(result.getInt("city.Population"));
+                ca.getPopulation();
+                cap_cities.add(ca);
+            }
+            System.out.println("\nList of Top " + limitno + " Populated Capital City in the World\n===========================================================================================");
+            return cap_cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of top N populated capital cities in the world!!");
+            return null;
+        }
+    }
+
 
     public static void main(String[] args)
     {
@@ -252,6 +294,11 @@ public class App
         cap_cities = a.getCapCities_Region();
         // print city data
         a.printCapCityReport(cap_cities);
+
+         cap_cities = a.getTopNPopulatedCapCity_World();
+        // print city data
+        a.printCapCityReport(cap_cities);
+
 
         // Disconnect from database
         a.disconnect();
