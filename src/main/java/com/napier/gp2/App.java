@@ -41,7 +41,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -86,22 +86,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nCountries in the world sorted by largest to smallest population\n===========================================================================================");
@@ -133,22 +127,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nCountries in the Continent sorted by largest to smallest population\n===========================================================================================");
@@ -180,22 +168,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nCountries in the Region sorted by largest to smallest population\n===========================================================================================");
@@ -228,22 +210,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the World\n===========================================================================================");
@@ -277,22 +253,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the "+ continent+" Continent\n===========================================================================================");
@@ -326,22 +296,16 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.setCode(rset.getString("country.Code"));
-                coun.getCode();
                 coun.setName(rset.getString("country.Name"));
-                coun.getName();
                 coun.setContinent(rset.getString("country.Continent"));
-                coun.getContinent();
                 coun.setRegion(rset.getString("country.Region"));
-                coun.getRegion();
                 coun.setPopulation(rset.getInt("country.Population"));
-                coun.getPopulation();
                 coun.setCapital(rset.getString("city.Name"));
-                coun.getCapital();
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the "+ region+" Region\n===========================================================================================");
@@ -363,7 +327,7 @@ public class App
     public void printCountriesReport(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-5s %-15s %-20s %-20s %-20s %-20s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-5s %-15s %-20s %-20s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("===========================================================================================");
         // Loop over all countries in the list
         for (Country coun : countries)
