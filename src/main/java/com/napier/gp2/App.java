@@ -989,6 +989,143 @@ public class App
         }
     }
 
+    /***
+     Get number of population of people, people living in cities, and people not living in cities in each continent
+     @return A list of population of people, people living in cities, and people not living in cities in each continent
+     */
+    public ArrayList<Population> getPopulation_Continent()
+    {
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPopulationReports_Country = "SELECT Continent, SUM(Population) FROM country "
+                    + "GROUP BY Continent HAVING SUM(Population)>0 ORDER BY Continent DESC;";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPopulationReports_Country);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getPopulationReports_City = "SELECT country.Continent, SUM(city.Population) FROM city "
+                    + "INNER JOIN country ON city.CountryCode=country.Code "
+                    + "GROUP BY country.Continent ORDER BY country.Continent DESC;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
+
+            // Extract total population information
+            ArrayList<Population> populations = new ArrayList<>();
+            while (result_1.next() & result_2.next())
+            {
+                Population pop = new Population();
+                pop.setName(result_1.getString("Continent"));
+                pop.setTotal_population(result_1.getLong("SUM(Population)"));
+                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
+                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+                populations.add(pop);
+            }
+            System.out.println("\nList of population of people, people living in cities, and people not living in cities in each continent\n=================================================================================================");
+            return populations;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each continent.!!");
+            return null;
+        }
+    }
+
+    /***
+     Get number of population of people, people living in cities, and people not living in cities in each region
+     @return A list of population of people, people living in cities, and people not living in cities in each region
+     */
+    public ArrayList<Population> getPopulation_Region()
+    {
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPopulationReports_Country = "SELECT Region, SUM(Population) FROM country "
+                    + "GROUP BY Region HAVING SUM(Population)>0 ORDER BY Region DESC;";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPopulationReports_Country);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getPopulationReports_City = "SELECT country.Region, SUM(city.Population) FROM city "
+                    + "INNER JOIN country ON city.CountryCode=country.Code "
+                    + "GROUP BY country.Region ORDER BY country.Region DESC;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
+
+            // Extract total population information
+            ArrayList<Population> populations = new ArrayList<>();
+            while (result_1.next() & result_2.next())
+            {
+                Population pop = new Population();
+                pop.setName(result_1.getString("Region"));
+                pop.setTotal_population(result_1.getLong("SUM(Population)"));
+                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
+                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+                populations.add(pop);
+            }
+            System.out.println("\nList of population of people, people living in cities, and people not living in cities in each region\n=================================================================================================");
+            return populations;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each region.!!");
+            return null;
+        }
+    }
+
+    /***
+     Get number of population of people, people living in cities, and people not living in cities in each country
+     @return A list of population of people, people living in cities, and people not living in cities in each country
+     */
+    public ArrayList<Population> getPopulation_Country()
+    {
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPopulationReports_Country = "SELECT Name, Population FROM country "
+                    + "HAVING Population>0 ORDER BY Name ASC;";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPopulationReports_Country);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getPopulationReports_City = "SELECT country.Name, SUM(city.Population) FROM city "
+                    + "INNER JOIN country ON city.CountryCode=country.Code "
+                    + "GROUP BY country.Name ORDER BY country.Name ASC;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
+
+            // Extract total population information
+            ArrayList<Population> populations = new ArrayList<>();
+            while (result_1.next() & result_2.next())
+            {
+                Population pop = new Population();
+                pop.setName(result_1.getString("Name"));
+                pop.setTotal_population(result_1.getLong("Population"));
+                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
+                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+                populations.add(pop);
+            }
+            System.out.println("\nList of population of people, people living in cities, and people not living in cities in each country\n=================================================================================================");
+            return populations;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each country.!!");
+            return null;
+        }
+    }
+
+
+
 
     /**
      * Prints a list of Countries.
@@ -1042,6 +1179,21 @@ public class App
                     String.format("%-25s %-25s %-25s %-25s",
                             city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
             System.out.println(city_string);
+        }
+    }
+
+    /** Function to Print Capital City
+     * @param populations to print list of capital cities **/
+    public void printPopulationReport(ArrayList<Population> populations) {
+        // Print header
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "Place", "Total Population", "City Population", "Non-City Population");
+        System.out.println("=================================================================================================");
+        // Loop over all cities in the list
+        for (Population population : populations) {
+            String population_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
+            System.out.println(population_string);
         }
     }
 
@@ -1151,6 +1303,21 @@ public class App
         cap_cities = a.getTopNPopulatedCapCity_Region();
         // print city data
         a.printCapCityReport(cap_cities);
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
+        ArrayList<Population> populations = a.getPopulation_Continent();
+        // print population data
+        a.printPopulationReport(populations);
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each region
+        populations = a.getPopulation_Region();
+        // print population data
+        a.printPopulationReport(populations);
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
+        populations = a.getPopulation_Country();
+        // print population data
+        a.printPopulationReport(populations);
 
         // Disconnect from database
         a.disconnect();
