@@ -70,7 +70,10 @@ public class App
         }
     }
 
-    // Funtion to get countries in the world from largest population to smallest report data
+    /**
+     Function to access all the Countries in the world sorted by largest to smallest population
+     @return A list of Countries in the world sorted by largest to smallest population
+     **/
     public ArrayList<Country> getCountries_World()
     {
         try
@@ -79,19 +82,20 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nCountries in the world sorted by largest to smallest population\n===========================================================================================");
@@ -105,7 +109,11 @@ public class App
         }
     }
 
-    // Funtion to get countries in the Continent from largest population to smallest report data
+    /**
+     Function to access all the Countries in the continent sorted by largest to smallest population
+     @return A list of Countries in the continent sorted by largest to smallest population
+     @var continent a string variable for selecting a continent for display Countries
+     **/
     public ArrayList<Country> getCountries_Continent()
     {
         try
@@ -115,19 +123,20 @@ public class App
             String continent = "'Africa'";
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Continent="+ continent +" ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID WHERE country.Continent="+ continent +" ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nCountries in the Continent sorted by largest to smallest population\n===========================================================================================");
@@ -141,7 +150,11 @@ public class App
         }
     }
 
-    // Funtion to get countries in the region from largest population to smallest report data
+    /**
+     Function to access all the Countries in the region sorted by largest to smallest population
+     @return A list of Countries in the region sorted by largest to smallest population
+     @var region a string variable for selecting a region to display Countries
+     **/
     public ArrayList<Country> getCountries_Region()
     {
         try
@@ -151,19 +164,20 @@ public class App
             String region = "'Caribbean'";
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region="+ region +" ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID WHERE country.Region="+ region +" ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nCountries in the Region sorted by largest to smallest population\n===========================================================================================");
@@ -178,7 +192,11 @@ public class App
     }
 
 
-    // Funtion to get top 'n' populated countries in the world where n is provided by the user
+    /***
+     Get a list of top N populated Countries in the world.
+     @return A list of top N populated Countries
+     @var limitno an integer for "N" in a list of top N populated Countries in the world
+     */
     public ArrayList<Country> getTopNPopulatedCountries_World()
     {
         try
@@ -188,19 +206,20 @@ public class App
             int limitno = 20;       // for N in a list of Top "N" populated country in the world
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC LIMIT "+ limitno;
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID ORDER BY country.Population DESC LIMIT "+ limitno;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the World\n===========================================================================================");
@@ -214,7 +233,12 @@ public class App
         }
     }
 
-    // Funtion to get top 'n' populated countries in the Continent where n is provided by the user
+    /**
+     Get a list of top N populated Countries in the continent.
+     @return A list of top N populated Countries
+     @var limitno an integer for N in a list of top "N" populated Countries in the continent
+     @var continent an string for continent in a list of top N populated Countries in the "continent"
+     */
     public ArrayList<Country> getTopNPopulatedCountries_Continent()
     {
         try
@@ -225,19 +249,20 @@ public class App
             String continent = "'North America'";
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country  WHERE Continent="+ continent + " ORDER BY Population DESC LIMIT "+limitno;
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID WHERE country.Continent="+ continent + " ORDER BY country.Population DESC LIMIT "+limitno;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the "+ continent+" Continent\n===========================================================================================");
@@ -251,7 +276,12 @@ public class App
         }
     }
 
-    // Funtion to get top 'n' populated countries in the Region where n is provided by the user
+    /**
+     Get a list of top N populated Countries in the region.
+     @return A list of top N populated Countries
+     @var limitno an integer for N in a list of top "N" populated Countries in the region
+     @var region an string for continent in a list of top N populated Countries in the "region"
+     */
     public ArrayList<Country> getTopNPopulatedCountries_Region()
     {
         try
@@ -262,19 +292,20 @@ public class App
             String region = "'Southeast Asia'";
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region="+ region + " ORDER BY Population DESC LIMIT "+limitno;
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM country INNER JOIN city on country.capital = city.ID WHERE country.Region="+ region + " ORDER BY country.Population DESC LIMIT "+limitno;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract countries information
-            ArrayList<Country> countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<>();
             while (rset.next())
             {
                 Country coun = new Country();
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getString("Capital");
+                coun.setCode(rset.getString("country.Code"));
+                coun.setName(rset.getString("country.Name"));
+                coun.setContinent(rset.getString("country.Continent"));
+                coun.setRegion(rset.getString("country.Region"));
+                coun.setPopulation(rset.getInt("country.Population"));
+                coun.setCapital(rset.getString("city.Name"));
                 countries.add(coun);
             }
             System.out.println("\nList of Top " + limitno + " Populated Country in the "+ region+" Region\n===========================================================================================");
@@ -287,6 +318,8 @@ public class App
             return null;
         }
     }
+
+
 
 
     /**
@@ -712,18 +745,23 @@ public class App
         }
     }
 
-    // Funtion to print countries report sorted by largest population to smallest
+
+    /**
+     * Prints a list of Countries.
+     * @param countries The list of Countries to print.
+     */
+
     public void printCountriesReport(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-5s %-15s %-20s %-20s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("===========================================================================================");
         // Loop over all countries in the list
         for (Country coun : countries)
         {
             String emp_string =
-                    String.format("%-20s %-20s %-20s %-20s %-20s",
-                            coun.Name, coun.Continent, coun.Region, coun.Population, coun.Capital);
+                    String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
+                            coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
             System.out.println(emp_string);
         }
     }
