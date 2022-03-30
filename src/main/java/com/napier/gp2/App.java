@@ -41,7 +41,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -94,18 +94,14 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
 
             // Extract total population information
-            ArrayList<Population> populations = new ArrayList<Population>();
+            ArrayList<Population> populations = new ArrayList<>();
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
                 pop.setName(result_1.getString("Continent"));
-                pop.getName();
                 pop.setTotal_population(result_1.getLong("SUM(Population)"));
-                pop.getTotal_population();
                 pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.getCity_population();
                 pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
-                pop.getNon_city_population();
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each continent\n=================================================================================================");
@@ -143,18 +139,14 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
 
             // Extract total population information
-            ArrayList<Population> populations = new ArrayList<Population>();
+            ArrayList<Population> populations = new ArrayList<>();
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
                 pop.setName(result_1.getString("Region"));
-                pop.getName();
                 pop.setTotal_population(result_1.getLong("SUM(Population)"));
-                pop.getTotal_population();
                 pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.getCity_population();
                 pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
-                pop.getNon_city_population();
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each region\n=================================================================================================");
@@ -192,18 +184,14 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getPopulationReports_City);
 
             // Extract total population information
-            ArrayList<Population> populations = new ArrayList<Population>();
+            ArrayList<Population> populations = new ArrayList<>();
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
                 pop.setName(result_1.getString("Name"));
-                pop.getName();
                 pop.setTotal_population(result_1.getLong("Population"));
-                pop.getTotal_population();
                 pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.getCity_population();
                 pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
-                pop.getNon_city_population();
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each country\n=================================================================================================");
@@ -220,7 +208,7 @@ public class App
 
     public void printPopulationReport(ArrayList<Population> populations) {
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "Place", "Total Population", "City Population", "Non-City Population"));
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "Place", "Total Population", "City Population", "Non-City Population");
         System.out.println("=================================================================================================");
         // Loop over all cities in the list
         for (Population population : populations) {
