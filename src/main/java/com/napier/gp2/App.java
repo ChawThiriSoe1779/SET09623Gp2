@@ -72,7 +72,6 @@ public class App
     /**
      Function to access all the capital cities in the world sorted by largest to smallest population.
      @return A list of capital cities in the world sorted by largest to smallest population
-
      **/
 
     public ArrayList<Capital>getCapCities_World()
@@ -91,21 +90,17 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next())
             {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
-            System.out.println("\nCapital Cities in the world continent sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCapital Cities in the world sorted by largest to smallest population\n===========================================================================================");
             return cap_cities;
         }
         catch (Exception e)
@@ -138,18 +133,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next())
             {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
             System.out.println("\nCapital Cities in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
@@ -185,21 +176,17 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next())
             {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
-            System.out.println("\nCapital Cities in the "+region+" continent sorted by largest to smallest population\n===========================================================================================");
+            System.out.println("\nCapital Cities in the "+region+" region sorted by largest to smallest population\n===========================================================================================");
             return cap_cities;
         }
         catch (Exception e)
@@ -211,22 +198,7 @@ public class App
     }
 
 
-    /** Function to Print Capital City
- * @param cap_cities to print list of capital cities **/
-    public void printCapCityReport(ArrayList<Capital> cap_cities) {
 
-        // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
-        System.out.println("===========================================================================================");
-
-        // Loop over all capital cities in the list
-        for (Capital city : cap_cities) {
-            String city_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
-            System.out.println(city_string);
-        }
-    }
 
     /***
     Get a list of top N populated capital cities in the world.
@@ -245,18 +217,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next())
             {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
             System.out.println("\nList of Top " + limitno + " Populated Capital City in the World\n===========================================================================================");
@@ -289,18 +257,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next())
             {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
             System.out.println("\nList of Top " + limitno + " Populated Capital City in the "+continent+" continent" +"\n===========================================================================================");
@@ -331,17 +295,13 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city data
-            ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+            ArrayList<Capital> cap_cities = new ArrayList<>();
             while (result.next()) {
                 Capital ca = new Capital();
                 ca.setName(result.getString("city.Name"));
-                ca.getName();
                 ca.setCountry(result.getString("country.Name"));
-                ca.getCountry();
                 ca.setDistrict(result.getString("city.District"));
-                ca.getDistrict();
                 ca.setPopulation(result.getInt("city.Population"));
-                ca.getPopulation();
                 cap_cities.add(ca);
             }
             System.out.println("\nList of Top " + limitno + " Populated Capital City in the " + region + " region" + "\n===========================================================================================");
@@ -350,6 +310,23 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get a list of top N populated capital cities in the region ");
             return null;
+        }
+    }
+
+    /** Function to Print Capital City
+     * @param cap_cities to print list of capital cities **/
+    public void printCapCityReport(ArrayList<Capital> cap_cities) {
+
+        // Print header
+        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.println("===========================================================================================");
+
+        // Loop over all capital cities in the list
+        for (Capital city : cap_cities) {
+            String city_string =
+                    String.format("%-25s %-25s %-25s %-25s",
+                            city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
+            System.out.println(city_string);
         }
     }
 
@@ -377,14 +354,17 @@ public class App
         // print city data
         a.printCapCityReport(cap_cities);
 
+        // get data of top N populated capital cities in the world
         cap_cities = a.getTopNPopulatedCapCity_World();
         // print city data
         a.printCapCityReport(cap_cities);
 
+        // get data of top N populated capital cities in the continent
         cap_cities = a.getTopNPopulatedCapCity_Continent();
         // print city data
         a.printCapCityReport(cap_cities);
 
+        // get data of top N populated capital cities in the continent
         cap_cities = a.getTopNPopulatedCapCity_Region();
         // print city data
         a.printCapCityReport(cap_cities);
