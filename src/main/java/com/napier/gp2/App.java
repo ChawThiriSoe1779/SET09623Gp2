@@ -290,8 +290,9 @@ public class App
 
 
     /**
-     * Function to access all the cities in the world sorted by largest to smallest population.
-     */
+     Function to access all the cities in the world sorted by largest to smallest population
+     @return A list of cities in the world sorted by largest to smallest population
+     **/
     public ArrayList<City>getCities_World()
     {
         try
@@ -307,18 +308,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nCities in the world sorted by largest to smallest population\n===========================================================================================");
@@ -353,18 +350,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nCities in the "+continent+" continent sorted by largest to smallest population\n===========================================================================================");
@@ -400,18 +393,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nCities in the "+region+" region sorted by largest to smallest population\n===========================================================================================");
@@ -446,18 +435,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nCities in the "+district+" district sorted by largest to smallest population\n===========================================================================================");
@@ -493,18 +478,14 @@ public class App
             ResultSet result = sql.executeQuery(getCityReports);
 
             // Extract city data
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nCities in the "+country+" country sorted by largest to smallest population\n===========================================================================================");
@@ -537,18 +518,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in the World\n===========================================================================================");
@@ -584,18 +561,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + continent +"' Continent\n===========================================================================================");
@@ -631,18 +604,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
 
                 cities.add(actiy);
             }
@@ -679,18 +648,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + country +"' Country\n===========================================================================================");
@@ -726,18 +691,14 @@ public class App
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(getCityReports);
             // Extract city information
-            ArrayList<City> cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<>();
             while (result.next())
             {
                 City actiy = new City();
                 actiy.setName(result.getString("city.Name"));
-                actiy.getName();
                 actiy.setCountry(result.getString("country.Name"));
-                actiy.getCountry();
                 actiy.setDistrict(result.getString("city.District"));
-                actiy.getDistrict();
                 actiy.setPopulation(result.getInt("city.Population"));
-                actiy.getPopulation();
                 cities.add(actiy);
             }
             System.out.println("\nList of Top " + limitno + " Populated City in '" + district +"' District\n===========================================================================================");
