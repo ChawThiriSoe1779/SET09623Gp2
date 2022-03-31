@@ -1366,10 +1366,10 @@ public class App
         // print population data
         a.printPopulationReport(populations);
 
-//        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
-//        populations = a.getPopulation_Country();
-//        // print population data
-//        a.printPopulationReport(populations);
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
+        populations = a.getPopulation_Country();
+        // print population data
+        a.printPopulationReport(populations);
 
         // Disconnect from database
         a.disconnect();
