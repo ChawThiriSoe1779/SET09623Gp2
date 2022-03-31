@@ -37,10 +37,9 @@ public class AppIntegrationTest
         expected.add(coun);
         ArrayList<Country> result = app.getCountries_World();
         System.out.println(expected);
-        System.out.println(result.get(0));
-        assertEquals(expected, result.get(0));
-        System.out.println(expected);
-        System.out.println(result.get(0));
+        System.out.println(result.get(1));
+        assertEquals(expected, result.get(1));
+
         System.out.println("=================================================================================================");
     }
 }
