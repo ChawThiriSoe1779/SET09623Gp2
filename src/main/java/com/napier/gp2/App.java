@@ -1134,12 +1134,20 @@ public class App
 
     public void printCountriesReport(ArrayList<Country> countries)
     {
+        // Check Countries is not null
+        if (countries == null)
+        {
+            System.out.println("No Countries");
+            return;
+        }
         // Print header
         System.out.printf("%-5s %-15s %-20s %-20s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("===========================================================================================");
         // Loop over all countries in the list
         for (Country coun : countries)
         {
+            if (coun == null)
+                continue;
             String emp_string =
                     String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
                             coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
@@ -1153,11 +1161,19 @@ public class App
      */
 
     public void printCityReport(ArrayList<City> cities) {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
         // Loop over all cities in the list
         for (City city : cities) {
+            if (city == null)
+                continue;
             String city_string =
                     String.format("%-25s %-25s %-25s %-25s",
                             city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1168,13 +1184,20 @@ public class App
     /** Function to Print Capital City
      * @param cap_cities to print list of capital cities **/
     public void printCapCityReport(ArrayList<Capital> cap_cities) {
-
+        // Check capital cities is not null
+        if (cap_cities == null)
+        {
+            System.out.println("No capital cities");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
 
         // Loop over all capital cities in the list
         for (Capital city : cap_cities) {
+            if (city == null)
+                continue;
             String city_string =
                     String.format("%-25s %-25s %-25s %-25s",
                             city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1185,11 +1208,19 @@ public class App
     /** Function to Print Capital City
      * @param populations to print list of capital cities **/
     public void printPopulationReport(ArrayList<Population> populations) {
+        // Check populations is not null
+        if (populations == null)
+        {
+            System.out.println("No populations");
+            return;
+        }
         // Print header
         System.out.printf("%-25s %-25s %-25s %-25s%n", "Place", "Total Population", "City Population", "Non-City Population");
         System.out.println("=================================================================================================");
         // Loop over all cities in the list
         for (Population population : populations) {
+            if (population == null)
+                continue;
             String population_string =
                     String.format("%-25s %-25s %-25s %-25s",
                             population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
