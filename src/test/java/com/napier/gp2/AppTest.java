@@ -51,6 +51,17 @@ public class AppTest
     }
 
     @Test
+    void printCountriesReportTestContainNull()
+    {
+        System.out.println("Countries Report Contain Null Testing~~");
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        app.printCountriesReport(countries);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
     void printCityReportTest()
     {
         System.out.println("Normal City Report List Testing~~");

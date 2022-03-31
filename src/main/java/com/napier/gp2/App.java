@@ -1146,6 +1146,8 @@ public class App
         // Loop over all countries in the list
         for (Country coun : countries)
         {
+            if (coun == null)
+                continue;
             String emp_string =
                     String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
                             coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
