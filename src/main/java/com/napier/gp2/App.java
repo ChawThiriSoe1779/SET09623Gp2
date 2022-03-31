@@ -1202,6 +1202,12 @@ public class App
     /** Function to Print Capital City
      * @param populations to print list of capital cities **/
     public void printPopulationReport(ArrayList<Population> populations) {
+        // Check populations is not null
+        if (populations == null)
+        {
+            System.out.println("No populations");
+            return;
+        }
         // Print header
         System.out.printf("%-25s %-25s %-25s %-25s%n", "Place", "Total Population", "City Population", "Non-City Population");
         System.out.println("=================================================================================================");

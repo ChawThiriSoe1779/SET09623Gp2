@@ -58,7 +58,7 @@ public class AppTest
     @Test
     void printCityReportTestNull()
     {
-        System.out.println("A Countries Report Null Testing~~");
+        System.out.println("A City Report Null Testing~~");
         app.printCityReport(null);
         System.out.println("=================================================================================================");
     }
@@ -79,9 +79,9 @@ public class AppTest
     }
 
     @Test
-    void pprintCapCityReportTestNull()
+    void printCapCityReportTestNull()
     {
-        System.out.println("A Countries Report Null Testing~~");
+        System.out.println("A Capital City Report Null Testing~~");
         app.printCapCityReport(null);
         System.out.println("=================================================================================================");
     }
@@ -98,6 +98,14 @@ public class AppTest
         pop.setNon_city_population(70467187);
         populations.add(pop);
         app.printPopulationReport(populations);
+        System.out.println("=================================================================================================");
+    }
+
+    @Test
+    void printPopulationReportTestNull()
+    {
+        System.out.println("A Population Report Null Testing~~");
+        app.printPopulationReport(null);
         System.out.println("=================================================================================================");
     }
 
