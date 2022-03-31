@@ -1081,6 +1081,7 @@ public class App
                 long nonCityPop = pop.getTotal_population() - cityPop;
                 Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
                 pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each region\n=================================================================================================");
@@ -1098,7 +1099,7 @@ public class App
      Get number of population of people, people living in cities, and people not living in cities in each country
      @return A list of population of people, people living in cities, and people not living in cities in each country
      */
-/*    public ArrayList<Population> getPopulation_Country()
+    public ArrayList<Population> getPopulation_Country()
     {
         try
         {
@@ -1122,10 +1123,18 @@ public class App
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
+
                 pop.setName(result_1.getString("Name"));
                 pop.setTotal_population(result_1.getLong("Population"));
-                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+
+                long cityPop = result_2.getLong("SUM(city.Population)");
+                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+
+                long nonCityPop = pop.getTotal_population() - cityPop;
+                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each country\n=================================================================================================");
@@ -1137,7 +1146,7 @@ public class App
             System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each country.!!");
             return null;
         }
-    }*/
+    }
 
     /**
      * Prints a list of Countries.
