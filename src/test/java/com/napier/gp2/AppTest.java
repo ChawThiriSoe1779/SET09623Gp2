@@ -107,6 +107,16 @@ public class AppTest
     }
 
     @Test
+    void printCapCityReportTestEmpty()
+    {
+        System.out.println("Capital City Report Empty Testing~~");
+        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        app.printCapCityReport(cap_cities);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
     void printPopulationReportTest()
     {
         System.out.println("Normal Population Report List Testing~~");
