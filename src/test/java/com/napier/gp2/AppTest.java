@@ -43,6 +43,19 @@ public class AppTest
         app.printCityReport(cities);
     }
 
+    @Test
+    void printCapCityReportTest()
+    {
+        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        Capital ca = new Capital();
+        ca.setName("Caracas");
+        ca.setCountry("Venezuela");
+        ca.setDistrict("Distrito Federal");
+        ca.setPopulation(1975294);
+        cap_cities.add(ca);
+        app.printCapCityReport(cap_cities);
+    }
+
     
 
 }
