@@ -139,4 +139,14 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    @Test
+    void printPopulationReportTestEmpty()
+    {
+        System.out.println("Population Report Empty Testing~~");
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printPopulationReport(populations);
+        System.out.println("=================================================================================================");
+
+    }
+
 }
