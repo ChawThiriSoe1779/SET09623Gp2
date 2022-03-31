@@ -18,7 +18,7 @@ public class AppTest
     @Test
     void printCountriesReportTest()
     {
-        System.out.println("A Normal Countries Report List Testing~~");
+        System.out.println("Normal Countries Report List Testing~~");
         ArrayList<Country> countries = new ArrayList<Country>();
         Country coun = new Country();
         coun.setCode("VEN");
@@ -35,7 +35,7 @@ public class AppTest
     @Test
     void printCountriesReportTestNull()
     {
-        System.out.println("A Countries Report Null Testing~~");
+        System.out.println("Countries Report Null Testing~~");
         app.printCountriesReport(null);
         System.out.println("=================================================================================================");
     }
@@ -43,7 +43,7 @@ public class AppTest
     @Test
     void printCountriesReportTestEmpty()
     {
-        System.out.println("A Countries Report Empty Testing~~");
+        System.out.println("Countries Report Empty Testing~~");
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printCountriesReport(countries);
         System.out.println("=================================================================================================");
@@ -53,7 +53,7 @@ public class AppTest
     @Test
     void printCityReportTest()
     {
-        System.out.println("A Normal City Report List Testing~~");
+        System.out.println("Normal City Report List Testing~~");
         ArrayList<City> cities = new ArrayList<City>();
         City actiy = new City();
         actiy.setName("Kabul");
@@ -68,15 +68,25 @@ public class AppTest
     @Test
     void printCityReportTestNull()
     {
-        System.out.println("A City Report Null Testing~~");
+        System.out.println("City Report Null Testing~~");
         app.printCityReport(null);
         System.out.println("=================================================================================================");
     }
 
     @Test
+    void printCityReportTestEmpty()
+    {
+        System.out.println("City Report Empty Testing~~");
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCityReport(cities);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
     void printCapCityReportTest()
     {
-        System.out.println("A Normal Capital City Report List Testing~~");
+        System.out.println("Normal Capital City Report List Testing~~");
         ArrayList<Capital> cap_cities = new ArrayList<Capital>();
         Capital ca = new Capital();
         ca.setName("Caracas");
@@ -91,7 +101,7 @@ public class AppTest
     @Test
     void printCapCityReportTestNull()
     {
-        System.out.println("A Capital City Report Null Testing~~");
+        System.out.println("Capital City Report Null Testing~~");
         app.printCapCityReport(null);
         System.out.println("=================================================================================================");
     }
@@ -99,7 +109,7 @@ public class AppTest
     @Test
     void printPopulationReportTest()
     {
-        System.out.println("A Normal Population Report List Testing~~");
+        System.out.println("Normal Population Report List Testing~~");
         ArrayList<Population> populations = new ArrayList<Population>();
         Population pop = new Population();
         pop.setName("Vietnam");
@@ -114,7 +124,7 @@ public class AppTest
     @Test
     void printPopulationReportTestNull()
     {
-        System.out.println("A Population Report Null Testing~~");
+        System.out.println("Population Report Null Testing~~");
         app.printPopulationReport(null);
         System.out.println("=================================================================================================");
     }
