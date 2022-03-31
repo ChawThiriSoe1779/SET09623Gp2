@@ -1017,10 +1017,18 @@ public class App
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
+
                 pop.setName(result_1.getString("Continent"));
                 pop.setTotal_population(result_1.getLong("SUM(Population)"));
-                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+
+                long cityPop = result_2.getLong("SUM(city.Population)");
+                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+
+                long nonCityPop = pop.getTotal_population() - cityPop;
+                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each continent\n=================================================================================================");
@@ -1062,10 +1070,18 @@ public class App
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
+
                 pop.setName(result_1.getString("Region"));
                 pop.setTotal_population(result_1.getLong("SUM(Population)"));
-                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+
+                long cityPop = result_2.getLong("SUM(city.Population)");
+                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+
+                long nonCityPop = pop.getTotal_population() - cityPop;
+                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each region\n=================================================================================================");
@@ -1107,10 +1123,18 @@ public class App
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
+
                 pop.setName(result_1.getString("Name"));
                 pop.setTotal_population(result_1.getLong("Population"));
-                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+
+                long cityPop = result_2.getLong("SUM(city.Population)");
+                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+
+                long nonCityPop = pop.getTotal_population() - cityPop;
+                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each country\n=================================================================================================");
@@ -1123,9 +1147,6 @@ public class App
             return null;
         }
     }
-
-
-
 
     /**
      * Prints a list of Countries.
@@ -1345,10 +1366,10 @@ public class App
         // print population data
         a.printPopulationReport(populations);
 
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
-        populations = a.getPopulation_Country();
-        // print population data
-        a.printPopulationReport(populations);
+//        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
+//        populations = a.getPopulation_Country();
+//        // print population data
+//        a.printPopulationReport(populations);
 
         // Disconnect from database
         a.disconnect();
