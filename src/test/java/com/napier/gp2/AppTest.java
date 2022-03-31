@@ -56,6 +56,17 @@ public class AppTest
         app.printCapCityReport(cap_cities);
     }
 
-    
+    @Test
+    void printPopulationReportTest()
+    {
+        ArrayList<Population> populations = new ArrayList<Population>();
+        Population pop = new Population();
+        pop.setName("Vietnam");
+        pop.setTotal_population(79832000);
+        pop.setCity_population(9364813);
+        pop.setNon_city_population(70467187);
+        populations.add(pop);
+        app.printPopulationReport(populations);
+    }
 
 }
