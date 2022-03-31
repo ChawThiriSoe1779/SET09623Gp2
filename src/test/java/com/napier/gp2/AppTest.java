@@ -41,6 +41,16 @@ public class AppTest
     }
 
     @Test
+    void printCountriesReportTestEmpty()
+    {
+        System.out.println("A Countries Report Empty Testing~~");
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountriesReport(countries);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
     void printCityReportTest()
     {
         System.out.println("A Normal City Report List Testing~~");
