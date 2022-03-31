@@ -1172,6 +1172,8 @@ public class App
         System.out.println("===========================================================================================");
         // Loop over all cities in the list
         for (City city : cities) {
+            if (city == null)
+                continue;
             String city_string =
                     String.format("%-25s %-25s %-25s %-25s",
                             city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());

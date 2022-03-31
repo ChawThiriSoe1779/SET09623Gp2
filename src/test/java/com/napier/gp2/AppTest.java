@@ -89,6 +89,18 @@ public class AppTest
     {
         System.out.println("City Report Empty Testing~~");
         ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        app.printCityReport(cities);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
+    void printCityReportTestContainNull()
+    {
+        System.out.println("City Report Contain Null Testing~~");
+        ArrayList<City> cities = new ArrayList<City>();
+
         app.printCityReport(cities);
         System.out.println("=================================================================================================");
 
