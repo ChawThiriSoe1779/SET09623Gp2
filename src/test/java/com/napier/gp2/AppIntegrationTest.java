@@ -24,21 +24,19 @@ public class AppIntegrationTest
     void GetCountriesReportTest()
     {
 
-
         Country coun = new Country();
-        coun.setCode("VEN");
-        assertEquals(coun.getCode(),"VEN");
-        coun.setName("Venezuela");
-        assertEquals(coun.getName(),"Venezuela");
-        coun.setContinent("South America");
-        assertEquals(coun.getContinent(),"South America");
-        coun.setRegion("South America");
-        assertEquals(coun.getRegion(),"South America");
-        coun.setPopulation(24170000);
-        assertEquals(coun.getPopulation(),24170000);
-        coun.setCapital("Caracas");
-        assertEquals(coun.getCapital(),"Caracas");
 
+        ArrayList<Country> expected = new ArrayList<Country>();
+
+        coun.setCode("CHN");
+        coun.setName("China");
+        coun.setContinent("Asia");
+        coun.setRegion("Eastern Asia");
+        coun.setPopulation(1277558000);
+        coun.setCapital("Peking");
+        expected.add(coun);
+        ArrayList<Country> result = app.getCountries_World();
+        assertEquals(expected, result.get(0));
         System.out.println("=================================================================================================");
     }
 }
