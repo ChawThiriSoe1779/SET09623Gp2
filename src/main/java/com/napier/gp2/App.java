@@ -1134,6 +1134,12 @@ public class App
 
     public void printCountriesReport(ArrayList<Country> countries)
     {
+        // Check Countries is not null
+        if (countries == null)
+        {
+            System.out.println("No Countries");
+            return;
+        }
         // Print header
         System.out.printf("%-5s %-15s %-20s %-20s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("===========================================================================================");
@@ -1153,6 +1159,7 @@ public class App
      */
 
     public void printCityReport(ArrayList<City> cities) {
+
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
