@@ -183,4 +183,15 @@ public class AppTest
 
     }
 
+    @Test
+    void printPopulationReportTestContainNull()
+    {
+        System.out.println("Population Report Contain Null Testing~~");
+        ArrayList<Population> populations = new ArrayList<Population>();
+        populations.add(null);
+        app.printPopulationReport(populations);
+        System.out.println("=================================================================================================");
+
+    }
+
 }

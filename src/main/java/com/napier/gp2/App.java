@@ -1219,6 +1219,8 @@ public class App
         System.out.println("=================================================================================================");
         // Loop over all cities in the list
         for (Population population : populations) {
+            if (population == null)
+                continue;
             String population_string =
                     String.format("%-25s %-25s %-25s %-25s",
                             population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
