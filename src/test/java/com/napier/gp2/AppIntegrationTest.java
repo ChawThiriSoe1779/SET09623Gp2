@@ -31,15 +31,16 @@ public class AppIntegrationTest
         coun.setCode("CHN");
 
         coun.setName("China");
-        String code = coun.getCode();
+
         coun.setContinent("Asia");
         coun.setRegion("Eastern Asia");
         coun.setPopulation(1277558000);
         coun.setCapital("Peking");
         expected.add(coun);
         ArrayList<Country> result = app.getCountries_World();
-
-        assertEquals(code, result.get(0).getCode());
+        System.out.println(coun.getCode());
+        System.out.println(result.get(0).getCode());
+        assertEquals(coun.getCode(), result.get(0).getCode());
 
         System.out.println("=================================================================================================");
     }
