@@ -36,8 +36,13 @@ public class AppIntegrationTest
         coun.setCapital("Peking");
         expected.add(coun);
         ArrayList<Country> result = app.getCountries_World();
-        System.out.println(expected.get(0));
-        System.out.println(result.get(0));
+        for (Country i : expected) {
+            System.out.println(i);
+        }
+        for (Country i : result) {
+            System.out.println(i);
+        }
+
         assertEquals(expected.get(0), result.get(0));
 
         System.out.println("=================================================================================================");
