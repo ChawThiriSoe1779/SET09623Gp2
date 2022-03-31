@@ -13,15 +13,15 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location, int delay)
     {
-        try
-        {
+        try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
+
         }
-        catch (ClassNotFoundException e)
-        {
+
+        catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
@@ -35,7 +35,10 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "group2");
+
+                con = DriverManager.getConnection("jdbc:mysql://" + location
+                                + "/world?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root", "group2");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -1255,7 +1258,12 @@ public class App
         // Create new Application
         App a = new App();
         // Connect to database
-        a.connect();
+
+        if(args.length < 1){
+            a.connect("localhost:33060", 30000);
+        }else{
+            a.connect(args[0], Integer.parseInt(args[1]));
+        }
 
         // Countries in the world from largest population to smallest
         ArrayList<Country> countries = a.getCountries_World();
