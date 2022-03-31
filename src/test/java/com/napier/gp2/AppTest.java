@@ -29,6 +29,20 @@ public class AppTest
         countries.add(coun);
         app.printCountriesReport(countries);
     }
+
+    @Test
+    void printCityReportTest()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        City actiy = new City();
+        actiy.setName("Kabul");
+        actiy.setCountry("Afghanistan");
+        actiy.setDistrict("Kabol");
+        actiy.setPopulation(1780000);
+        cities.add(actiy);
+        app.printCityReport(cities);
+    }
+
     
 
 }
