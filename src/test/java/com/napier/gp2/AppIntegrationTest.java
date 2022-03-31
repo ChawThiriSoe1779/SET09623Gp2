@@ -21,19 +21,24 @@ public class AppIntegrationTest
     }
 
     @Test
-    void printCountriesReportTest()
+    void GetCountriesReportTest()
     {
-        System.out.println("Normal Countries Report List Testing~~");
-        ArrayList<Country> countries = new ArrayList<Country>();
+
+
         Country coun = new Country();
         coun.setCode("VEN");
+        assertEquals(coun.getCode(),"VEN");
         coun.setName("Venezuela");
+        assertEquals(coun.getName(),"Venezuela");
         coun.setContinent("South America");
+        assertEquals(coun.getContinent(),"South America");
         coun.setRegion("South America");
+        assertEquals(coun.getRegion(),"South America");
         coun.setPopulation(24170000);
+        assertEquals(coun.getPopulation(),24170000);
         coun.setCapital("Caracas");
-        countries.add(coun);
-        app.printCountriesReport(countries);
+        assertEquals(coun.getCapital(),"Caracas");
+
         System.out.println("=================================================================================================");
     }
 }
