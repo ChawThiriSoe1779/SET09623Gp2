@@ -10,10 +10,10 @@ public class Population {
     private long total_population;
 
 //    total city population of country, continent or region
-    private long city_population;
+    private String city_population;
 
 //    total non_city population of country, continent or region
-    private long non_city_population;
+    private String non_city_population;
 
     //set name of place
     public void setName(String pname){
@@ -36,22 +36,22 @@ public class Population {
     }
 
     // set population of living in city
-    public void setCity_population(long cpopulation){
+    public void setCity_population(String cpopulation){
         city_population = cpopulation;
     }
 
     // get population of living in city
-    public long getCity_population(){
+    public String getCity_population(){
         return city_population;
     }
 
     // set population of not living in city
-    public void setNon_city_population(long ncpopulation){
+    public void setNon_city_population(String ncpopulation){
         non_city_population = ncpopulation;
     }
 
     // get population of not living in city
-    public long getNon_city_population(){
+    public String getNon_city_population(){
         return non_city_population;
     }
 }

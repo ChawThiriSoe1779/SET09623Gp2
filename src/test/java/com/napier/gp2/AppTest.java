@@ -158,8 +158,8 @@ public class AppTest
         Population pop = new Population();
         pop.setName("Vietnam");
         pop.setTotal_population(79832000);
-        pop.setCity_population(9364813);
-        pop.setNon_city_population(70467187);
+        pop.setCity_population(9364813+"("+11.73+"%)");
+        pop.setNon_city_population(70467187+"("+88.27+"%)");
         populations.add(pop);
         app.printPopulationReport(populations);
         System.out.println("=================================================================================================");
