@@ -140,6 +140,17 @@ public class AppTest
     }
 
     @Test
+    void printCapCityReportTestContainNull()
+    {
+        System.out.println("Capital City Report Contain Null Testing~~");
+        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        cap_cities.add(null);
+        app.printCapCityReport(cap_cities);
+        System.out.println("=================================================================================================");
+
+    }
+
+    @Test
     void printPopulationReportTest()
     {
         System.out.println("Normal Population Report List Testing~~");
