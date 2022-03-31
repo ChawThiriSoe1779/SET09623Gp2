@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class App
@@ -1017,10 +1018,20 @@ public class App
             while (result_1.next() & result_2.next())
             {
                 Population pop = new Population();
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(2);
+
                 pop.setName(result_1.getString("Continent"));
                 pop.setTotal_population(result_1.getLong("SUM(Population)"));
-                pop.setCity_population(result_2.getLong("SUM(city.Population)"));
-                pop.setNon_city_population(pop.getTotal_population() - pop.getCity_population());
+
+                Long cityPop = result_2.getLong("SUM(city.Population)");
+                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+
+                Long nonCityPop = pop.getTotal_population() - cityPop;
+                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
+
                 populations.add(pop);
             }
             System.out.println("\nList of population of people, people living in cities, and people not living in cities in each continent\n=================================================================================================");
@@ -1038,7 +1049,7 @@ public class App
      Get number of population of people, people living in cities, and people not living in cities in each region
      @return A list of population of people, people living in cities, and people not living in cities in each region
      */
-    public ArrayList<Population> getPopulation_Region()
+/*    public ArrayList<Population> getPopulation_Region()
     {
         try
         {
@@ -1077,13 +1088,13 @@ public class App
             System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each region.!!");
             return null;
         }
-    }
+    }*/
 
     /***
      Get number of population of people, people living in cities, and people not living in cities in each country
      @return A list of population of people, people living in cities, and people not living in cities in each country
      */
-    public ArrayList<Population> getPopulation_Country()
+/*    public ArrayList<Population> getPopulation_Country()
     {
         try
         {
@@ -1122,10 +1133,7 @@ public class App
             System.out.println("Failed to get a list of the population of people, people living in cities, and people not living in cities in each country.!!");
             return null;
         }
-    }
-
-
-
+    }*/
 
     /**
      * Prints a list of Countries.
@@ -1309,15 +1317,15 @@ public class App
         // print population data
         a.printPopulationReport(populations);
 
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each region
-        populations = a.getPopulation_Region();
-        // print population data
-        a.printPopulationReport(populations);
-
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
-        populations = a.getPopulation_Country();
-        // print population data
-        a.printPopulationReport(populations);
+//        // Extract information of number of population of people, people living in cities, and people not living in cities in each region
+//        populations = a.getPopulation_Region();
+//        // print population data
+//        a.printPopulationReport(populations);
+//
+//        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
+//        populations = a.getPopulation_Country();
+//        // print population data
+//        a.printPopulationReport(populations);
 
         // Disconnect from database
         a.disconnect();
