@@ -79,6 +79,14 @@ public class AppTest
     }
 
     @Test
+    void pprintCapCityReportTestNull()
+    {
+        System.out.println("A Countries Report Null Testing~~");
+        app.printCapCityReport(null);
+        System.out.println("=================================================================================================");
+    }
+
+    @Test
     void printPopulationReportTest()
     {
         System.out.println("A Normal Population Report List Testing~~");

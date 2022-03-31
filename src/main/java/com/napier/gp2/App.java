@@ -1180,7 +1180,12 @@ public class App
     /** Function to Print Capital City
      * @param cap_cities to print list of capital cities **/
     public void printCapCityReport(ArrayList<Capital> cap_cities) {
-
+        // Check capital cities is not null
+        if (cap_cities == null)
+        {
+            System.out.println("No capital cities");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
