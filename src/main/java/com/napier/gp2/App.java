@@ -1159,7 +1159,12 @@ public class App
      */
 
     public void printCityReport(ArrayList<City> cities) {
-
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");

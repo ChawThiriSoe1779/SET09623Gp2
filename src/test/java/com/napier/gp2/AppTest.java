@@ -55,7 +55,13 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
-    
+    @Test
+    void printCityReportTestNull()
+    {
+        System.out.println("A Countries Report Null Testing~~");
+        app.printCityReport(null);
+        System.out.println("=================================================================================================");
+    }
 
     @Test
     void printCapCityReportTest()
