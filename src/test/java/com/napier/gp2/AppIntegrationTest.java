@@ -20,28 +20,37 @@ public class AppIntegrationTest
 
     }
 
+    /**
+     * Function to integrated test country reports get and print */
     @Test
     void GetCountriesReportTest()
     {
 
         Country coun = new Country();
 
-        ArrayList<Country> expected = new ArrayList<Country>();
+        // Countries in the world from largest population to smallest
+        ArrayList<Country> countries = app.getCountries_World();
+        app.printCountriesReport(countries);
 
-        coun.setCode("CHN");
+        // Countries in the continent from largest population to smallest
+        countries = app.getCountries_Continent();
+        app.printCountriesReport(countries);
 
-        coun.setName("China");
+        // Countries in the region from largest population to smallest
+        countries = app.getCountries_Region();
+        app.printCountriesReport(countries);
 
-        coun.setContinent("Asia");
-        coun.setRegion("Eastern Asia");
-        coun.setPopulation(1277558000);
-        coun.setCapital("Peking");
-        expected.add(coun);
-        ArrayList<Country> result = app.getCountries_World();
-        System.out.println(coun.getCode());
-        System.out.println(result.get(0).getCode());
-        assertEquals(coun.getCode(), result.get(0).getCode());
+        // Top populated Country in the World
+        countries = app.getTopNPopulatedCountries_World();
+        app.printCountriesReport(countries);
 
-        System.out.println("=================================================================================================");
+        // Top populated Country in the continent
+        countries = app.getTopNPopulatedCountries_Continent();
+        app.printCountriesReport(countries);
+
+        // Top populated Country in the region
+        countries = app.getTopNPopulatedCountries_Region();
+        app.printCountriesReport(countries);
+
     }
 }
