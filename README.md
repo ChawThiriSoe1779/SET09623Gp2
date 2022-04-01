@@ -14,3 +14,6 @@ LICENSE
 
 Release
 [![Releases](https://img.shields.io/github/release/ChawThiriSoe1779/SET09623Gp2/all.svg?style=flat-square)](https://github.com/ChawThiriSoe1779/SET09623Gp2/releases)
+
+Code Coverage
+[![codecov](https://codecov.io/gh/ChawThiriSoe1779/SET09623Gp2/branch/master/graph/badge.svg?token=bL9BmoDVsb)](https://codecov.io/gh/ChawThiriSoe1779/SET09623Gp2)
