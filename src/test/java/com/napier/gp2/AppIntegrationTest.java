@@ -164,5 +164,4 @@ public class AppIntegrationTest
         app.printPopulationReport(populations);
     }
 
-
 }
