@@ -53,4 +53,61 @@ public class AppIntegrationTest
         app.printCountriesReport(countries);
 
     }
+
+    @Test
+    void GetCityReportTest(){
+        City city = new City();
+
+        // get city data of the world
+        ArrayList<City> cities = app.getCities_World();
+        // print city data
+        app.printCityReport(cities);
+
+        // get city data of the continent
+        cities = app.getCities_Continent();
+        // print city data
+        app.printCityReport(cities);
+
+        // get city data of the region
+        cities = app.getCities_Region();
+        // print city data
+        app.printCityReport(cities);
+
+        // get city data of the district
+        cities = app.getCities_District();
+        // print city data
+        app.printCityReport(cities);
+
+        // get city data of the country
+        cities = app.getCities_Country();
+        // print city data
+        app.printCityReport(cities);
+
+        // Extract information of top N populated cities in the world
+        cities = app.getTopNPopulatedCity_World();
+        // print city data
+        app.printCityReport(cities);
+
+        // Extract information of top N populated cities in a continent
+        cities = app.getTopNPopulatedCity_Continent();
+        // print city data
+        app.printCityReport(cities);
+
+        // Extract information of top N populated cities in a region
+        cities = app.getTopNPopulatedCity_Region();
+        // print city data
+        app.printCityReport(cities);
+
+        // Extract information of top N populated cities in a country
+        cities = app.getTopNPopulatedCity_Country();
+        // print city data
+        app.printCityReport(cities);
+
+        // Extract information of top N populated cities in a district
+        cities = app.getTopNPopulatedCity_District();
+        // print city data
+        app.printCityReport(cities);
+    }
+
+
 }
