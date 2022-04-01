@@ -110,7 +110,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void getCapitalReport(){
+    void getCapitalReportTest(){
         Capital cap = new Capital();
 
         // get capital city data of the world
@@ -142,6 +142,26 @@ public class AppIntegrationTest
         cap_cities = app.getTopNPopulatedCapCity_Region();
         // print city data
         app.printCapCityReport(cap_cities);
+    }
+
+    @Test
+    void getPopulationReportTest(){
+        Population pop = new Population();
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
+        ArrayList<Population> populations = app.getPopulation_Continent();
+        // print population data
+        app.printPopulationReport(populations);
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each region
+        populations = app.getPopulation_Region();
+        // print population data
+        app.printPopulationReport(populations);
+
+        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
+        populations = app.getPopulation_Country();
+        // print population data
+        app.printPopulationReport(populations);
     }
 
 
