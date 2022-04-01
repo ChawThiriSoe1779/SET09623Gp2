@@ -15,6 +15,9 @@ public class AppTest
         app = new App();
     }
 
+    /**
+     * Prints a normal list of Countries.
+     */
     @Test
     void printCountriesReportTest()
     {
@@ -32,6 +35,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when country report is null.
+     */
     @Test
     void printCountriesReportTestNull()
     {
@@ -40,6 +46,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when country report is empty.
+     */
     @Test
     void printCountriesReportTestEmpty()
     {
@@ -50,6 +59,9 @@ public class AppTest
 
     }
 
+    /**
+     * Prints when country report contain null.
+     */
     @Test
     void printCountriesReportTestContainNull()
     {
@@ -61,6 +73,9 @@ public class AppTest
 
     }
 
+    /**
+     * Prints a normal list of Cities.
+     */
     @Test
     void printCityReportTest()
     {
@@ -76,6 +91,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when City report is null.
+     */
     @Test
     void printCityReportTestNull()
     {
@@ -84,10 +102,26 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when City report is empty.
+     */
     @Test
     void printCityReportTestEmpty()
     {
         System.out.println("City Report Empty Testing~~");
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCityReport(cities);
+        System.out.println("=================================================================================================");
+
+    }
+
+    /**
+     * Prints when City report contain null.
+     */
+    @Test
+    void printCityReportTestContainNull()
+    {
+        System.out.println("City Report Contain Null Testing~~");
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
         app.printCityReport(cities);
@@ -95,17 +129,9 @@ public class AppTest
 
     }
 
-    @Test
-    void printCityReportTestContainNull()
-    {
-        System.out.println("City Report Contain Null Testing~~");
-        ArrayList<City> cities = new ArrayList<City>();
-
-        app.printCityReport(cities);
-        System.out.println("=================================================================================================");
-
-    }
-
+    /**
+     * Prints a normal list of Capital Cities.
+     */
     @Test
     void printCapCityReportTest()
     {
@@ -121,6 +147,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when Capital City report is null.
+     */
     @Test
     void printCapCityReportTestNull()
     {
@@ -129,6 +158,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when Capital City report is empty.
+     */
     @Test
     void printCapCityReportTestEmpty()
     {
@@ -139,6 +171,9 @@ public class AppTest
 
     }
 
+    /**
+     * Prints when Capital City report contain null.
+     */
     @Test
     void printCapCityReportTestContainNull()
     {
@@ -150,6 +185,9 @@ public class AppTest
 
     }
 
+    /**
+     * Prints a normal list of Population.
+     */
     @Test
     void printPopulationReportTest()
     {
@@ -165,6 +203,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when Population report is null.
+     */
     @Test
     void printPopulationReportTestNull()
     {
@@ -173,6 +214,9 @@ public class AppTest
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Prints when Population report is empty.
+     */
     @Test
     void printPopulationReportTestEmpty()
     {
@@ -183,6 +227,9 @@ public class AppTest
 
     }
 
+    /**
+     * Prints when Population report contain null.
+     */
     @Test
     void printPopulationReportTestContainNull()
     {
