@@ -109,5 +109,40 @@ public class AppIntegrationTest
         app.printCityReport(cities);
     }
 
+    @Test
+    void getCapitalReport(){
+        Capital cap = new Capital();
+
+        // get capital city data of the world
+        ArrayList<Capital> cap_cities = app.getCapCities_World();
+        // print city data
+        app.printCapCityReport(cap_cities);
+
+        // get capital city data of the continent
+        cap_cities = app.getCapCities_Continent();
+        // print city data
+        app.printCapCityReport(cap_cities);
+
+        // get capital city data of the region
+        cap_cities = app.getCapCities_Region();
+        // print city data
+        app.printCapCityReport(cap_cities);
+
+        // get data of top N populated capital cities in the world
+        cap_cities = app.getTopNPopulatedCapCity_World();
+        // print city data
+        app.printCapCityReport(cap_cities);
+
+        // get data of top N populated capital cities in the continent
+        cap_cities = app.getTopNPopulatedCapCity_Continent();
+        // print city data
+        app.printCapCityReport(cap_cities);
+
+        // get data of top N populated capital cities in the continent
+        cap_cities = app.getTopNPopulatedCapCity_Region();
+        // print city data
+        app.printCapCityReport(cap_cities);
+    }
+
 
 }
