@@ -1167,14 +1167,25 @@ public class App
         // Print header
         System.out.printf("%-5s %-15s %-20s %-20s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("===========================================================================================");
-        // Loop over all countries in the list
-        for (Country coun : countries)
+
+        // Check Country is not empty
+        if (countries.isEmpty() == false)
         {
-            if (coun == null)
-                continue;
-            String emp_string =
-                    String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
-                            coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
+            // Loop over all countries in the list
+            for (Country coun : countries)
+            {
+                // Check Country contain null
+                if (coun == null)
+                    continue;
+                String emp_string =
+                        String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
+                                coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
+                System.out.println(emp_string);
+            }
+        }
+        else
+        {
+            String emp_string = String.format("Country Report List is empty");
             System.out.println(emp_string);
         }
     }
@@ -1194,13 +1205,24 @@ public class App
         // Print header
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
-        // Loop over all cities in the list
-        for (City city : cities) {
-            if (city == null)
-                continue;
-            String city_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
+
+        // Check City is not empty
+        if (cities.isEmpty() == false)
+        {
+            // Loop over all cities in the list
+            for (City city : cities) {
+                // Check City contain null
+                if (city == null)
+                    continue;
+                String city_string =
+                        String.format("%-25s %-25s %-25s %-25s",
+                                city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
+                System.out.println(city_string);
+            }
+        }
+                else
+        {
+            String city_string = String.format("City Report List is empty");
             System.out.println(city_string);
         }
     }
@@ -1218,13 +1240,23 @@ public class App
         System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
         System.out.println("===========================================================================================");
 
-        // Loop over all capital cities in the list
-        for (Capital city : cap_cities) {
-            if (city == null)
-                continue;
-            String city_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
+        // Check Capital City is not empty
+        if (cap_cities.isEmpty() == false)
+        {
+            // Loop over all capital cities in the list
+            for (Capital city : cap_cities) {
+                // Check Capital City contain null
+                if (city == null)
+                    continue;
+                String city_string =
+                        String.format("%-25s %-25s %-25s %-25s",
+                                city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
+                System.out.println(city_string);
+            }
+        }
+            else
+        {
+            String city_string = String.format("Capital City Report List is empty");
             System.out.println(city_string);
         }
     }
@@ -1238,16 +1270,29 @@ public class App
             System.out.println("No populations");
             return;
         }
+
         // Print header
         System.out.printf("%-25s %-25s %-25s %-25s%n", "Place", "Total Population", "City Population", "Non-City Population");
         System.out.println("=================================================================================================");
-        // Loop over all cities in the list
-        for (Population population : populations) {
-            if (population == null)
-                continue;
-            String population_string =
-                    String.format("%-25s %-25s %-25s %-25s",
-                            population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
+
+        // Check populations is not empty
+        if (populations.isEmpty() == false)
+        {
+            // Loop over all cities in the list
+            for (Population population : populations) {
+                // Check population contain null
+                if (population == null)
+                    continue;
+                String population_string =
+                        String.format("%-25s %-25s %-25s %-25s",
+                                population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
+
+                System.out.println(population_string);
+            }
+        }
+        else
+        {
+            String population_string = String.format("Population Report List is empty");
             System.out.println(population_string);
         }
     }
