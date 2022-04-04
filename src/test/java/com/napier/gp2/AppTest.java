@@ -22,7 +22,7 @@ public class AppTest
     void printCountriesReportTest()
     {
         System.out.println("Normal Countries Report List Testing~~");
-        ArrayList<Country> countries = new ArrayList<Country>();
+        ArrayList<Country> countries = new ArrayList<>();
         Country coun = new Country();
         coun.setCode("VEN");
         coun.setName("Venezuela");
@@ -53,7 +53,7 @@ public class AppTest
     void printCountriesReportTestEmpty()
     {
         System.out.println("Countries Report Empty Testing~~");
-        ArrayList<Country> countries = new ArrayList<Country>();
+        ArrayList<Country> countries = new ArrayList<>();
         app.printCountriesReport(countries);
         System.out.println("=================================================================================================");
 
@@ -66,7 +66,7 @@ public class AppTest
     void printCountriesReportTestContainNull()
     {
         System.out.println("Countries Report Contain Null Testing~~");
-        ArrayList<Country> countries = new ArrayList<Country>();
+        ArrayList<Country> countries = new ArrayList<>();
         countries.add(null);
         app.printCountriesReport(countries);
         System.out.println("=================================================================================================");
@@ -80,7 +80,7 @@ public class AppTest
     void printCityReportTest()
     {
         System.out.println("Normal City Report List Testing~~");
-        ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<City> cities = new ArrayList<>();
         City actiy = new City();
         actiy.setName("Kabul");
         actiy.setCountry("Afghanistan");
@@ -109,7 +109,7 @@ public class AppTest
     void printCityReportTestEmpty()
     {
         System.out.println("City Report Empty Testing~~");
-        ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<City> cities = new ArrayList<>();
         app.printCityReport(cities);
         System.out.println("=================================================================================================");
 
@@ -122,7 +122,7 @@ public class AppTest
     void printCityReportTestContainNull()
     {
         System.out.println("City Report Contain Null Testing~~");
-        ArrayList<City> cities = new ArrayList<City>();
+        ArrayList<City> cities = new ArrayList<>();
         cities.add(null);
         app.printCityReport(cities);
         System.out.println("=================================================================================================");
@@ -136,7 +136,7 @@ public class AppTest
     void printCapCityReportTest()
     {
         System.out.println("Normal Capital City Report List Testing~~");
-        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        ArrayList<Capital> cap_cities = new ArrayList<>();
         Capital ca = new Capital();
         ca.setName("Caracas");
         ca.setCountry("Venezuela");
@@ -165,7 +165,7 @@ public class AppTest
     void printCapCityReportTestEmpty()
     {
         System.out.println("Capital City Report Empty Testing~~");
-        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        ArrayList<Capital> cap_cities = new ArrayList<>();
         app.printCapCityReport(cap_cities);
         System.out.println("=================================================================================================");
 
@@ -178,7 +178,7 @@ public class AppTest
     void printCapCityReportTestContainNull()
     {
         System.out.println("Capital City Report Contain Null Testing~~");
-        ArrayList<Capital> cap_cities = new ArrayList<Capital>();
+        ArrayList<Capital> cap_cities = new ArrayList<>();
         cap_cities.add(null);
         app.printCapCityReport(cap_cities);
         System.out.println("=================================================================================================");
@@ -192,7 +192,7 @@ public class AppTest
     void printPopulationReportTest()
     {
         System.out.println("Normal Population Report List Testing~~");
-        ArrayList<Population> populations = new ArrayList<Population>();
+        ArrayList<Population> populations = new ArrayList<>();
         Population pop = new Population();
         pop.setName("Vietnam");
         pop.setTotal_population(79832000);
@@ -221,7 +221,7 @@ public class AppTest
     void printPopulationReportTestEmpty()
     {
         System.out.println("Population Report Empty Testing~~");
-        ArrayList<Population> populations = new ArrayList<Population>();
+        ArrayList<Population> populations = new ArrayList<>();
         app.printPopulationReport(populations);
         System.out.println("=================================================================================================");
 
@@ -234,7 +234,7 @@ public class AppTest
     void printPopulationReportTestContainNull()
     {
         System.out.println("Population Report Contain Null Testing~~");
-        ArrayList<Population> populations = new ArrayList<Population>();
+        ArrayList<Population> populations = new ArrayList<>();
         populations.add(null);
         app.printPopulationReport(populations);
         System.out.println("=================================================================================================");
