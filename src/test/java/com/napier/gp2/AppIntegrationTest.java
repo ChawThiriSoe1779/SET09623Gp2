@@ -2,11 +2,6 @@ package com.napier.gp2;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest
 {
@@ -25,143 +20,176 @@ public class AppIntegrationTest
     @Test
     void GetCountriesReportTest()
     {
-
-        Country coun = new Country();
-
         // Countries in the world from largest population to smallest
-        ArrayList<Country> countries = app.getCountries_World();
-        app.printCountriesReport(countries);
+        System.out.println("Testing to retrieve the countries in the world from largest population to smallest~~");
+        app.getCountries_World();
+        System.out.println("Successfully retrieved the countries in the world from largest population to smallest ");
+        System.out.println("=================================================================================================");
+
 
         // Countries in the continent from largest population to smallest
-        countries = app.getCountries_Continent();
-        app.printCountriesReport(countries);
+        System.out.println("Testing to retrieve the countries in the continent from largest population to smallest~~");
+        app.getCountries_Continent();
+        System.out.println("Successfully retrieved the countries in the continent from largest population to smallest ");
+        System.out.println("=================================================================================================");
+
 
         // Countries in the region from largest population to smallest
-        countries = app.getCountries_Region();
-        app.printCountriesReport(countries);
+        System.out.println("Testing to retrieve the countries in the region from largest population to smallest~~");
+        app.getCountries_Region();
+        System.out.println("Successfully retrieved the countries in the region from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
-        // Top populated Country in the World
-        countries = app.getTopNPopulatedCountries_World();
-        app.printCountriesReport(countries);
 
-        // Top populated Country in the continent
-        countries = app.getTopNPopulatedCountries_Continent();
-        app.printCountriesReport(countries);
+        // Top N populated Country in the World
+        System.out.println("Testing to retrieve Top N populated countries in the world~~");
+        app.getTopNPopulatedCountries_World();
+        System.out.println("Successfully retrieved Top N populated counties in the world ");
+        System.out.println("=================================================================================================");
 
-        // Top populated Country in the region
-        countries = app.getTopNPopulatedCountries_Region();
-        app.printCountriesReport(countries);
+
+        // Top N populated Country in the continent
+        System.out.println("Testing to retrieve Top N populated countries in the continent~~");
+        app.getTopNPopulatedCountries_Continent();
+        System.out.println("Successfully retrieved Top N populated counties in the continent ");
+        System.out.println("=================================================================================================");
+
+
+        // Top N populated Country in the region
+        System.out.println("Testing to retrieve Top N populated countries in the region~~");
+        app.getTopNPopulatedCountries_Region();
+        System.out.println("Successfully retrieved Top N populated counties in the region ");
+        System.out.println("=================================================================================================");
+
 
     }
 
     @Test
-    void GetCityReportTest(){
-        City city = new City();
-
+    void GetCityReportTest()
+    {
         // get city data of the world
-        ArrayList<City> cities = app.getCities_World();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve the cities in the world from largest population to smallest~~");
+        app.getCities_World();
+        System.out.println("Successfully retrieved the cities in the world from largest population to smallest ");
+        System.out.println("=================================================================================================");
+
 
         // get city data of the continent
-        cities = app.getCities_Continent();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve the cities in the continent from largest population to smallest~~");
+        app.getCities_Continent();
+        System.out.println("Successfully retrieved the cities in the continent from largest population to smallest ");
+        System.out.println("=================================================================================================");
+
 
         // get city data of the region
-        cities = app.getCities_Region();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve the cities in the region from largest population to smallest~~");
+        app.getCities_Region();
+        System.out.println("Successfully retrieved the cities in the region from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // get city data of the district
-        cities = app.getCities_District();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve the cities in the district from largest population to smallest~~");
+        app.getCities_District();
+        System.out.println("Successfully retrieved the cities in the district from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // get city data of the country
-        cities = app.getCities_Country();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve the cities in the country from largest population to smallest~~");
+        app.getCities_Country();
+        System.out.println("Successfully retrieved the cities in the country from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // Extract information of top N populated cities in the world
-        cities = app.getTopNPopulatedCity_World();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve Top N populated cities in the world~~");
+        app.getTopNPopulatedCity_World();
+        System.out.println("Successfully retrieved Top N populated cities in the world ");
+        System.out.println("=================================================================================================");
 
         // Extract information of top N populated cities in a continent
-        cities = app.getTopNPopulatedCity_Continent();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve Top N populated cities in the continent~~");
+        app.getTopNPopulatedCity_Continent();
+        System.out.println("Successfully retrieved Top N populated cities in the continent ");
+        System.out.println("=================================================================================================");
 
         // Extract information of top N populated cities in a region
-        cities = app.getTopNPopulatedCity_Region();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve Top N populated cities in the region~~");
+        app.getTopNPopulatedCity_Region();
+        System.out.println("Successfully retrieved Top N populated cities in the region ");
+        System.out.println("=================================================================================================");
 
         // Extract information of top N populated cities in a country
-        cities = app.getTopNPopulatedCity_Country();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve Top N populated cities in the country~~");
+        app.getTopNPopulatedCity_Country();
+        System.out.println("Successfully retrieved Top N populated cities in the country ");
+        System.out.println("=================================================================================================");
 
         // Extract information of top N populated cities in a district
-        cities = app.getTopNPopulatedCity_District();
-        // print city data
-        app.printCityReport(cities);
+        System.out.println("Testing to retrieve Top N populated cities in the district~~");
+        app.getTopNPopulatedCity_District();
+        System.out.println("Successfully retrieved Top N populated cities in the district ");
+        System.out.println("=================================================================================================");
     }
 
     @Test
-    void getCapitalReportTest(){
-        Capital cap = new Capital();
-
+    void getCapitalReportTest()
+    {
         // get capital city data of the world
-        ArrayList<Capital> cap_cities = app.getCapCities_World();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest~~");
+        app.getCapCities_World();
+        System.out.println("Successfully retrieved the capital cities in the world from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // get capital city data of the continent
-        cap_cities = app.getCapCities_Continent();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest~~");
+        app.getCapCities_Continent();
+        System.out.println("Successfully retrieved the capital cities in the world from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // get capital city data of the region
-        cap_cities = app.getCapCities_Region();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest~~");
+        app.getCapCities_Region();
+        System.out.println("Successfully retrieved the capital cities in the world from largest population to smallest ");
+        System.out.println("=================================================================================================");
 
         // get data of top N populated capital cities in the world
-        cap_cities = app.getTopNPopulatedCapCity_World();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        System.out.println("Testing to retrieve Top N populated capital cities in the world~~");
+        app.getTopNPopulatedCapCity_World();
+        System.out.println("Successfully retrieved Top N populated capital cities in the world ");
+        System.out.println("=================================================================================================");
 
         // get data of top N populated capital cities in the continent
-        cap_cities = app.getTopNPopulatedCapCity_Continent();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        System.out.println("Testing to retrieve Top N populated capital cities in the continent~~");
+        app.getTopNPopulatedCapCity_Continent();
+        System.out.println("Successfully retrieved Top N populated capital cities in the continent ");
+        System.out.println("=================================================================================================");
 
-        // get data of top N populated capital cities in the continent
-        cap_cities = app.getTopNPopulatedCapCity_Region();
-        // print city data
-        app.printCapCityReport(cap_cities);
+        // get data of top N populated capital cities in the region
+        System.out.println("Testing to retrieve Top N populated capital cities in the region~~");
+        app.getTopNPopulatedCapCity_Region();
+        System.out.println("Successfully retrieved Top N populated capital cities in the region ");
+        System.out.println("=================================================================================================");
     }
 
     @Test
-    void getPopulationReportTest(){
-        Population pop = new Population();
-
+    void getPopulationReportTest()
+    {
         // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
-        ArrayList<Population> populations = app.getPopulation_Continent();
-        // print population data
-        app.printPopulationReport(populations);
+        System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each continent~~");
+        app.getPopulation_Continent();
+        System.out.println("Successfully retrieved the number of population of people, people living in cities, and people not living in cities in each continent ");
+        System.out.println("=================================================================================================");
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each region
-        populations = app.getPopulation_Region();
-        // print population data
-        app.printPopulationReport(populations);
+        System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each region~~");
+        app.getPopulation_Region();
+        System.out.println("Successfully retrieved the number of population of people, people living in cities, and people not living in cities in each region ");
+        System.out.println("=================================================================================================");
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each country
-        populations = app.getPopulation_Country();
-        // print population data
-        app.printPopulationReport(populations);
+        System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each country~~");
+        app.getPopulation_Country();
+        System.out.println("Successfully retrieved the number of population of people, people living in cities, and people not living in cities in each country ");
+        System.out.println("=================================================================================================");
     }
 
 }
