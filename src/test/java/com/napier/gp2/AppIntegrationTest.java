@@ -209,29 +209,29 @@ public class AppIntegrationTest
     @Test
     void getLanguagePopulation(){
         //get and print population of chinese speakers in the world with percentage
-        app.peopleSpeakChinese();
         System.out.println("Testing to retrieve population of the chinese speaker in the world successful");
         System.out.println("=================================================================================================");
+        app.peopleSpeakChinese();
 
         //get and print population of english speakers in the world with percentage
-        app.peopleSpeakEnglish();
         System.out.println("Testing to retrieve population of the english speaker in the world successful");
         System.out.println("=================================================================================================");
+        app.peopleSpeakEnglish();
 
         //get and print population of Hindi speakers in the world with percentage
-        app.peopleSpeakHindi();
         System.out.println("Testing to retrieve population of the hindi speaker in the world successful");
         System.out.println("=================================================================================================");
+        app.peopleSpeakHindi();
 
         //get and print population of spanish speakers in the world with percentage
-        app.peopleSpeakSpanish();
         System.out.println("Testing to retrieve population of the spanish speaker in the world successful");
         System.out.println("=================================================================================================");
+        app.peopleSpeakSpanish();
 
         //get and print population of arabic speakers in the world with percentage
-        app.peopleSpeakArabic();
         System.out.println("Testing to retrieve population of the arabic speaker in the world successful");
         System.out.println("=================================================================================================");
+        app.peopleSpeakArabic();
     }
 
 }
