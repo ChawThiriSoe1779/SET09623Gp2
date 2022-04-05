@@ -1343,6 +1343,35 @@ public class App
         }
     }
 
+    /***
+     Get the population of the country and print it
+     */
+    public void getnPrintPopulation_Country(String country)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country WHERE Name='"+country+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There is " + pop.getTotal_population() + " people in the '" + country + "' country.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
 
     // main
     public static void main(String[] args)
@@ -1479,6 +1508,9 @@ public class App
 
         // Extract total population in the region
         a.getnPrintPopulation_Region("Caribbean");
+
+        // Extract total population in the country
+        a.getnPrintPopulation_Country("Denmark");
 
         // Disconnect from database
         a.disconnect();
