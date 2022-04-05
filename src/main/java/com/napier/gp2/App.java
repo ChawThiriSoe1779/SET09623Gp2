@@ -1276,7 +1276,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the world.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the world.");
         }
         catch (Exception e)
         {
@@ -1305,7 +1305,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
         }
         catch (Exception e)
         {
@@ -1334,7 +1334,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the '" + region + "' region.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
         }
         catch (Exception e)
         {
@@ -1363,7 +1363,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the '" + country + "' country.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
         }
         catch (Exception e)
         {
@@ -1392,7 +1392,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the '" + district + "' district.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
         }
         catch (Exception e)
         {
@@ -1422,7 +1422,7 @@ public class App
                 pop.setTotal_population(result.getLong("Population"));
             }
 
-            System.out.println("There is " + pop.getTotal_population() + " people in the '" + city + "' city.");
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
         }
         catch (Exception e)
         {
