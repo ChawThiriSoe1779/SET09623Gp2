@@ -1760,6 +1760,52 @@ public class App
 
     }
 
+    /**
+     * Prints a list of Capital City into markdown file.
+     * @param cap_cities to print list of capital cities into markdown file.
+     */
+    public void outputCapCityReport(ArrayList<Capital> cap_cities, String filename) {
+        // Check capital cities is not null
+        if (cap_cities == null)
+        {
+            System.out.println("No capital cities");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+
+        // Check Capital City is not empty
+        if (cap_cities.isEmpty() == false)
+        {
+            // Loop over all capital cities in the list
+            for (Capital city : cap_cities) {
+                // Check Capital City contain null
+                if (city == null)
+                    continue;
+                sb.append("| " + city.getName() + " | " +
+                        city.getCountry() + " | " + city.getDistrict() + " | " +
+                        city.getPopulation() +" |\r\n");
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            String city_string = String.format("Capital City Report List is empty");
+            System.out.println(city_string);
+        }
+
+    }
+
 
     // main
     public static void main(String[] args)
@@ -1890,31 +1936,43 @@ public class App
         ArrayList<Capital> cap_cities = a.getCapCities_World();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "CapCities_data_of_the_world.md");
 
         // get capital city data of the continent
         cap_cities = a.getCapCities_Continent();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "CapCities_data_of_the_continent.md");
 
         // get capital city data of the region
         cap_cities = a.getCapCities_Region();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "CapCities_data_of_the_region.md");
 
         // get data of top N populated capital cities in the world
         cap_cities = a.getTopNPopulatedCapCity_World();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "Top_CapCities_data_of_the_world.md");
 
         // get data of top N populated capital cities in the continent
         cap_cities = a.getTopNPopulatedCapCity_Continent();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "Top_CapCities_data_of_the_continent.md");
 
         // get data of top N populated capital cities in the continent
         cap_cities = a.getTopNPopulatedCapCity_Region();
         // print city data
         a.printCapCityReport(cap_cities);
+        // print city data into markdown file
+        a.outputCapCityReport(cap_cities, "Top_CapCities_data_of_the_Region.md");
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
         ArrayList<Population> populations = a.getPopulation_Continent();
