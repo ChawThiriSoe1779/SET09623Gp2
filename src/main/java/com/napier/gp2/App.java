@@ -1266,6 +1266,44 @@ public class App
     }
 
     /**
+     * Get and print how much people in the world speak english with percentage*/
+    public void peopleSpeakSpanish(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakSpanish = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Spanish';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakSpanish);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long spanish = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                spanish = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)spanish / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of spanish speakers");
+        }
+    }
+
+    /**
      * Prints a list of Countries.
      * @param countries The list of Countries to print.
      */
@@ -1502,6 +1540,8 @@ public class App
         //get and print population of Hindi speakers in the world with percentage
         a.peopleSpeakHindi();
 
+        //get and print population of spanish speakers in the world with percentage
+        a.peopleSpeakSpanish();
         // Disconnect from database
         a.disconnect();
     }
