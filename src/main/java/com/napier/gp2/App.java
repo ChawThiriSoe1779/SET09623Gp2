@@ -1,5 +1,9 @@
 package com.napier.gp2;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -1666,6 +1670,50 @@ public class App
         }
     }
 
+    /**
+     * Prints a list of Countries into markdown file.
+     * @param countries The list of Countries to print into markdown file.
+     */
+    public void outputCountriesReport(ArrayList<Country> countries, String filename) {
+        // Check employees is not null
+        if (countries == null) {
+            System.out.println("countries");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
+
+        // Check Country is not empty
+        if (countries.isEmpty() == false)
+        {
+            // Loop over countries in the list
+            for (Country coun : countries) {
+                // Check Country contain null
+                if (coun == null) continue;
+                sb.append("| " + coun.getCode() + " | " +
+                        coun.getName() + " | " + coun.getContinent() + " | " +
+                        coun.getRegion() + " | " + coun.getPopulation() + " | "
+                        + coun.getCapital() + " |\r\n");
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            String emp_string = String.format("Country Report List is empty");
+            System.out.println(emp_string);
+        }
+
+    }
 
 
     // main
@@ -1681,24 +1729,47 @@ public class App
             a.connect(args[0], Integer.parseInt(args[1]));
         }
 
-        // Countries in the world from largest population to smallest
+        // Get Countries in the world from largest population to smallest
         ArrayList<Country> countries = a.getCountries_World();
+        // Print Countries in the world from largest population to smallest
         a.printCountriesReport(countries);
-        // Countries in the continent from largest population to smallest
+        // Print Countries in the world from largest population to smallest into markdown file
+        a.outputCountriesReport(countries, "Countries_data_of_the_world.md");
+
+        // Get Countries in the continent from largest population to smallest
         countries = a.getCountries_Continent();
+        // Print Countries in the continent from largest population to smallest
         a.printCountriesReport(countries);
-        // Countries in the region from largest population to smallest
+        // Print Countries in the continent from largest population to smallest into markdown file
+        a.outputCountriesReport(countries, "Countries_data_of_the_continent.md");
+
+        // Get Countries in the region from largest population to smallest
         countries = a.getCountries_Region();
+        // Print Countries in the region from largest population to smallest
         a.printCountriesReport(countries);
-        // Top populated Country in the World
+        // Print Countries in the region from largest population to smallest into markdown file
+        a.outputCountriesReport(countries, "Countries_data_of_the_region.md");
+
+        // Get Top populated Country in the World
         countries = a.getTopNPopulatedCountries_World();
+        // Print Top populated Country in the World
         a.printCountriesReport(countries);
-        // Top populated Country in the continent
+        // Print Top populated Country in the World into markdown file
+        a.outputCountriesReport(countries, "Top_Countries_data_of_the_world.md");
+
+        // Get Top populated Country in the continent
         countries = a.getTopNPopulatedCountries_Continent();
+        // Print Top populated Country in the continent
         a.printCountriesReport(countries);
-        // Top populated Country in the region
+        // Print Top populated Country in the continent into markdown file
+        a.outputCountriesReport(countries, "Top_Countries_data_of_the_continent.md");
+
+        // Get Top populated Country in the region
         countries = a.getTopNPopulatedCountries_Region();
+        // Print Top populated Country in the region
         a.printCountriesReport(countries);
+        // Print Top populated Country in the region into markdown file
+        a.outputCountriesReport(countries, "Top_Countries_data_of_the_region.md");
 
         // get city data of the world
         ArrayList<City> cities = a.getCities_World();
