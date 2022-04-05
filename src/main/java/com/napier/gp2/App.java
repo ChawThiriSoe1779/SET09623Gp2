@@ -44,7 +44,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -963,7 +963,8 @@ public class App
      @var limitno an integer for "N" in a list of top N populated capital cities in the region
      @var region a string variable for selecting continent to display capital cities
      */
-    public ArrayList<Capital> getTopNPopulatedCapCity_Region() {
+    public ArrayList<Capital> getTopNPopulatedCapCity_Region()
+    {
         try {
             Statement stmt = con.createStatement();  // Create an SQL statement
             // Create string for SQL statement
@@ -1195,7 +1196,8 @@ public class App
      * @param cities The list of cities to print.
      */
 
-    public void printCityReport(ArrayList<City> cities) {
+    public void printCityReport(ArrayList<City> cities)
+    {
         // Check cities is not null
         if (cities == null)
         {
@@ -1203,7 +1205,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "City Name", "Country Name", "District", "Population");
         System.out.println("===========================================================================================");
 
         // Check City is not empty
@@ -1229,7 +1231,8 @@ public class App
 
     /** Function to Print Capital City
      * @param cap_cities to print list of capital cities **/
-    public void printCapCityReport(ArrayList<Capital> cap_cities) {
+    public void printCapCityReport(ArrayList<Capital> cap_cities)
+    {
         // Check capital cities is not null
         if (cap_cities == null)
         {
@@ -1237,7 +1240,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "City Name", "Country Name", "District", "Population");
         System.out.println("===========================================================================================");
 
         // Check Capital City is not empty
@@ -1263,7 +1266,8 @@ public class App
 
     /** Function to Print Capital City
      * @param populations to print list of capital cities **/
-    public void printPopulationReport(ArrayList<Population> populations) {
+    public void printPopulationReport(ArrayList<Population> populations)
+    {
         // Check populations is not null
         if (populations == null)
         {
@@ -1296,6 +1300,182 @@ public class App
             System.out.println(population_string);
         }
     }
+
+    /***
+     Get the population of the world and print it
+     */
+    public void getnPrintPopulation_Wrold()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country;";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the world.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
+    /***
+     Get the population of the continent and print it
+     */
+    public void getnPrintPopulation_Continent(String continent)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country WHERE Continent='"+continent+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
+    /***
+     Get the population of the region and print it
+     */
+    public void getnPrintPopulation_Region(String region)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country WHERE Region='"+region+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
+    /***
+     Get the population of the country and print it
+     */
+    public void getnPrintPopulation_Country(String country)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country WHERE Name='"+country+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
+    /***
+     Get the population of the district and print it
+     */
+    public void getnPrintPopulation_District(String district)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM city WHERE District='"+district+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
+    /***
+     Get the population of the city and print it
+     */
+    public void getnPrintPopulation_City(String city)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT Population FROM city WHERE Name='"+city+"'";
+
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("Population"));
+            }
+
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
 
     // main
     public static void main(String[] args)
@@ -1423,6 +1603,24 @@ public class App
         populations = a.getPopulation_Country();
         // print population data
         a.printPopulationReport(populations);
+
+        // Extract total population in the world
+        a.getnPrintPopulation_Wrold();
+
+        // Extract total population in the continent
+        a.getnPrintPopulation_Continent("Asia");
+
+        // Extract total population in the region
+        a.getnPrintPopulation_Region("Caribbean");
+
+        // Extract total population in the country
+        a.getnPrintPopulation_Country("Denmark");
+
+        // Extract total population in the district
+        a.getnPrintPopulation_District("Gujarat");
+
+        // Extract total population in the city
+        a.getnPrintPopulation_City("Seoul");
 
         // Disconnect from database
         a.disconnect();
