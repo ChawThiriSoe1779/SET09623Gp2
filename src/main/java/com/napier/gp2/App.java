@@ -1226,7 +1226,7 @@ public class App
                 System.out.println(city_string);
             }
         }
-                else
+        else
         {
             String city_string = String.format("City Report List is empty");
             System.out.println(city_string);
@@ -1261,7 +1261,7 @@ public class App
                 System.out.println(city_string);
             }
         }
-            else
+        else
         {
             String city_string = String.format("Capital City Report List is empty");
             System.out.println(city_string);
@@ -1675,7 +1675,7 @@ public class App
      * @param countries The list of Countries to print into markdown file.
      */
     public void outputCountriesReport(ArrayList<Country> countries, String filename) {
-        // Check employees is not null
+        // Check Countries is not null
         if (countries == null) {
             System.out.println("countries");
             return;
@@ -1711,6 +1711,51 @@ public class App
         {
             String emp_string = String.format("Country Report List is empty");
             System.out.println(emp_string);
+        }
+
+    }
+
+    /**
+     * Prints a list of cities into markdown file.
+     * @param cities The list of cities to print into markdown file.
+     */
+    public void outputCityReport(ArrayList<City> cities, String filename) {
+        // Check cities is not null
+        if (cities == null)
+        {
+            System.out.println("No cities");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| City Name | Country Name | District | Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+
+        // Check City is not empty
+        if (cities.isEmpty() == false)
+        {
+            // Loop over cities in the list
+            for (City city : cities) {
+                // Check Country contain null
+                if (city == null) continue;
+                sb.append("| " + city.getName() + " | " +
+                        city.getCountry() + " | " + city.getDistrict() + " | " +
+                        city.getPopulation() +" |\r\n");
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            String city_string = String.format("City Report List is empty");
+            System.out.println(city_string);
         }
 
     }
@@ -1775,51 +1820,71 @@ public class App
         ArrayList<City> cities = a.getCities_World();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Cities_data_of_the_world.md");
 
         // get city data of the continent
         cities = a.getCities_Continent();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Cities_data_of_the_continent.md");
 
         // get city data of the region
         cities = a.getCities_Region();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Cities_data_of_the_region.md");
 
         // get city data of the district
         cities = a.getCities_District();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Cities_data_of_the_district.md");
 
         // get city data of the country
         cities = a.getCities_Country();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Cities_data_of_the_country.md");
 
         // Extract information of top N populated cities in the world
         cities = a.getTopNPopulatedCity_World();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Top_Cities_data_of_the_world.md");
 
         // Extract information of top N populated cities in a continent
         cities = a.getTopNPopulatedCity_Continent();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Top_Cities_data_of_the_continent.md");
 
         // Extract information of top N populated cities in a region
         cities = a.getTopNPopulatedCity_Region();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Top_Cities_data_of_the_region.md");
 
         // Extract information of top N populated cities in a country
         cities = a.getTopNPopulatedCity_Country();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Top_Cities_data_of_the_country.md");
 
         // Extract information of top N populated cities in a district
         cities = a.getTopNPopulatedCity_District();
         // print city data
         a.printCityReport(cities);
+        // print city data into markdown file
+        a.outputCityReport(cities, "Top_Cities_data_of_the_district.md");
 
         // get capital city data of the world
         ArrayList<Capital> cap_cities = a.getCapCities_World();
