@@ -1268,8 +1268,8 @@ public class App
         }
     }
 
-    /** Function to Print Capital City
-     * @param populations to print list of capital cities **/
+    /** Function to Print populations
+     * @param populations to print list of populations **/
     public void printPopulationReport(ArrayList<Population> populations)
     {
         // Check populations is not null
@@ -1806,6 +1806,52 @@ public class App
 
     }
 
+    /**
+     * Prints a list of populations into markdown file.
+     * @param populations to print list of populations into markdown file.
+     */
+    public void outputPopulationReport(ArrayList<Population> populations, String filename) {
+        // Check populations is not null
+        if (populations == null)
+        {
+            System.out.println("No populations");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Place | Total Population | City Population | Non-City Population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+
+        // Check populations is not empty
+        if (populations.isEmpty() == false)
+        {
+            // Loop over all cities in the list
+            for (Population population : populations) {
+                // Check population contain null
+                if (population == null)
+                    continue;
+                sb.append("| " + population.getName() + " | " +
+                        population.getTotal_population() + " | " + population.getCity_population() + " | " +
+                        population.getNon_city_population() +" |\r\n");
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            String population_string = String.format("Population Report List is empty");
+            System.out.println(population_string);
+        }
+
+    }
+
 
     // main
     public static void main(String[] args)
@@ -1978,16 +2024,22 @@ public class App
         ArrayList<Population> populations = a.getPopulation_Continent();
         // print population data
         a.printPopulationReport(populations);
+        // print population data into markdown file
+        a.outputPopulationReport(populations, "Population_data_of_the_continent.md");
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each region
         populations = a.getPopulation_Region();
         // print population data
         a.printPopulationReport(populations);
+        // print population data into markdown file
+        a.outputPopulationReport(populations, "Population_data_of_the_region.md");
 
         // Extract information of number of population of people, people living in cities, and people not living in cities in each country
         populations = a.getPopulation_Country();
         // print population data
         a.printPopulationReport(populations);
+        // print population data into markdown file
+        a.outputPopulationReport(populations, "Population_data_of_the_country.md");
 
         // Extract total population in the world
         a.getnPrintPopulation_Wrold();
