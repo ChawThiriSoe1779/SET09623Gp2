@@ -167,4 +167,43 @@ public class AppIntegrationTest
         System.out.println("=================================================================================================");
     }
 
+    @Test
+    void getTotalPopulation(){
+        // Extract total population in the world
+        app.getnPrintPopulation_Wrold();
+
+        // Extract total population in the continent
+        app.getnPrintPopulation_Continent("Asia");
+
+        // Extract total population in the region
+        app.getnPrintPopulation_Region("Caribbean");
+
+        // Extract total population in the country
+        app.getnPrintPopulation_Country("Denmark");
+
+        // Extract total population in the district
+        app.getnPrintPopulation_District("Gujarat");
+
+        // Extract total population in the city
+        app.getnPrintPopulation_City("Seoul");
+    }
+
+    @Test
+    void getLanguagePopulation(){
+        //get and print population of chinese speakers in the world with percentage
+        app.peopleSpeakChinese();
+
+        //get and print population of english speakers in the world with percentage
+        app.peopleSpeakEnglish();
+
+        //get and print population of Hindi speakers in the world with percentage
+        app.peopleSpeakHindi();
+
+        //get and print population of spanish speakers in the world with percentage
+        app.peopleSpeakSpanish();
+
+        //get and print population of arabic speakers in the world with percentage
+        app.peopleSpeakArabic();
+    }
+
 }
