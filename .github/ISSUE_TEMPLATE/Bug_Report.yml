@@ -1,4 +1,4 @@
-name: Bug_Report
+name: Creating Bug Report File
 description: File a bug report
 title: "[Bug]: "
 labels: ["bug", "triage"]
