@@ -1413,16 +1413,15 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(city.Population) FROM city "
-                    + "INNER JOIN country ON city.CountryCode=country.Code "
-                    + "WHERE city.Name='"+city+"'";
+            String strSelect = "SELECT Population FROM city WHERE Name='"+city+"'";
+
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(strSelect);
             // Extract population
             Population pop = new Population();
             while (result.next())
             {
-                pop.setTotal_population(result.getLong("SUM(city.Population)"));
+                pop.setTotal_population(result.getLong("Population"));
             }
 
             System.out.println("There is " + pop.getTotal_population() + " people in the '" + city + "' city.");
