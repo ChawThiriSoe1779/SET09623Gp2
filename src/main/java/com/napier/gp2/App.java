@@ -1476,6 +1476,197 @@ public class App
         }
     }
 
+    /**
+     * Get and print how much people in the world speak chinese with percentage*/
+    public void peopleSpeakChinese(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakChinese = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Chinese';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakChinese);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long chinese = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                chinese = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)chinese / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of chinese speakers");
+        }
+    }
+
+    /**
+     * Get and print how much people in the world speak english with percentage*/
+    public void peopleSpeakEnglish(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakEnglish = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='English';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakEnglish);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long english = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                english = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)english / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of English speakers");
+        }
+    }
+
+    /**
+     * Get and print how much people in the world speak hindi with percentage*/
+    public void peopleSpeakHindi(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakHindi = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Hindi';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakHindi);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long hindi = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                hindi = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)hindi / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of Hindi speakers");
+        }
+    }
+
+    /**
+     * Get and print how much people in the world speak spanish with percentage*/
+    public void peopleSpeakSpanish(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakSpanish = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Spanish';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakSpanish);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long spanish = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                spanish = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)spanish / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of spanish speakers");
+        }
+    }
+
+    /**
+     * Get and print how much people in the world speak Arabic with percentage*/
+    public void peopleSpeakArabic(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakArabic = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Arabic';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakArabic);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+            long arabic = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                arabic = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)arabic / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of arabic speakers");
+        }
+    }
+
+
 
     // main
     public static void main(String[] args)
@@ -1621,6 +1812,21 @@ public class App
 
         // Extract total population in the city
         a.getnPrintPopulation_City("Seoul");
+
+        //get and print population of chinese speakers in the world with percentage
+        a.peopleSpeakChinese();
+
+        //get and print population of english speakers in the world with percentage
+        a.peopleSpeakEnglish();
+
+        //get and print population of Hindi speakers in the world with percentage
+        a.peopleSpeakHindi();
+
+        //get and print population of spanish speakers in the world with percentage
+        a.peopleSpeakSpanish();
+
+        //get and print population of arabic speakers in the world with percentage
+        a.peopleSpeakArabic();
 
         // Disconnect from database
         a.disconnect();
