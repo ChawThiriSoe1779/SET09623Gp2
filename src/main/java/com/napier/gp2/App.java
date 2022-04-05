@@ -1308,8 +1308,9 @@ public class App
     /***
      Get the population of the world and print it
      */
-    public void getnPrintPopulation_Wrold()
+    public String getnPrintPopulation_Wrold()
     {
+        String popu = "";
         try
         {
             // Create an SQL statement
@@ -1326,19 +1327,22 @@ public class App
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the world.");
+            popu = String.format("There are " + pop.getTotal_population() + " people in the world.");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /***
      Get the population of the continent and print it
      */
-    public void getnPrintPopulation_Continent(String continent)
+    public String getnPrintPopulation_Continent(String continent)
     {
+        String popu = "";
         try
         {
             // Create an SQL statement
@@ -1355,48 +1359,49 @@ public class App
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
+            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /***
      Get the population of the region and print it
      */
-    public void getnPrintPopulation_Region(String region)
-    {
-        try
-        {
+    public String getnPrintPopulation_Region(String region) {
+        String popu = "";
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT SUM(Population) FROM country WHERE Region='"+region+"'";
+            String strSelect = "SELECT SUM(Population) FROM country WHERE Region='" + region + "'";
             // Execute SQL statement
             ResultSet result = stmt.executeQuery(strSelect);
             // Extract population
             Population pop = new Population();
-            while (result.next())
-            {
+            while (result.next()) {
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
-        }
-        catch (Exception e)
-        {
+            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /***
      Get the population of the country and print it
      */
-    public void getnPrintPopulation_Country(String country)
+    public String getnPrintPopulation_Country(String country)
     {
+        String popu = "";
         try
         {
             // Create an SQL statement
@@ -1413,19 +1418,22 @@ public class App
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
+            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /***
      Get the population of the district and print it
      */
-    public void getnPrintPopulation_District(String district)
+    public String getnPrintPopulation_District(String district)
     {
+        String popu = "";
         try
         {
             // Create an SQL statement
@@ -1442,19 +1450,22 @@ public class App
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
+            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /***
      Get the population of the city and print it
      */
-    public void getnPrintPopulation_City(String city)
+    public String getnPrintPopulation_City(String city)
     {
+        String popu = "";
         try
         {
             // Create an SQL statement
@@ -1472,12 +1483,14 @@ public class App
             }
 
             System.out.println("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
+            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
         }
+        return popu;
     }
 
     /**
@@ -1852,6 +1865,35 @@ public class App
 
     }
 
+    /**
+     * Prints a totalpopulation into markdown file.
+     */
+    public void outputtotalpopulationReport(String world, String continent, String region, String country, String district, String city, String filename) {
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Total Population Report |\r\n");
+        sb.append("| --- |\r\n");
+        sb.append("| " + world + " |\r\n");
+        sb.append("| " + continent + " |\r\n");
+        sb.append("| " + region + " |\r\n");
+        sb.append("| " + country + " |\r\n");
+        sb.append("| " + district + " |\r\n");
+        sb.append("| " + city + " |\r\n");
+
+        try
+        {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     // main
     public static void main(String[] args)
@@ -2043,21 +2085,36 @@ public class App
 
         // Extract total population in the world
         a.getnPrintPopulation_Wrold();
+        // get output from extracting total population in the world to put into markdown file
+        String world =  a.getnPrintPopulation_Wrold();
 
         // Extract total population in the continent
         a.getnPrintPopulation_Continent("Asia");
+        // get output from extracting total population in the continent to put into markdown file
+        String continent =  a.getnPrintPopulation_Continent("Asia");
 
         // Extract total population in the region
         a.getnPrintPopulation_Region("Caribbean");
+        // get output from extracting total population in the region to put into markdown file
+        String region =  a.getnPrintPopulation_Region("Caribbean");
 
         // Extract total population in the country
         a.getnPrintPopulation_Country("Denmark");
+        // get output from extracting total population in the country to put into markdown file
+        String country =  a.getnPrintPopulation_Country("Denmark");
 
         // Extract total population in the district
         a.getnPrintPopulation_District("Gujarat");
+        // get output from extracting total population in the district to put into markdown file
+        String district =  a.getnPrintPopulation_District("Gujarat");
 
         // Extract total population in the city
         a.getnPrintPopulation_City("Seoul");
+        // get output from extracting total population in the city to put into markdown file
+        String city =  a.getnPrintPopulation_City("Seoul");
+
+        // print total population data into markdown file
+        a.outputtotalpopulationReport(world,continent,region,country,district,city, "total population.md");
 
         //get and print population of chinese speakers in the world with percentage
         a.peopleSpeakChinese();
