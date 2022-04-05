@@ -1403,6 +1403,37 @@ public class App
         }
     }
 
+    /***
+     Get the population of the city and print it
+     */
+    public void getnPrintPopulation_City(String city)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(city.Population) FROM city "
+                    + "INNER JOIN country ON city.CountryCode=country.Code "
+                    + "WHERE city.Name='"+city+"'";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(city.Population)"));
+            }
+
+            System.out.println("There is " + pop.getTotal_population() + " people in the '" + city + "' city.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
+        }
+    }
+
 
     // main
     public static void main(String[] args)
@@ -1545,6 +1576,9 @@ public class App
 
         // Extract total population in the district
         a.getnPrintPopulation_District("Gujarat");
+
+        // Extract total population in the city
+        a.getnPrintPopulation_City("Seoul");
 
         // Disconnect from database
         a.disconnect();
