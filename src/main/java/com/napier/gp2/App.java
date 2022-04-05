@@ -44,7 +44,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -963,7 +963,8 @@ public class App
      @var limitno an integer for "N" in a list of top N populated capital cities in the region
      @var region a string variable for selecting continent to display capital cities
      */
-    public ArrayList<Capital> getTopNPopulatedCapCity_Region() {
+    public ArrayList<Capital> getTopNPopulatedCapCity_Region()
+    {
         try {
             Statement stmt = con.createStatement();  // Create an SQL statement
             // Create string for SQL statement
@@ -1184,7 +1185,8 @@ public class App
      * @param cities The list of cities to print.
      */
 
-    public void printCityReport(ArrayList<City> cities) {
+    public void printCityReport(ArrayList<City> cities)
+    {
         // Check cities is not null
         if (cities == null)
         {
@@ -1192,7 +1194,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "City Name", "Country Name", "District", "Population");
         System.out.println("===========================================================================================");
         // Loop over all cities in the list
         for (City city : cities) {
@@ -1207,7 +1209,8 @@ public class App
 
     /** Function to Print Capital City
      * @param cap_cities to print list of capital cities **/
-    public void printCapCityReport(ArrayList<Capital> cap_cities) {
+    public void printCapCityReport(ArrayList<Capital> cap_cities)
+    {
         // Check capital cities is not null
         if (cap_cities == null)
         {
@@ -1215,7 +1218,7 @@ public class App
             return;
         }
         // Print header
-        System.out.println(String.format("%-25s %-25s %-25s %-25s", "City Name", "Country Name", "District", "Population"));
+        System.out.printf("%-25s %-25s %-25s %-25s%n", "City Name", "Country Name", "District", "Population");
         System.out.println("===========================================================================================");
 
         // Loop over all capital cities in the list
@@ -1231,7 +1234,8 @@ public class App
 
     /** Function to Print Capital City
      * @param populations to print list of capital cities **/
-    public void printPopulationReport(ArrayList<Population> populations) {
+    public void printPopulationReport(ArrayList<Population> populations)
+    {
         // Check populations is not null
         if (populations == null)
         {
@@ -1249,6 +1253,35 @@ public class App
                     String.format("%-25s %-25s %-25s %-25s",
                             population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
             System.out.println(population_string);
+        }
+    }
+
+    /***
+     Get the population of the world and print it
+     */
+    public void getnPrintPopulation_Wrold()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT SUM(Population) FROM country;";
+            // Execute SQL statement
+            ResultSet result = stmt.executeQuery(strSelect);
+            // Extract population
+            Population pop = new Population();
+            while (result.next())
+            {
+                pop.setTotal_population(result.getLong("SUM(Population)"));
+            }
+
+            System.out.println("There is " + pop.getTotal_population() + " people in the world.");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population data");
         }
     }
 
@@ -1378,6 +1411,9 @@ public class App
         populations = a.getPopulation_Country();
         // print population data
         a.printPopulationReport(populations);
+
+        // Extract total population in the world
+        a.getnPrintPopulation_Wrold();
 
         // Disconnect from database
         a.disconnect();
