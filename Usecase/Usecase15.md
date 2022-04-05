@@ -18,14 +18,14 @@ A report is available for organization to view.
 No report is produced.
 
 ### Primary Actor
-Organization.
+Organization's employee.
 
 ### Trigger
-When organization want to see the report.
+When organization's employee want to see the report.
 
 ### MAIN SUCCESS SCENARIO
-Organization request report about cities information by filtering top populated cities in the country.
-The system pull the data from the database and provide the requested report information.
+* Organization's employee request report about cities information by filtering top populated cities in the country.
+* The system pull the data from the database and provide the requested report information.
 
 ### EXTENSIONS
 Country does not exist:
