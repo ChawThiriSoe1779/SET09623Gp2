@@ -11,7 +11,7 @@
 
 ### 3. Absence without notice
 
-   With regard to regular meeting, no one shouldn't be late more than 15-20 min or absent without a relatable reason and should notify their group members. Camera must on during meeting hours if resources are available (can turn off when facing a bad connection or electricity cut off).
+   With regard to regular meeting, no one shouldn't be late more than 15-20 min or absent without a relatable reason and should notify their group members. Camera must on during meeting hours if resources are available (can turn off when facing a bad connection or electricity cut off). 
 
 
 ### 4. General harassment and sexual harassment
