@@ -1152,6 +1152,45 @@ public class App
     }
 
     /**
+     * Get and print how much people in the world speak chinese with percentage*/
+    public void peopleSpeakChinese(){
+        try
+        {
+            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
+            // Create string for the first SQL statement
+            String getPeopleSpeakChinese = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Chinese';";
+            // Execute the first SQL statement
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakChinese);
+
+            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
+            // Create string for the second SQL statement
+            String getWorldPopulation = "select Sum(Population) from country;";
+            // Execute the second SQL statement
+            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
+
+
+            long chinese = 0;
+            float population = 0;
+            float percent = 0;
+
+            while (result_1.next() & result_2.next()) {
+                // Calculate percentage of people who speak chinese in the world
+                chinese = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                population = result_2.getLong("Sum(Population)");
+                percent = ((float)chinese / population) * (float)(100.00);
+            }
+
+            System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +"% of the world population\n");
+            System.out.println("=================================================================================================\n");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population of chinese speakers");
+        }
+    }
+
+    /**
      * Prints a list of Countries.
      * @param countries The list of Countries to print.
      */
@@ -1378,6 +1417,9 @@ public class App
         populations = a.getPopulation_Country();
         // print population data
         a.printPopulationReport(populations);
+
+        //get and print population of chinese speakers in the world with percentage
+        a.peopleSpeakChinese();
 
         // Disconnect from database
         a.disconnect();
