@@ -16,7 +16,7 @@ Release
 Code Coverage
 [![codecov](https://codecov.io/gh/ChawThiriSoe1779/SET09623Gp2/branch/master/graph/badge.svg?token=bL9BmoDVsb)](https://codecov.io/gh/ChawThiriSoe1779/SET09623Gp2)
 
-### 36 requirements of 36 have been implemented, which is 100%.
+### 27 requirements of 27 have been implemented, which is 100%.
 
 ## Table Showing Requirements Met or Not
 
