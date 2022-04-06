@@ -1495,7 +1495,8 @@ public class App
 
     /**
      * Get and print how much people in the world speak chinese with percentage*/
-    public void peopleSpeakChinese(){
+    public String peopleSpeakChinese(){
+        String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
@@ -1523,17 +1524,20 @@ public class App
 
             System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
+            lang = String.format("Number of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population of chinese speakers");
         }
+        return lang;
     }
 
     /**
      * Get and print how much people in the world speak english with percentage*/
-    public void peopleSpeakEnglish(){
+    public String peopleSpeakEnglish(){
+        String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
@@ -1561,17 +1565,20 @@ public class App
 
             System.out.println("\nNumber of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
+            lang = String.format("Number of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population of English speakers");
         }
+        return lang;
     }
 
     /**
      * Get and print how much people in the world speak hindi with percentage*/
-    public void peopleSpeakHindi(){
+    public String peopleSpeakHindi(){
+        String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
@@ -1599,17 +1606,20 @@ public class App
 
             System.out.println("\nNumber of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
+            lang = String.format("Number of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population of Hindi speakers");
         }
+        return lang;
     }
 
     /**
      * Get and print how much people in the world speak spanish with percentage*/
-    public void peopleSpeakSpanish(){
+    public String peopleSpeakSpanish(){
+        String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
@@ -1637,17 +1647,20 @@ public class App
 
             System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
+            lang = String.format("Number of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population of spanish speakers");
         }
+        return lang;
     }
 
     /**
      * Get and print how much people in the world speak Arabic with percentage*/
-    public void peopleSpeakArabic(){
+    public String peopleSpeakArabic(){
+        String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
@@ -1675,12 +1688,14 @@ public class App
 
             System.out.println("\nNumber of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
+            lang = String.format("Number of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population of arabic speakers");
         }
+        return lang;
     }
 
     /**
@@ -1880,6 +1895,34 @@ public class App
         sb.append("| " + country + " |\r\n");
         sb.append("| " + district + " |\r\n");
         sb.append("| " + city + " |\r\n");
+
+        try
+        {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Prints a totalpopulation into markdown file.
+     */
+    public void outputlanguagespeakerReport(String lang_chinese, String lang_english, String lang_hindi, String lang_spanish, String lang_arabic, String filename) {
+
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Languages Speaker Report |\r\n");
+        sb.append("| --- |\r\n");
+        sb.append("| " + lang_chinese + " |\r\n");
+        sb.append("| " + lang_english + " |\r\n");
+        sb.append("| " + lang_hindi + " |\r\n");
+        sb.append("| " + lang_spanish + " |\r\n");
+        sb.append("| " + lang_arabic + " |\r\n");
 
         try
         {
@@ -2114,22 +2157,35 @@ public class App
         String city =  a.getnPrintPopulation_City("Seoul");
 
         // print total population data into markdown file
-        a.outputtotalpopulationReport(world,continent,region,country,district,city, "total population.md");
+        a.outputtotalpopulationReport(world,continent,region,country,district,city, "total_population.md");
 
         //get and print population of chinese speakers in the world with percentage
         a.peopleSpeakChinese();
+        // get and print population of chinese speakers in the world with percentage into markdown file
+        String lang_chinese = a.peopleSpeakChinese();
 
         //get and print population of english speakers in the world with percentage
         a.peopleSpeakEnglish();
+        // get and print population of english speakers in the world with percentage into markdown file
+        String lang_english = a.peopleSpeakEnglish();
 
         //get and print population of Hindi speakers in the world with percentage
         a.peopleSpeakHindi();
+        // get and print population of hindi speakers in the world with percentage into markdown file
+        String lang_hindi = a.peopleSpeakHindi();
 
         //get and print population of spanish speakers in the world with percentage
         a.peopleSpeakSpanish();
+        // get and print population of spanish speakers in the world with percentage into markdown file
+        String lang_spanish = a.peopleSpeakSpanish();
 
         //get and print population of arabic speakers in the world with percentage
         a.peopleSpeakArabic();
+        // get and print population of arabic speakers in the world with percentage into markdown file
+        String lang_arabic = a.peopleSpeakArabic();
+
+        // print language speaker data into markdown file
+        a.outputlanguagespeakerReport(lang_chinese,lang_english,lang_hindi,lang_spanish,lang_arabic, "language_speaker.md");
 
         // Disconnect from database
         a.disconnect();
