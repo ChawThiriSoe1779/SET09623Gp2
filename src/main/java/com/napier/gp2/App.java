@@ -1524,7 +1524,7 @@ public class App
 
             System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = String.format("Number of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            lang = "Number of people who speak Chinese in the world: "+chinese+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
@@ -1565,7 +1565,7 @@ public class App
 
             System.out.println("\nNumber of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = String.format("Number of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            lang = "Number of people who speak English in the world: "+english+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
@@ -1606,7 +1606,7 @@ public class App
 
             System.out.println("\nNumber of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = String.format("Number of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            lang = "Number of people who speak Hindi in the world: "+hindi+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
@@ -1647,7 +1647,7 @@ public class App
 
             System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = String.format("Number of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            lang = "Number of people who speak Hindi in the world: "+spanish+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
@@ -1688,7 +1688,7 @@ public class App
 
             System.out.println("\nNumber of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = String.format("Number of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            lang = "Number of people who speak Arabic in the world: "+arabic+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
@@ -1910,7 +1910,7 @@ public class App
     }
 
     /**
-     * Prints a totalpopulation into markdown file.
+     * Prints a languagespeaker into markdown file.
      */
     public void outputlanguagespeakerReport(String lang_chinese, String lang_english, String lang_hindi, String lang_spanish, String lang_arabic, String filename) {
 
