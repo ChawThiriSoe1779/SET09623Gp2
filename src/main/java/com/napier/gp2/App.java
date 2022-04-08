@@ -1326,6 +1326,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the world.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the world.");
         }
         catch (Exception e)
@@ -1357,6 +1358,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
         }
         catch (Exception e)
@@ -1385,6 +1387,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -1414,6 +1417,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
         }
         catch (Exception e)
@@ -1445,6 +1449,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
         }
         catch (Exception e)
@@ -1477,6 +1482,7 @@ public class App
                 pop.setTotal_population(result.getLong("Population"));
             }
 
+            System.out.println("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
             popu = String.format("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
         }
         catch (Exception e)
@@ -1516,6 +1522,8 @@ public class App
                 percent = ((float)chinese / population) * (float)(100.00);
             }
 
+            System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
             lang = "Number of people who speak Chinese in the world: "+chinese+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
@@ -1555,6 +1563,8 @@ public class App
                 percent = ((float)english / population) * (float)(100.00);
             }
 
+            System.out.println("\nNumber of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
             lang = "Number of people who speak English in the world: "+english+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
@@ -1594,6 +1604,8 @@ public class App
                 percent = ((float)hindi / population) * (float)(100.00);
             }
 
+            System.out.println("\nNumber of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
             lang = "Number of people who speak Hindi in the world: "+hindi+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
@@ -1633,6 +1645,8 @@ public class App
                 percent = ((float)spanish / population) * (float)(100.00);
             }
 
+            System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
             lang = "Number of people who speak Hindi in the world: "+spanish+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
@@ -1672,6 +1686,8 @@ public class App
                 percent = ((float)arabic / population) * (float)(100.00);
             }
 
+            System.out.println("\nNumber of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("=================================================================================================\n");
             lang = "Number of people who speak Arabic in the world: "+arabic+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
@@ -2145,31 +2161,26 @@ public class App
 
         //get and print population of chinese speakers in the world with percentage
         a.peopleSpeakChinese();
-        System.out.println("=================================================================================================\n");
         // get and print population of chinese speakers in the world with percentage into markdown file
         String lang_chinese = a.peopleSpeakChinese();
 
         //get and print population of english speakers in the world with percentage
         a.peopleSpeakEnglish();
-        System.out.println("=================================================================================================\n");
         // get and print population of english speakers in the world with percentage into markdown file
         String lang_english = a.peopleSpeakEnglish();
 
         //get and print population of Hindi speakers in the world with percentage
         a.peopleSpeakHindi();
-        System.out.println("=================================================================================================\n");
         // get and print population of hindi speakers in the world with percentage into markdown file
         String lang_hindi = a.peopleSpeakHindi();
 
         //get and print population of spanish speakers in the world with percentage
         a.peopleSpeakSpanish();
-        System.out.println("=================================================================================================\n");
         // get and print population of spanish speakers in the world with percentage into markdown file
         String lang_spanish = a.peopleSpeakSpanish();
 
         //get and print population of arabic speakers in the world with percentage
         a.peopleSpeakArabic();
-        System.out.println("=================================================================================================\n");
         // get and print population of arabic speakers in the world with percentage into markdown file
         String lang_arabic = a.peopleSpeakArabic();
 
