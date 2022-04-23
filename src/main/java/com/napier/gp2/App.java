@@ -17,7 +17,7 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect(String location, int delay)
+    public void connect(String location)
     {
         try {
             // Load Database driver
@@ -1136,11 +1136,22 @@ public class App
                 pop.setTotal_population(result_1.getLong("Population"));
 
                 long cityPop = result_2.getLong("SUM(city.Population)");
-                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
-                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+                float cityPopPct;
+                long nonCityPop;
+                float nonCityPopPct;
 
-                long nonCityPop = pop.getTotal_population() - cityPop;
-                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                if (pop.getTotal_population() > cityPop) {
+                    cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                    nonCityPop = pop.getTotal_population() - cityPop;
+                    nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                }
+                else{
+                    cityPopPct = (float) ((cityPop * 100.00) / cityPop);
+                    nonCityPop = cityPop - pop.getTotal_population();
+                    nonCityPopPct = (float) ((nonCityPop * 100.00) / cityPop);
+                    cityPopPct = cityPopPct - nonCityPopPct;
+                }
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
                 pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
 
                 populations.add(pop);
@@ -1174,7 +1185,7 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check Country is not empty
-        if (countries.isEmpty() == false)
+        if (!countries.isEmpty())
         {
             // Loop over all countries in the list
             for (Country coun : countries)
@@ -1190,7 +1201,7 @@ public class App
         }
         else
         {
-            String emp_string = String.format("Country Report List is empty");
+            String emp_string = "Country Report List is empty";
             System.out.println(emp_string);
         }
     }
@@ -1213,7 +1224,7 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check City is not empty
-        if (cities.isEmpty() == false)
+        if (!cities.isEmpty())
         {
             // Loop over all cities in the list
             for (City city : cities) {
@@ -1228,7 +1239,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("City Report List is empty");
+            String city_string = "City Report List is empty";
             System.out.println(city_string);
         }
     }
@@ -1248,7 +1259,7 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check Capital City is not empty
-        if (cap_cities.isEmpty() == false)
+        if (!cap_cities.isEmpty())
         {
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
@@ -1263,7 +1274,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("Capital City Report List is empty");
+            String city_string = "Capital City Report List is empty";
             System.out.println(city_string);
         }
     }
@@ -1284,7 +1295,7 @@ public class App
         System.out.println("=================================================================================================");
 
         // Check populations is not empty
-        if (populations.isEmpty() == false)
+        if (!populations.isEmpty())
         {
             // Loop over all cities in the list
             for (Population population : populations) {
@@ -1300,7 +1311,7 @@ public class App
         }
         else
         {
-            String population_string = String.format("Population Report List is empty");
+            String population_string = "Population Report List is empty";
             System.out.println(population_string);
         }
     }
@@ -1326,7 +1337,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the world.");
+            popu = "There are " + pop.getTotal_population() + " people in the world.";
         }
         catch (Exception e)
         {
@@ -1357,7 +1368,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.";
         }
         catch (Exception e)
         {
@@ -1385,7 +1396,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + region + "' region.";
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
@@ -1414,7 +1425,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + country + "' country.";
         }
         catch (Exception e)
         {
@@ -1445,7 +1456,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + district + "' district.";
         }
         catch (Exception e)
         {
@@ -1477,7 +1488,7 @@ public class App
                 pop.setTotal_population(result.getLong("Population"));
             }
 
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + city + "' city.";
         }
         catch (Exception e)
         {
@@ -1506,7 +1517,7 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
             long chinese = 0;
-            float population = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
@@ -1545,7 +1556,7 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
             long english = 0;
-            float population = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
@@ -1584,7 +1595,7 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
             long hindi = 0;
-            float population = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
@@ -1623,7 +1634,7 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
             long spanish = 0;
-            float population = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
@@ -1662,7 +1673,7 @@ public class App
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
             long arabic = 0;
-            float population = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
@@ -1699,20 +1710,17 @@ public class App
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
         // Check Country is not empty
-        if (countries.isEmpty() == false)
+        if (!countries.isEmpty())
         {
             // Loop over countries in the list
             for (Country coun : countries) {
                 // Check Country contain null
                 if (coun == null) continue;
-                sb.append("| " + coun.getCode() + " | " +
-                        coun.getName() + " | " + coun.getContinent() + " | " +
-                        coun.getRegion() + " | " + coun.getPopulation() + " | "
-                        + coun.getCapital() + " |\r\n");
+                sb.append("| ").append(coun.getCode()).append(" | ").append(coun.getName()).append(" | ").append(coun.getContinent()).append(" | ").append(coun.getRegion()).append(" | ").append(coun.getPopulation()).append(" | ").append(coun.getCapital()).append(" |\r\n");
             }
             try {
                 new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
                 writer.write(sb.toString());
                 writer.close();
             } catch (IOException e) {
@@ -1721,7 +1729,7 @@ public class App
         }
         else
         {
-            String emp_string = String.format("Country Report List is empty");
+            String emp_string = "Country Report List is empty";
             System.out.println(emp_string);
         }
 
@@ -1745,19 +1753,17 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check City is not empty
-        if (cities.isEmpty() == false)
+        if (!cities.isEmpty())
         {
             // Loop over cities in the list
             for (City city : cities) {
                 // Check Country contain null
                 if (city == null) continue;
-                sb.append("| " + city.getName() + " | " +
-                        city.getCountry() + " | " + city.getDistrict() + " | " +
-                        city.getPopulation() +" |\r\n");
+                sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
                 new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
                 writer.write(sb.toString());
                 writer.close();
             } catch (IOException e) {
@@ -1766,7 +1772,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("City Report List is empty");
+            String city_string = "City Report List is empty";
             System.out.println(city_string);
         }
 
@@ -1790,20 +1796,18 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check Capital City is not empty
-        if (cap_cities.isEmpty() == false)
+        if (!cap_cities.isEmpty())
         {
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
                 // Check Capital City contain null
                 if (city == null)
                     continue;
-                sb.append("| " + city.getName() + " | " +
-                        city.getCountry() + " | " + city.getDistrict() + " | " +
-                        city.getPopulation() +" |\r\n");
+                sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
                 new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
                 writer.write(sb.toString());
                 writer.close();
             } catch (IOException e) {
@@ -1812,7 +1816,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("Capital City Report List is empty");
+            String city_string = "Capital City Report List is empty";
             System.out.println(city_string);
         }
 
@@ -1836,20 +1840,18 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check populations is not empty
-        if (populations.isEmpty() == false)
+        if (!populations.isEmpty())
         {
             // Loop over all cities in the list
             for (Population population : populations) {
                 // Check population contain null
                 if (population == null)
                     continue;
-                sb.append("| " + population.getName() + " | " +
-                        population.getTotal_population() + " | " + population.getCity_population() + " | " +
-                        population.getNon_city_population() +" |\r\n");
+                sb.append("| ").append(population.getName()).append(" | ").append(population.getTotal_population()).append(" | ").append(population.getCity_population()).append(" | ").append(population.getNon_city_population()).append(" |\r\n");
             }
             try {
                 new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
                 writer.write(sb.toString());
                 writer.close();
             } catch (IOException e) {
@@ -1858,7 +1860,7 @@ public class App
         }
         else
         {
-            String population_string = String.format("Population Report List is empty");
+            String population_string = "Population Report List is empty";
             System.out.println(population_string);
         }
 
@@ -1873,17 +1875,17 @@ public class App
         // Print header
         sb.append("| Total Population Report |\r\n");
         sb.append("| --- |\r\n");
-        sb.append("| " + world + " |\r\n");
-        sb.append("| " + continent + " |\r\n");
-        sb.append("| " + region + " |\r\n");
-        sb.append("| " + country + " |\r\n");
-        sb.append("| " + district + " |\r\n");
-        sb.append("| " + city + " |\r\n");
+        sb.append("| ").append(world).append(" |\r\n");
+        sb.append("| ").append(continent).append(" |\r\n");
+        sb.append("| ").append(region).append(" |\r\n");
+        sb.append("| ").append(country).append(" |\r\n");
+        sb.append("| ").append(district).append(" |\r\n");
+        sb.append("| ").append(city).append(" |\r\n");
 
         try
         {
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
             writer.write(sb.toString());
             writer.close();
         }
@@ -1902,16 +1904,16 @@ public class App
         // Print header
         sb.append("| Languages Speaker Report |\r\n");
         sb.append("| --- |\r\n");
-        sb.append("| " + lang_chinese + " |\r\n");
-        sb.append("| " + lang_english + " |\r\n");
-        sb.append("| " + lang_hindi + " |\r\n");
-        sb.append("| " + lang_spanish + " |\r\n");
-        sb.append("| " + lang_arabic + " |\r\n");
+        sb.append("| ").append(lang_chinese).append(" |\r\n");
+        sb.append("| ").append(lang_english).append(" |\r\n");
+        sb.append("| ").append(lang_hindi).append(" |\r\n");
+        sb.append("| ").append(lang_spanish).append(" |\r\n");
+        sb.append("| ").append(lang_arabic).append(" |\r\n");
 
         try
         {
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
             writer.write(sb.toString());
             writer.close();
         }
@@ -1930,9 +1932,9 @@ public class App
         // Connect to database
 
         if(args.length < 1){
-            a.connect("localhost:33060", 30000);
+            a.connect("localhost:33060");
         }else{
-            a.connect(args[0], Integer.parseInt(args[1]));
+            a.connect(args[0]);
         }
 
         // Get Countries in the world from largest population to smallest
