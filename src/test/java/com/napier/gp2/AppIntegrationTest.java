@@ -3,8 +3,7 @@ package com.napier.gp2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class AppIntegrationTest
-{
+public class AppIntegrationTest {
     static App app;
 
     @BeforeAll
@@ -15,11 +14,12 @@ public class AppIntegrationTest
 
     }
 
+
     /**
-     * Function to integrated test country reports get and print */
+     * Function to integrated test country reports get and print
+     */
     @Test
-    void GetCountriesReportTest()
-    {
+    void GetCountriesReportTest() {
         // Countries in the world from largest population to smallest
         app.getCountries_World();
         System.out.println("Testing to retrieve the countries in the world from largest population to smallest is successfully!!");
@@ -59,8 +59,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void GetCityReportTest()
-    {
+    void GetCityReportTest() {
         // get city data of the world
         app.getCities_World();
         System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
@@ -115,8 +114,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void getCapitalReportTest()
-    {
+    void getCapitalReportTest() {
         // get capital city data of the world
         app.getCapCities_World();
         System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
@@ -149,8 +147,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void getPopulationReportTest()
-    {
+    void getPopulationReportTest() {
         // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
         app.getPopulation_Continent();
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each continent is successfully!!");
@@ -168,7 +165,7 @@ public class AppIntegrationTest
     }
 
     @Test
-    void getTotalPopulation(){
+    void getTotalPopulation() {
         // Extract total population in the world
         app.getnPrintPopulation_Wrold();
         System.out.println("Testing to retrieve population of the world successful");
@@ -177,61 +174,60 @@ public class AppIntegrationTest
         // Extract total population in the continent
         String continent = "Africa";
         app.getnPrintPopulation_Continent(continent);
-        System.out.println("Testing to retrieve population of "+continent+" continent successful");
+        System.out.println("Testing to retrieve population of " + continent + " continent successful");
         System.out.println("=================================================================================================");
 
         // Extract total population in the region
         String region = "Southeast Asia";
         app.getnPrintPopulation_Region(region);
-        System.out.println("Testing to retrieve population of "+region+" caribbean region successful");
+        System.out.println("Testing to retrieve population of " + region + " caribbean region successful");
         System.out.println("=================================================================================================");
 
         // Extract total population in the country
         String country = "China";
         app.getnPrintPopulation_Country(country);
-        System.out.println("Testing to retrieve population of "+country+" successful");
+        System.out.println("Testing to retrieve population of " + country + " successful");
         System.out.println("=================================================================================================");
 
         // Extract total population in the district
         String district = "Gelderland";
         app.getnPrintPopulation_District(district);
-        System.out.println("Testing to retrieve population of "+district+" successful");
+        System.out.println("Testing to retrieve population of " + district + " successful");
         System.out.println("=================================================================================================");
 
         // Extract total population in the city
         String city = "Campina Grande";
         app.getnPrintPopulation_City(city);
-        System.out.println("Testing to retrieve population of "+city+" successful");
+        System.out.println("Testing to retrieve population of " + city + " successful");
         System.out.println("=================================================================================================");
 
     }
 
     @Test
-    void getLanguagePopulation(){
+    void getLanguagePopulation() {
         //get and print population of chinese speakers in the world with percentage
         System.out.println("Testing to retrieve population of the chinese speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakChinese();
+        app.peopleSpeakPopulation("Chinese");
 
         //get and print population of english speakers in the world with percentage
         System.out.println("Testing to retrieve population of the english speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakEnglish();
+        app.peopleSpeakPopulation("English");
 
         //get and print population of Hindi speakers in the world with percentage
         System.out.println("Testing to retrieve population of the hindi speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakHindi();
+        app.peopleSpeakPopulation("Hindi");
 
         //get and print population of spanish speakers in the world with percentage
         System.out.println("Testing to retrieve population of the spanish speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakSpanish();
+        app.peopleSpeakPopulation("Spanish");
 
         //get and print population of arabic speakers in the world with percentage
         System.out.println("Testing to retrieve population of the arabic speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakArabic();
+        app.peopleSpeakPopulation("Arabic");
     }
-
 }
