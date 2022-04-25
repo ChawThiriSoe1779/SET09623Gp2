@@ -37,7 +37,7 @@ public class App
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(30_000);
                 // Connect to database
 
                 con = DriverManager.getConnection("jdbc:mysql://" + location
@@ -1191,8 +1191,8 @@ public class App
             for (Country coun : countries)
             {
                 // Check Country contain null
-                if (coun == null)
-                    continue;
+                if (coun == null){
+                    continue;}
                 String emp_string =
                         String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
                                 coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
@@ -1229,8 +1229,8 @@ public class App
             // Loop over all cities in the list
             for (City city : cities) {
                 // Check City contain null
-                if (city == null)
-                    continue;
+                if (city == null){
+                    continue;}
                 String city_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1264,8 +1264,8 @@ public class App
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
                 // Check Capital City contain null
-                if (city == null)
-                    continue;
+                if (city == null){
+                    continue;}
                 String city_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1300,8 +1300,8 @@ public class App
             // Loop over all cities in the list
             for (Population population : populations) {
                 // Check population contain null
-                if (population == null)
-                    continue;
+                if (population == null){
+                    continue;}
                 String population_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
@@ -1561,7 +1561,7 @@ public class App
             // Loop over countries in the list
             for (Country coun : countries) {
                 // Check Country contain null
-                if (coun == null) continue;
+                if (coun == null){ continue;}
                 sb.append("| ").append(coun.getCode()).append(" | ").append(coun.getName()).append(" | ").append(coun.getContinent()).append(" | ").append(coun.getRegion()).append(" | ").append(coun.getPopulation()).append(" | ").append(coun.getCapital()).append(" |\r\n");
             }
             try {
@@ -1609,7 +1609,7 @@ public class App
             // Loop over cities in the list
             for (City city : cities) {
                 // Check Country contain null
-                if (city == null) continue;
+                if (city == null){ continue;}
                 sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
@@ -1657,8 +1657,8 @@ public class App
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
                 // Check Capital City contain null
-                if (city == null)
-                    continue;
+                if (city == null){
+                    continue;}
                 sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
@@ -1706,8 +1706,8 @@ public class App
             // Loop over all cities in the list
             for (Population population : populations) {
                 // Check population contain null
-                if (population == null)
-                    continue;
+                if (population == null){
+                    continue;}
                 sb.append("| ").append(population.getName()).append(" | ").append(population.getTotal_population()).append(" | ").append(population.getCity_population()).append(" | ").append(population.getNon_city_population()).append(" |\r\n");
             }
             try {
