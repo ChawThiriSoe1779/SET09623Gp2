@@ -2027,39 +2027,34 @@ public class App
         // print total population data into markdown file
         a.outputtotalpopulationReport(world,continent,region,country,district,city, "total_population.md");
 
-        //get and print population of chinese speakers in the world with percentage
-        a.peopleSpeakPopulation("Chinese");
+
         // get and print population of chinese speakers in the world with percentage into markdown file
         String lang_chinese = a.peopleSpeakPopulation("Chinese");
-        System.out.println(lang_chinese);
+
         System.out.println("=================================================================================================\n");
 
-        //get and print population of english speakers in the world with percentage
-        a.peopleSpeakPopulation("English");
+
         // get and print population of english speakers in the world with percentage into markdown file
         String lang_english = a.peopleSpeakPopulation("English");
-        System.out.println(lang_english);
+
         System.out.println("=================================================================================================\n");
 
-        //get and print population of Hindi speakers in the world with percentage
-        a.peopleSpeakPopulation("Hindi");
+
         // get and print population of hindi speakers in the world with percentage into markdown file
         String lang_hindi = a.peopleSpeakPopulation("Hindi");
-        System.out.println(lang_hindi);
+
         System.out.println("=================================================================================================\n");
 
-        //get and print population of spanish speakers in the world with percentage
-        a.peopleSpeakPopulation("Spanish");
+
         // get and print population of spanish speakers in the world with percentage into markdown file
         String lang_spanish = a.peopleSpeakPopulation("Spanish");
-        System.out.println(lang_spanish);
+
         System.out.println("=================================================================================================\n");
 
-        //get and print population of arabic speakers in the world with percentage
-        a.peopleSpeakPopulation("Arabic");
+
         // get and print population of arabic speakers in the world with percentage into markdown file
         String lang_arabic = a.peopleSpeakPopulation("Arabic");
-        System.out.println(lang_arabic);
+
         System.out.println("=================================================================================================\n");
 
 
