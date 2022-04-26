@@ -28,7 +28,7 @@ public class AppTest
         coun.setName("Venezuela");
         coun.setContinent("South America");
         coun.setRegion("South America");
-        coun.setPopulation(24170000);
+        coun.setPopulation(24_170_000);
         coun.setCapital("Caracas");
         countries.add(coun);
         app.printCountriesReport(countries);
@@ -85,7 +85,7 @@ public class AppTest
         actiy.setName("Kabul");
         actiy.setCountry("Afghanistan");
         actiy.setDistrict("Kabol");
-        actiy.setPopulation(1780000);
+        actiy.setPopulation(1_780_000);
         cities.add(actiy);
         app.printCityReport(cities);
         System.out.println("=================================================================================================");
@@ -141,7 +141,7 @@ public class AppTest
         ca.setName("Caracas");
         ca.setCountry("Venezuela");
         ca.setDistrict("Distrito Federal");
-        ca.setPopulation(1975294);
+        ca.setPopulation(1_975_294);
         cap_cities.add(ca);
         app.printCapCityReport(cap_cities);
         System.out.println("=================================================================================================");
@@ -195,9 +195,9 @@ public class AppTest
         ArrayList<Population> populations = new ArrayList<>();
         Population pop = new Population();
         pop.setName("Vietnam");
-        pop.setTotal_population(79832000);
-        pop.setCity_population(9364813+"("+11.73+"%)");
-        pop.setNon_city_population(70467187+"("+88.27+"%)");
+        pop.setTotal_population(79_832_000);
+        pop.setCity_population(9_364_813+"("+11.73+"%)");
+        pop.setNon_city_population(70_467_187+"("+88.27+"%)");
         populations.add(pop);
         app.printPopulationReport(populations);
         System.out.println("=================================================================================================");
@@ -254,7 +254,7 @@ public class AppTest
         coun.setName("Venezuela");
         coun.setContinent("South America");
         coun.setRegion("South America");
-        coun.setPopulation(24170000);
+        coun.setPopulation(24_170_000);
         coun.setCapital("Caracas");
         countries.add(coun);
         app.outputCountriesReport(countries, "Countries_output_testing.md");
@@ -311,7 +311,7 @@ public class AppTest
         actiy.setName("Kabul");
         actiy.setCountry("Afghanistan");
         actiy.setDistrict("Kabol");
-        actiy.setPopulation(1780000);
+        actiy.setPopulation(1_780_000);
         cities.add(actiy);
         app.outputCityReport(cities, "Cities_output_testing.md");
     }
@@ -365,7 +365,7 @@ public class AppTest
         ca.setName("Caracas");
         ca.setCountry("Venezuela");
         ca.setDistrict("Distrito Federal");
-        ca.setPopulation(1975294);
+        ca.setPopulation(1_975_294);
         cap_cities.add(ca);
         app.outputCapCityReport(cap_cities, "CapCities_output_testing.md");
 
@@ -418,9 +418,9 @@ public class AppTest
         ArrayList<Population> populations = new ArrayList<>();
         Population pop = new Population();
         pop.setName("Vietnam");
-        pop.setTotal_population(79832000);
-        pop.setCity_population(9364813+"("+11.73+"%)");
-        pop.setNon_city_population(70467187+"("+88.27+"%)");
+        pop.setTotal_population(79_832_000);
+        pop.setCity_population(9_364_813+"("+11.73+"%)");
+        pop.setNon_city_population(70_467_187+"("+88.27+"%)");
         populations.add(pop);
         app.outputPopulationReport(populations, "Population_output_testing.md");
     }

@@ -17,7 +17,7 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect(String location, int delay)
+    public void connect(String location)
     {
         try {
             // Load Database driver
@@ -37,7 +37,7 @@ public class App
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(30_000);
                 // Connect to database
 
                 con = DriverManager.getConnection("jdbc:mysql://" + location
@@ -498,8 +498,8 @@ public class App
 
     /**
      Function to access all the cities in the country sorted by largest to smallest population.
-    @return A list of cities in the country sorted by largest to smallest population
-    @var country a string variable for selecting a country to display cities
+     @return A list of cities in the country sorted by largest to smallest population
+     @var country a string variable for selecting a country to display cities
      **/
 
     public ArrayList<City>getCities_Country()
@@ -540,9 +540,9 @@ public class App
     }
 
     /***
-    Get a list of top N populated cities in the world.
-    @return A list of top N populated cities
-    @var limitno an integer for "N" in a list of top N populated cities in the world
+     Get a list of top N populated cities in the world.
+     @return A list of top N populated cities
+     @var limitno an integer for "N" in a list of top N populated cities in the world
      */
     public ArrayList<City> getTopNPopulatedCity_World()
     {
@@ -580,10 +580,10 @@ public class App
     }
 
     /**
-    Get a list of top N populated cities in the continent.
-    @return A list of top N populated cities
-    @var limitno an integer for N in a list of top "N" populated cities in the continent
-    @var continent an string for continent in a list of top N populated cities in the "continent"
+     Get a list of top N populated cities in the continent.
+     @return A list of top N populated cities
+     @var limitno an integer for N in a list of top "N" populated cities in the continent
+     @var continent an string for continent in a list of top N populated cities in the "continent"
      */
     public ArrayList<City> getTopNPopulatedCity_Continent()
     {
@@ -623,10 +623,10 @@ public class App
     }
 
     /**
-    Get a list of top N populated cities in the region.
-    @return A list of top N populated cities
-    @var limitno an integer for N in a list of top "N" populated cities in the region
-    @var region an string for continent in a list of top N populated cities in the "region"
+     Get a list of top N populated cities in the region.
+     @return A list of top N populated cities
+     @var limitno an integer for N in a list of top "N" populated cities in the region
+     @var region an string for continent in a list of top N populated cities in the "region"
      */
     public ArrayList<City> getTopNPopulatedCity_Region()
     {
@@ -667,10 +667,10 @@ public class App
     }
 
     /**
-    Get a list of top N populated cities in the country.
-    @return A list of top N populated cities
-    @var limitno an integer for N in a list of top "N" populated cities in the country
-    @var country an string for continent in a list of top N populated cities in the "country"
+     Get a list of top N populated cities in the country.
+     @return A list of top N populated cities
+     @var limitno an integer for N in a list of top "N" populated cities in the country
+     @var country an string for continent in a list of top N populated cities in the "country"
      */
     public ArrayList<City> getTopNPopulatedCity_Country()
     {
@@ -710,10 +710,10 @@ public class App
     }
 
     /**
-    Get a list of top N populated cities in the district.
-    @return A list of top N populated cities
-    @var limitno an integer for N in a list of top "N" populated cities in the district
-    @var district an string for continent in a list of top N populated cities in the "district"
+     Get a list of top N populated cities in the district.
+     @return A list of top N populated cities
+     @var limitno an integer for N in a list of top "N" populated cities in the district
+     @var district an string for continent in a list of top N populated cities in the "district"
      */
     public ArrayList<City> getTopNPopulatedCity_District()
     {
@@ -1136,11 +1136,22 @@ public class App
                 pop.setTotal_population(result_1.getLong("Population"));
 
                 long cityPop = result_2.getLong("SUM(city.Population)");
-                Float cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
-                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
+                float cityPopPct;
+                long nonCityPop;
+                float nonCityPopPct;
 
-                long nonCityPop = pop.getTotal_population() - cityPop;
-                Float nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                if (pop.getTotal_population() > cityPop) {
+                    cityPopPct = (float) ((cityPop * 100.00) / pop.getTotal_population());
+                    nonCityPop = pop.getTotal_population() - cityPop;
+                    nonCityPopPct = (float) ((nonCityPop * 100.00) / pop.getTotal_population());
+                }
+                else{
+                    cityPopPct = (float) ((cityPop * 100.00) / cityPop);
+                    nonCityPop = cityPop - pop.getTotal_population();
+                    nonCityPopPct = (float) ((nonCityPop * 100.00) / cityPop);
+                    cityPopPct = cityPopPct - nonCityPopPct;
+                }
+                pop.setCity_population(cityPop + "(" + String.format("%.2f%%", cityPopPct) + ")");
                 pop.setNon_city_population(nonCityPop + "(" + String.format("%.2f%%", nonCityPopPct) + ")");
 
                 populations.add(pop);
@@ -1174,14 +1185,14 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check Country is not empty
-        if (countries.isEmpty() == false)
+        if (!countries.isEmpty())
         {
             // Loop over all countries in the list
             for (Country coun : countries)
             {
                 // Check Country contain null
-                if (coun == null)
-                    continue;
+                if (coun == null){
+                    continue;}
                 String emp_string =
                         String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
                                 coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
@@ -1190,7 +1201,7 @@ public class App
         }
         else
         {
-            String emp_string = String.format("Country Report List is empty");
+            String emp_string = "Country Report List is empty";
             System.out.println(emp_string);
         }
     }
@@ -1213,13 +1224,13 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check City is not empty
-        if (cities.isEmpty() == false)
+        if (!cities.isEmpty())
         {
             // Loop over all cities in the list
             for (City city : cities) {
                 // Check City contain null
-                if (city == null)
-                    continue;
+                if (city == null){
+                    continue;}
                 String city_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1228,7 +1239,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("City Report List is empty");
+            String city_string = "City Report List is empty";
             System.out.println(city_string);
         }
     }
@@ -1248,13 +1259,13 @@ public class App
         System.out.println("===========================================================================================");
 
         // Check Capital City is not empty
-        if (cap_cities.isEmpty() == false)
+        if (!cap_cities.isEmpty())
         {
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
                 // Check Capital City contain null
-                if (city == null)
-                    continue;
+                if (city == null){
+                    continue;}
                 String city_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
@@ -1263,7 +1274,7 @@ public class App
         }
         else
         {
-            String city_string = String.format("Capital City Report List is empty");
+            String city_string = "Capital City Report List is empty";
             System.out.println(city_string);
         }
     }
@@ -1284,13 +1295,13 @@ public class App
         System.out.println("=================================================================================================");
 
         // Check populations is not empty
-        if (populations.isEmpty() == false)
+        if (!populations.isEmpty())
         {
             // Loop over all cities in the list
             for (Population population : populations) {
                 // Check population contain null
-                if (population == null)
-                    continue;
+                if (population == null){
+                    continue;}
                 String population_string =
                         String.format("%-25s %-25s %-25s %-25s",
                                 population.getName(), population.getTotal_population(), population.getCity_population(), population.getNon_city_population());
@@ -1300,7 +1311,7 @@ public class App
         }
         else
         {
-            String population_string = String.format("Population Report List is empty");
+            String population_string = "Population Report List is empty";
             System.out.println(population_string);
         }
     }
@@ -1326,8 +1337,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the world.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the world.");
+            popu = "There are " + pop.getTotal_population() + " people in the world.";
         }
         catch (Exception e)
         {
@@ -1358,8 +1368,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + continent + "' continent.";
         }
         catch (Exception e)
         {
@@ -1387,8 +1396,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + region + "' region.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + region + "' region.";
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population data");
@@ -1417,8 +1425,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + country + "' country.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + country + "' country.";
         }
         catch (Exception e)
         {
@@ -1449,8 +1456,7 @@ public class App
                 pop.setTotal_population(result.getLong("SUM(Population)"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + district + "' district.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + district + "' district.";
         }
         catch (Exception e)
         {
@@ -1482,8 +1488,7 @@ public class App
                 pop.setTotal_population(result.getLong("Population"));
             }
 
-            System.out.println("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
-            popu = String.format("There are " + pop.getTotal_population() + " people in the '" + city + "' city.");
+            popu = "There are " + pop.getTotal_population() + " people in the '" + city + "' city.";
         }
         catch (Exception e)
         {
@@ -1494,16 +1499,16 @@ public class App
     }
 
     /**
-     * Get and print how much people in the world speak chinese with percentage*/
-    public String peopleSpeakChinese(){
+     * Get and print how much people in the world speak @parameter language = language with percentage*/
+    public String peopleSpeakPopulation(String language){
         String lang = "";
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
             // Create string for the first SQL statement
-            String getPeopleSpeakChinese = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Chinese';";
+            String getPeopleSpeakLanguage = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='"+language+"';";
             // Execute the first SQL statement
-            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakChinese);
+            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakLanguage);
 
             Statement stmt_2 = con.createStatement();  // Create a second SQL statement
             // Create string for the second SQL statement
@@ -1511,189 +1516,25 @@ public class App
             // Execute the second SQL statement
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
-            long chinese = 0;
-            float population = 0;
+            long languagenum = 0;
+            float population;
             float percent = 0;
 
             while (result_1.next() & result_2.next()) {
-                // Calculate percentage of people who speak chinese in the world
-                chinese = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                // Calculate percentage of people who speak a language in the world
+                languagenum = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
                 population = result_2.getLong("Sum(Population)");
-                percent = ((float)chinese / population) * (float)(100.00);
+                percent = ((float)languagenum / population) * (float)(100.00);
             }
 
-            System.out.println("\nNumber of people who speak Chinese in the world: "+chinese+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
+            System.out.println("\nNumber of people who speak "+language+" in the world: "+languagenum+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
             System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak Chinese in the world: "+chinese+" which is "+String.format("%.2f%%", percent) +" of the world population";
+            lang = "Number of people who speak "+language+" in the world: "+languagenum+" which is "+String.format("%.2f%%", percent) +" of the world population";
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population of chinese speakers");
-        }
-        return lang;
-    }
-
-    /**
-     * Get and print how much people in the world speak english with percentage*/
-    public String peopleSpeakEnglish(){
-        String lang = "";
-        try
-        {
-            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
-            // Create string for the first SQL statement
-            String getPeopleSpeakEnglish = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='English';";
-            // Execute the first SQL statement
-            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakEnglish);
-
-            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
-            // Create string for the second SQL statement
-            String getWorldPopulation = "select Sum(Population) from country;";
-            // Execute the second SQL statement
-            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
-
-            long english = 0;
-            float population = 0;
-            float percent = 0;
-
-            while (result_1.next() & result_2.next()) {
-                // Calculate percentage of people who speak chinese in the world
-                english = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
-                population = result_2.getLong("Sum(Population)");
-                percent = ((float)english / population) * (float)(100.00);
-            }
-
-            System.out.println("\nNumber of people who speak English in the world: "+english+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
-            System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak English in the world: "+english+" which is "+String.format("%.2f%%", percent) +" of the world population";
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population of English speakers");
-        }
-        return lang;
-    }
-
-    /**
-     * Get and print how much people in the world speak hindi with percentage*/
-    public String peopleSpeakHindi(){
-        String lang = "";
-        try
-        {
-            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
-            // Create string for the first SQL statement
-            String getPeopleSpeakHindi = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Hindi';";
-            // Execute the first SQL statement
-            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakHindi);
-
-            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
-            // Create string for the second SQL statement
-            String getWorldPopulation = "select Sum(Population) from country;";
-            // Execute the second SQL statement
-            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
-
-            long hindi = 0;
-            float population = 0;
-            float percent = 0;
-
-            while (result_1.next() & result_2.next()) {
-                // Calculate percentage of people who speak chinese in the world
-                hindi = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
-                population = result_2.getLong("Sum(Population)");
-                percent = ((float)hindi / population) * (float)(100.00);
-            }
-
-            System.out.println("\nNumber of people who speak Hindi in the world: "+hindi+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
-            System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak Hindi in the world: "+hindi+" which is "+String.format("%.2f%%", percent) +" of the world population";
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population of Hindi speakers");
-        }
-        return lang;
-    }
-
-    /**
-     * Get and print how much people in the world speak spanish with percentage*/
-    public String peopleSpeakSpanish(){
-        String lang = "";
-        try
-        {
-            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
-            // Create string for the first SQL statement
-            String getPeopleSpeakSpanish = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Spanish';";
-            // Execute the first SQL statement
-            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakSpanish);
-
-            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
-            // Create string for the second SQL statement
-            String getWorldPopulation = "select Sum(Population) from country;";
-            // Execute the second SQL statement
-            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
-
-            long spanish = 0;
-            float population = 0;
-            float percent = 0;
-
-            while (result_1.next() & result_2.next()) {
-                // Calculate percentage of people who speak chinese in the world
-                spanish = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
-                population = result_2.getLong("Sum(Population)");
-                percent = ((float)spanish / population) * (float)(100.00);
-            }
-
-            System.out.println("\nNumber of people who speak Hindi in the world: "+spanish+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
-            System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak Hindi in the world: "+spanish+" which is "+String.format("%.2f%%", percent) +" of the world population";
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population of spanish speakers");
-        }
-        return lang;
-    }
-
-    /**
-     * Get and print how much people in the world speak Arabic with percentage*/
-    public String peopleSpeakArabic(){
-        String lang = "";
-        try
-        {
-            Statement stmt_1 = con.createStatement();  // Create a first SQL statement
-            // Create string for the first SQL statement
-            String getPeopleSpeakArabic = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='Arabic';";
-            // Execute the first SQL statement
-            ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakArabic);
-
-            Statement stmt_2 = con.createStatement();  // Create a second SQL statement
-            // Create string for the second SQL statement
-            String getWorldPopulation = "select Sum(Population) from country;";
-            // Execute the second SQL statement
-            ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
-
-            long arabic = 0;
-            float population = 0;
-            float percent = 0;
-
-            while (result_1.next() & result_2.next()) {
-                // Calculate percentage of people who speak chinese in the world
-                arabic = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
-                population = result_2.getLong("Sum(Population)");
-                percent = ((float)arabic / population) * (float)(100.00);
-            }
-
-            System.out.println("\nNumber of people who speak Arabic in the world: "+arabic+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
-            System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak Arabic in the world: "+arabic+" which is "+String.format("%.2f%%", percent) +" of the world population";
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population of arabic speakers");
+            System.out.println("Failed to get population of "+language+" speakers");
         }
         return lang;
     }
@@ -1715,29 +1556,31 @@ public class App
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
         // Check Country is not empty
-        if (countries.isEmpty() == false)
+        if (!countries.isEmpty())
         {
             // Loop over countries in the list
             for (Country coun : countries) {
                 // Check Country contain null
-                if (coun == null) continue;
-                sb.append("| " + coun.getCode() + " | " +
-                        coun.getName() + " | " + coun.getContinent() + " | " +
-                        coun.getRegion() + " | " + coun.getPopulation() + " | "
-                        + coun.getCapital() + " |\r\n");
+                if (coun == null){ continue;}
+                sb.append("| ").append(coun.getCode()).append(" | ").append(coun.getName()).append(" | ").append(coun.getContinent()).append(" | ").append(coun.getRegion()).append(" | ").append(coun.getPopulation()).append(" | ").append(coun.getCapital()).append(" |\r\n");
             }
             try {
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
+                File report_folder = new File("./reports/");
+                if (!report_folder.exists()){
+                    boolean wassuccessful = report_folder.mkdir();
+                    if (wassuccessful) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                        writer.write(sb.toString());
+                        writer.close();
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else
         {
-            String emp_string = String.format("Country Report List is empty");
+            String emp_string = "Country Report List is empty";
             System.out.println(emp_string);
         }
 
@@ -1761,28 +1604,31 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check City is not empty
-        if (cities.isEmpty() == false)
+        if (!cities.isEmpty())
         {
             // Loop over cities in the list
             for (City city : cities) {
                 // Check Country contain null
-                if (city == null) continue;
-                sb.append("| " + city.getName() + " | " +
-                        city.getCountry() + " | " + city.getDistrict() + " | " +
-                        city.getPopulation() +" |\r\n");
+                if (city == null){ continue;}
+                sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
+                File report_folder = new File("./reports/");
+                if (!report_folder.exists()){
+                    boolean wassuccessful = report_folder.mkdir();
+                    if (wassuccessful) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                        writer.write(sb.toString());
+                        writer.close();
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else
         {
-            String city_string = String.format("City Report List is empty");
+            String city_string = "City Report List is empty";
             System.out.println(city_string);
         }
 
@@ -1806,29 +1652,32 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check Capital City is not empty
-        if (cap_cities.isEmpty() == false)
+        if (!cap_cities.isEmpty())
         {
             // Loop over all capital cities in the list
             for (Capital city : cap_cities) {
                 // Check Capital City contain null
-                if (city == null)
-                    continue;
-                sb.append("| " + city.getName() + " | " +
-                        city.getCountry() + " | " + city.getDistrict() + " | " +
-                        city.getPopulation() +" |\r\n");
+                if (city == null){
+                    continue;}
+                sb.append("| ").append(city.getName()).append(" | ").append(city.getCountry()).append(" | ").append(city.getDistrict()).append(" | ").append(city.getPopulation()).append(" |\r\n");
             }
             try {
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
+                File report_folder = new File("./reports/");
+                if (!report_folder.exists()){
+                    boolean wassuccessful = report_folder.mkdir();
+                    if (wassuccessful) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                        writer.write(sb.toString());
+                        writer.close();
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else
         {
-            String city_string = String.format("Capital City Report List is empty");
+            String city_string = "Capital City Report List is empty";
             System.out.println(city_string);
         }
 
@@ -1852,29 +1701,32 @@ public class App
         sb.append("| --- | --- | --- | --- |\r\n");
 
         // Check populations is not empty
-        if (populations.isEmpty() == false)
+        if (!populations.isEmpty())
         {
             // Loop over all cities in the list
             for (Population population : populations) {
                 // Check population contain null
-                if (population == null)
-                    continue;
-                sb.append("| " + population.getName() + " | " +
-                        population.getTotal_population() + " | " + population.getCity_population() + " | " +
-                        population.getNon_city_population() +" |\r\n");
+                if (population == null){
+                    continue;}
+                sb.append("| ").append(population.getName()).append(" | ").append(population.getTotal_population()).append(" | ").append(population.getCity_population()).append(" | ").append(population.getNon_city_population()).append(" |\r\n");
             }
             try {
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
+                File report_folder = new File("./reports/");
+                if (!report_folder.exists()){
+                    boolean wassuccessful = report_folder.mkdir();
+                    if (wassuccessful) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                        writer.write(sb.toString());
+                        writer.close();
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else
         {
-            String population_string = String.format("Population Report List is empty");
+            String population_string = "Population Report List is empty";
             System.out.println(population_string);
         }
 
@@ -1889,19 +1741,24 @@ public class App
         // Print header
         sb.append("| Total Population Report |\r\n");
         sb.append("| --- |\r\n");
-        sb.append("| " + world + " |\r\n");
-        sb.append("| " + continent + " |\r\n");
-        sb.append("| " + region + " |\r\n");
-        sb.append("| " + country + " |\r\n");
-        sb.append("| " + district + " |\r\n");
-        sb.append("| " + city + " |\r\n");
+        sb.append("| ").append(world).append(" |\r\n");
+        sb.append("| ").append(continent).append(" |\r\n");
+        sb.append("| ").append(region).append(" |\r\n");
+        sb.append("| ").append(country).append(" |\r\n");
+        sb.append("| ").append(district).append(" |\r\n");
+        sb.append("| ").append(city).append(" |\r\n");
 
         try
         {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
+            File report_folder = new File("./reports/");
+            if (!report_folder.exists()){
+                boolean wassuccessful = report_folder.mkdir();
+                if (wassuccessful) {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                    writer.write(sb.toString());
+                    writer.close();
+                }
+            }
         }
         catch (IOException e)
         {
@@ -1918,18 +1775,23 @@ public class App
         // Print header
         sb.append("| Languages Speaker Report |\r\n");
         sb.append("| --- |\r\n");
-        sb.append("| " + lang_chinese + " |\r\n");
-        sb.append("| " + lang_english + " |\r\n");
-        sb.append("| " + lang_hindi + " |\r\n");
-        sb.append("| " + lang_spanish + " |\r\n");
-        sb.append("| " + lang_arabic + " |\r\n");
+        sb.append("| ").append(lang_chinese).append(" |\r\n");
+        sb.append("| ").append(lang_english).append(" |\r\n");
+        sb.append("| ").append(lang_hindi).append(" |\r\n");
+        sb.append("| ").append(lang_spanish).append(" |\r\n");
+        sb.append("| ").append(lang_arabic).append(" |\r\n");
 
         try
         {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-            writer.write(sb.toString());
-            writer.close();
+            File report_folder = new File("./reports/");
+            if (!report_folder.exists()){
+                boolean wassuccessful = report_folder.mkdir();
+                if (wassuccessful) {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
+                    writer.write(sb.toString());
+                    writer.close();
+                }
+            }
         }
         catch (IOException e)
         {
@@ -1946,9 +1808,9 @@ public class App
         // Connect to database
 
         if(args.length < 1){
-            a.connect("localhost:33060", 30000);
+            a.connect("localhost:33060");
         }else{
-            a.connect(args[0], Integer.parseInt(args[1]));
+            a.connect(args[0]);
         }
 
         // Get Countries in the world from largest population to smallest
@@ -2130,59 +1992,71 @@ public class App
         a.getnPrintPopulation_Wrold();
         // get output from extracting total population in the world to put into markdown file
         String world =  a.getnPrintPopulation_Wrold();
+        System.out.println(world);
 
         // Extract total population in the continent
         a.getnPrintPopulation_Continent("Asia");
         // get output from extracting total population in the continent to put into markdown file
         String continent =  a.getnPrintPopulation_Continent("Asia");
+        System.out.println(continent);
 
         // Extract total population in the region
         a.getnPrintPopulation_Region("Caribbean");
         // get output from extracting total population in the region to put into markdown file
         String region =  a.getnPrintPopulation_Region("Caribbean");
+        System.out.println(region);
 
         // Extract total population in the country
         a.getnPrintPopulation_Country("Denmark");
         // get output from extracting total population in the country to put into markdown file
         String country =  a.getnPrintPopulation_Country("Denmark");
+        System.out.println(country);
 
         // Extract total population in the district
         a.getnPrintPopulation_District("Gujarat");
         // get output from extracting total population in the district to put into markdown file
         String district =  a.getnPrintPopulation_District("Gujarat");
+        System.out.println(district);
 
         // Extract total population in the city
         a.getnPrintPopulation_City("Seoul");
         // get output from extracting total population in the city to put into markdown file
         String city =  a.getnPrintPopulation_City("Seoul");
+        System.out.println(city);
 
         // print total population data into markdown file
         a.outputtotalpopulationReport(world,continent,region,country,district,city, "total_population.md");
 
-        //get and print population of chinese speakers in the world with percentage
-        a.peopleSpeakChinese();
+
         // get and print population of chinese speakers in the world with percentage into markdown file
-        String lang_chinese = a.peopleSpeakChinese();
+        String lang_chinese = a.peopleSpeakPopulation("Chinese");
 
-        //get and print population of english speakers in the world with percentage
-        a.peopleSpeakEnglish();
+        System.out.println("=================================================================================================\n");
+
+
         // get and print population of english speakers in the world with percentage into markdown file
-        String lang_english = a.peopleSpeakEnglish();
+        String lang_english = a.peopleSpeakPopulation("English");
 
-        //get and print population of Hindi speakers in the world with percentage
-        a.peopleSpeakHindi();
+        System.out.println("=================================================================================================\n");
+
+
         // get and print population of hindi speakers in the world with percentage into markdown file
-        String lang_hindi = a.peopleSpeakHindi();
+        String lang_hindi = a.peopleSpeakPopulation("Hindi");
 
-        //get and print population of spanish speakers in the world with percentage
-        a.peopleSpeakSpanish();
+        System.out.println("=================================================================================================\n");
+
+
         // get and print population of spanish speakers in the world with percentage into markdown file
-        String lang_spanish = a.peopleSpeakSpanish();
+        String lang_spanish = a.peopleSpeakPopulation("Spanish");
 
-        //get and print population of arabic speakers in the world with percentage
-        a.peopleSpeakArabic();
+        System.out.println("=================================================================================================\n");
+
+
         // get and print population of arabic speakers in the world with percentage into markdown file
-        String lang_arabic = a.peopleSpeakArabic();
+        String lang_arabic = a.peopleSpeakPopulation("Arabic");
+
+        System.out.println("=================================================================================================\n");
+
 
         // print language speaker data into markdown file
         a.outputlanguagespeakerReport(lang_chinese,lang_english,lang_hindi,lang_spanish,lang_arabic, "language_speaker.md");
