@@ -207,31 +207,64 @@ public class AppIntegrationTest
     }
 
     @Test
-    void getLanguagePopulation(){
+    void getChineseLanguagePopulation() {
         //get and print population of chinese speakers in the world with percentage
         System.out.println("Testing to retrieve population of the chinese speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakChinese();
 
+        //expected output of number of people who speak chinese
+        String expectedOutput = "Number of people who speak Chinese in the world: 1191843539 which is 19.61% of the world population";
+        //actual output of  number of people who speak chinese
+        String actualOutput = app.peopleSpeakPopulation("Chinese");
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    void getEnglishLanguagePopulation() {
         //get and print population of english speakers in the world with percentage
         System.out.println("Testing to retrieve population of the english speaker in the world successful");
-        System.out.println("=================================================================================================");
-        app.peopleSpeakEnglish();
+        //expected output of number of people who speak english
+        String expectedOutput = "Number of people who speak English in the world: 347077867 which is 5.71% of the world population";
+        //actual output of  number of people who speak english
+        String actualOutput = app.peopleSpeakPopulation("English");
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    void getHindiLanguagePopulation() {
 
         //get and print population of Hindi speakers in the world with percentage
         System.out.println("Testing to retrieve population of the hindi speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakHindi();
+        //expected output of number of people who speak hindi
+        String expectedOutput = "Number of people who speak Hindi in the world: 405633070 which is 6.67% of the world population";
+        //actual output of  number of people who speak hindi
+        String actualOutput = app.peopleSpeakPopulation("Hindi");
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    void getSpanishLanguagePopulation() {
 
         //get and print population of spanish speakers in the world with percentage
         System.out.println("Testing to retrieve population of the spanish speaker in the world successful");
         System.out.println("=================================================================================================");
-        app.peopleSpeakSpanish();
-
-        //get and print population of arabic speakers in the world with percentage
-        System.out.println("Testing to retrieve population of the arabic speaker in the world successful");
-        System.out.println("=================================================================================================");
-        app.peopleSpeakArabic();
+        //expected output of number of people who speak spanish
+        String expectedOutput = "Number of people who speak Spanish in the world: 355029462 which is 5.84% of the world population";
+        //actual output of  number of people who speak spanish
+        String actualOutput = app.peopleSpeakPopulation("Spanish");
+        assertEquals(expectedOutput, actualOutput);
     }
 
+    @Test
+    void getArabicLanguagePopulation(){
+        //get and print population of arabic population of the arabic speaker in the world successful");
+        System.out.println("=================================================================================================");
+        //expected output of number of people who speak spanish
+        String expectedOutput = "Number of people who speak Arabic in the world: 233839238 which is 3.85% of the world population";
+        //actual output of  number of people who speak spanish
+        String actualOutput = app.peopleSpeakPopulation("Arabic");
+        assertEquals(expectedOutput, actualOutput);
+
+    }
 }
