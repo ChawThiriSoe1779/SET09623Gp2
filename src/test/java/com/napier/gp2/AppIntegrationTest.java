@@ -212,6 +212,7 @@ public class AppIntegrationTest {
         String expectedOutput = "There are 5330000 people in the 'Denmark' country.";
         //actual output of  number of people in the Denmark Country
         String actualOutput = app.getnPrintPopulation_Country(country);
+        assertEquals(expectedOutput, actualOutput);
         System.out.println("Testing to retrieve population of " + country + " country successful");
         System.out.println("=================================================================================================");
     }
@@ -224,7 +225,7 @@ public class AppIntegrationTest {
         String expectedOutput = "There are 8425343 people in the 'Gujarat' district.";
         //actual output of  number of people in the Gujarat District
         String actualOutput = app.getnPrintPopulation_Country(district);
-        app.getnPrintPopulation_District(district);
+        assertEquals(expectedOutput, actualOutput);
         System.out.println("Testing to retrieve population of " + district + " district successful");
         System.out.println("=================================================================================================");
     }
@@ -237,7 +238,7 @@ public class AppIntegrationTest {
         String expectedOutput = "There are 9981619 people in the 'Seoul' city.";
         //actual output of  number of people in the Seoul City
         String actualOutput = app.getnPrintPopulation_City(city);
-
+        assertEquals(expectedOutput, actualOutput);
         System.out.println("Testing to retrieve population of " + city + " city successful");
         System.out.println("=================================================================================================");
     }
