@@ -1,9 +1,10 @@
 package com.napier.gp2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 
 public class AppIntegrationTest {
     static App app;
@@ -23,6 +24,7 @@ public class AppIntegrationTest {
     @Test
     void GetCountriesReportTest() {
         // Countries in the world from largest population to smallest
+
         app.getCountries_World();
         System.out.println("Testing to retrieve the countries in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -58,6 +60,37 @@ public class AppIntegrationTest {
         System.out.println("=================================================================================================");
 
 
+    }
+    @Test
+    void GetCountriesEmpty(){
+        ArrayList <Country> countriesworld = app.getCountries_World();
+        assertEquals(countriesworld.size()>0,true);
+        System.out.println("Testing for country array size not being zero completed");
+        System.out.println("=================================================================================================");
+
+    }
+    @Test
+    void GetCitiesEmpty(){
+        ArrayList <City> citiesworld = app.getCities_World();
+        assertEquals(citiesworld.size()>0,true);
+        System.out.println("Testing for city array size not being zero completed");
+        System.out.println("=================================================================================================");
+    }
+
+    @Test
+    void GetCapitalEmpty(){
+        ArrayList <Capital> capworld = app.getCapCities_World();
+        assertEquals(capworld.size()>0,true);
+        System.out.println("Testing for Capital city array size not being zero completed");
+        System.out.println("=================================================================================================");
+    }
+
+    @Test
+    void GetPopulationEmpty(){
+        ArrayList <Population> pop = app.getPopulation_Continent();
+        assertEquals(pop.size()>0,true);
+        System.out.println("Testing for population array size not being zero completed");
+        System.out.println("=================================================================================================");
     }
 
     @Test
@@ -224,7 +257,7 @@ public class AppIntegrationTest {
         //expected output of number of people in the Gujarat District
         String expectedOutput = "There are 8425343 people in the 'Gujarat' district.";
         //actual output of  number of people in the Gujarat District
-        String actualOutput = app.getnPrintPopulation_Country(district);
+        String actualOutput = app.getnPrintPopulation_District(district);
         assertEquals(expectedOutput, actualOutput);
         System.out.println("Testing to retrieve population of " + district + " district successful");
         System.out.println("=================================================================================================");
