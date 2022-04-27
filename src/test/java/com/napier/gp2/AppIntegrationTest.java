@@ -65,10 +65,35 @@ public class AppIntegrationTest {
     void GetCountriesEmpty(){
         ArrayList <Country> countriesworld = app.getCountries_World();
         assertEquals(countriesworld.size()>0,true);
-        System.out.println("Testing for country array size not being zero completed");
+        System.out.println("Testing for countries in world array size not being zero completed");
         System.out.println("=================================================================================================");
 
+        ArrayList <Country> countriescontinent = app.getCountries_Continent();
+        assertEquals(countriescontinent.size()>0,true);
+        System.out.println("Testing for countries in continent array size not being zero completed");
+        System.out.println("=================================================================================================");
+
+        ArrayList <Country> countries_region = app.getCountries_Region();
+        assertEquals(countries_region.size()>0,true);
+        System.out.println("Testing for countries in region array size not being zero completed");
+        System.out.println("=================================================================================================");
+
+        ArrayList <Country> countriesNworld = app.getTopNPopulatedCountries_World();
+        assertEquals(countriesNworld.size()>0,true);
+        System.out.println("Testing for N populated countries in world array size not being zero completed");
+        System.out.println("=================================================================================================");
+
+        ArrayList <Country> countriesNcontinent = app.getTopNPopulatedCountries_Continent();
+        assertEquals(countriesNcontinent.size()>0,true);
+        System.out.println("Testing for N populated countries in continent array size not being zero completed");
+        System.out.println("=================================================================================================");
+
+        ArrayList <Country> countriesNregion = app.getTopNPopulatedCountries_Region();
+        assertEquals(countriesNregion.size()>0,true);
+        System.out.println("Testing for N populated countries in region array size not being zero completed");
+        System.out.println("=================================================================================================");
     }
+
     @Test
     void GetCitiesEmpty(){
         ArrayList <City> citiesworld = app.getCities_World();
@@ -100,12 +125,10 @@ public class AppIntegrationTest {
         System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
 
-
         // get city data of the continent
         app.getCities_Continent();
         System.out.println("Testing to retrieve the cities in the continent from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
-
 
         // get city data of the region
         app.getCities_Region();
