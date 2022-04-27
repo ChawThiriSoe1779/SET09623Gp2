@@ -78,20 +78,7 @@ public class AppIntegrationTest {
         System.out.println("Testing for countries in region array size not being zero completed");
         System.out.println("=================================================================================================");
 
-        ArrayList <Country> countriesNworld = app.getTopNPopulatedCountries_World();
-        assertEquals(countriesNworld.size()>0,true);
-        System.out.println("Testing for N populated countries in world array size not being zero completed");
-        System.out.println("=================================================================================================");
 
-        ArrayList <Country> countriesNcontinent = app.getTopNPopulatedCountries_Continent();
-        assertEquals(countriesNcontinent.size()>0,true);
-        System.out.println("Testing for N populated countries in continent array size not being zero completed");
-        System.out.println("=================================================================================================");
-
-        ArrayList <Country> countriesNregion = app.getTopNPopulatedCountries_Region();
-        assertEquals(countriesNregion.size()>0,true);
-        System.out.println("Testing for N populated countries in region array size not being zero completed");
-        System.out.println("=================================================================================================");
     }
 
     @Test
