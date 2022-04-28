@@ -1552,7 +1552,7 @@ public class App
 
             Statement stmt_2 = con.createStatement();  // Create a second SQL statement
             // Create string for the second SQL statement
-            String getWorldPopulation = "select Sum(Population) from country;";
+            String getWorldPopulation = "select Sum(Population) as worldpopulation from country;";
             // Execute the second SQL statement
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
@@ -1566,7 +1566,7 @@ public class App
 
                 // Calculate percentage of people who speak a language in the world
                 languagenum = result_1.getLong("totalpopulation");
-                population = result_2.getLong("Sum(Population)");
+                population = result_2.getLong("worldpopulation");
                 percent = ((float)languagenum / population) * (float)(100.00);
 
                 langu.setName(result_1.getString("countrylanguage.Language"));
