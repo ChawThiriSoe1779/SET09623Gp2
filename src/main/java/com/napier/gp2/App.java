@@ -1824,17 +1824,17 @@ public class App
     /**
      * Prints a languagespeaker into markdown file.
      */
-    public void outputlanguagespeakerReport(String lang_chinese, String lang_english, String lang_hindi, String lang_spanish, String lang_arabic, String filename) {
+    public void outputlanguagespeakerReport(ArrayList<Language> langu, String filename) {
 
         StringBuilder sb = new StringBuilder();
         // Print header
-        sb.append("| Languages Speaker Report |\r\n");
-        sb.append("| --- |\r\n");
-        sb.append("| ").append(lang_chinese).append(" |\r\n");
-        sb.append("| ").append(lang_english).append(" |\r\n");
-        sb.append("| ").append(lang_hindi).append(" |\r\n");
-        sb.append("| ").append(lang_spanish).append(" |\r\n");
-        sb.append("| ").append(lang_arabic).append(" |\r\n");
+        sb.append("| Language | Population | Percentage |\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        
+        for (Language lang : langu) {
+                sb.append("| ").append(lang.getName()).append(" | ").append(lang.getPopulation()).append(" | ").append(lang.getPercentage()).append(" | ").append(population.getNon_city_population()).append(" |\r\n");
+        }
+        
 
         try
         {
@@ -2090,7 +2090,7 @@ public class App
 
 
         // print language speaker data into markdown file
-//        a.outputlanguagespeakerReport(langu, "language_speaker.md");
+        a.outputlanguagespeakerReport(langu, "language_speaker.md");
 
         // Disconnect from database
         a.disconnect();
