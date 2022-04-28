@@ -1342,7 +1342,7 @@ public class App
                     continue;}
                 String lan_string =
                         String.format("%-30s %-30s %-30s%n",
-                                langu.getName(),langu.getPopulation(),langu.getPercentage());
+                                langu.getName(),langu.getPopulation(),String.format("%.2f%%", langu.getPercentage()));
                 System.out.println(lan_string);
             }
         }
