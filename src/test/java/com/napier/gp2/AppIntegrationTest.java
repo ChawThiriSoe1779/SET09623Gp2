@@ -19,17 +19,40 @@ public class AppIntegrationTest {
 
 
     /**
-     * Function to integrated test country reports get and print
+     * Function to integrated test for Countries in the world from largest population to smallest
      */
     @Test
-    void GetCountriesReportTest() {
-        // Countries in the world from largest population to smallest
+    void testCountries_World() {
 
-        app.getCountries_World();
+        String expectedCode = "CHN";
+        String expecteName = "China";
+        String expectedContinent = "Asia";
+        String expectedRegion = "Eastern Asia";
+        int expectedPopultaion = 1_277_558_000;
+        String expectedCapital = "Peking";
+
+        ArrayList<Country> countries = app.getCountries_World();
+        String actualCode = countries.get(0).getCode();
+        String actualName = countries.get(0).getName();
+        String actualContinent = countries.get(0).getContinent();
+        String actualRegion = countries.get(0).getRegion();
+        int actualPopulation = countries.get(0).getPopulation();
+        String actualCaptial = countries.get(0).getCapital();
+
+
+        assertEquals(expectedCode,actualCode);
+        assertEquals(expecteName,actualName);
+        assertEquals(expectedContinent,actualContinent);
+        assertEquals(expectedRegion,actualRegion);
+        assertEquals(expectedPopultaion,actualPopulation);
+        assertEquals(expectedCapital,actualCaptial);
+
         System.out.println("Testing to retrieve the countries in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-
+    @Test
+    void GetCountriesReportTest() {
         // Countries in the continent from largest population to smallest
         app.getCountries_Continent();
         System.out.println("Testing to retrieve the countries in the continent from largest population to smallest is successfully!!");
@@ -287,7 +310,7 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void getLangaugePopulation() {
+    void testLangaugePopulation() {
         //get and print population of speakers of langauges in the world with percentage
 
         String expectedName = "Chinese";
