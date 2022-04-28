@@ -1572,6 +1572,8 @@ public class App
                 langu.setName(result_1.getString("countrylanguage.Language"));
                 langu.setPopulation(result_2.getLong("worldpopulation"));
                 langu.setPercentage(percent);
+
+                language.add(langu);
             }
 
             return language;
