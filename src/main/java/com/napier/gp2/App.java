@@ -1556,15 +1556,20 @@ public class App
             // Execute the second SQL statement
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
-
-
             ArrayList<Language> language = new ArrayList<>();
-            while (result_1.next() & result_2.next()) {
+
+            float worldpopulation = 0;
+
+            while (result_2.next()){
+                worldpopulation = result_2.getLong("worldpopulation");
+            }
+
+            while (result_1.next()) {
 
                 // Calculate percentage of people who speak a language in the world
                 long languagenum = result_1.getLong("totalpopulation");
-                float population = result_2.getLong("worldpopulation");
-                float percent = ((float)languagenum / population) * (float)(100.00);
+
+                float percent = ((float)languagenum / worldpopulation) * (float)(100.00);
 
                 Language langu = new Language();
                 langu.setName(result_1.getString("countrylanguage.Language"));
