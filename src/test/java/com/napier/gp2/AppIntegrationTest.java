@@ -19,16 +19,16 @@ public class AppIntegrationTest {
 
 
     /**
-     * Function to integrated test for Countries in the world from largest population to smallest
+     * Function to integrated test for Countries in the world from the largest population to smallest
      */
     @Test
     void testCountries_World() {
 
         String expectedCode = "CHN";
-        String expecteName = "China";
+        String expectedName = "China";
         String expectedContinent = "Asia";
         String expectedRegion = "Eastern Asia";
-        int expectedPopultaion = 1_277_558_000;
+        int expectedPopulation = 1_277_558_000;
         String expectedCapital = "Peking";
 
         ArrayList<Country> countries = app.getCountries_World();
@@ -37,40 +37,40 @@ public class AppIntegrationTest {
         String actualContinent = countries.get(0).getContinent();
         String actualRegion = countries.get(0).getRegion();
         int actualPopulation = countries.get(0).getPopulation();
-        String actualCaptial = countries.get(0).getCapital();
+        String actualCapital = countries.get(0).getCapital();
 
 
         assertEquals(expectedCode,actualCode);
-        assertEquals(expecteName,actualName);
+        assertEquals(expectedName,actualName);
         assertEquals(expectedContinent,actualContinent);
         assertEquals(expectedRegion,actualRegion);
-        assertEquals(expectedPopultaion,actualPopulation);
-        assertEquals(expectedCapital,actualCaptial);
+        assertEquals(expectedPopulation,actualPopulation);
+        assertEquals(expectedCapital,actualCapital);
 
         System.out.println("Testing to retrieve the countries in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
     }
 
     /**
-     * Function to integrated test for Countries in the continent from largest population to smallest
+     * Function to integrated test for Countries in the continent from the largest population to smallest
      */
     @Test
     void testCountries_Continent() {
 
         String expectedCode = "ZAF";
-        String expecteName = "South Africa";
+        String expectedName = "South Africa";
         String expectedContinent = "Africa";
         String expectedRegion = "Southern Africa";
-        int expectedPopultaion = 40_377_000;
+        int expectedPopulation = 40_377_000;
         String expectedCapital = "Pretoria";
 
         ArrayList<Country> countries = app.getCountries_Continent();
 
         assertEquals(expectedCode,countries.get(4).getCode());
-        assertEquals(expecteName,countries.get(4).getName());
+        assertEquals(expectedName,countries.get(4).getName());
         assertEquals(expectedContinent,countries.get(4).getContinent());
         assertEquals(expectedRegion,countries.get(4).getRegion());
-        assertEquals(expectedPopultaion,countries.get(4).getPopulation());
+        assertEquals(expectedPopulation,countries.get(4).getPopulation());
         assertEquals(expectedCapital,countries.get(4).getCapital());
 
         System.out.println("Testing to retrieve the countries in the continent from largest population to smallest is successfully!!");
@@ -78,25 +78,25 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Countries in the region from largest population to smallest
+     * Function to integrated test for Countries in the region from the largest population to smallest
      */
     @Test
     void testCountries_Region() {
 
         String expectedCode = "CUB";
-        String expecteName = "Cuba";
+        String expectedName = "Cuba";
         String expectedContinent = "North America";
         String expectedRegion = "Caribbean";
-        int expectedPopultaion = 11_201_000;
+        int expectedPopulation = 11_201_000;
         String expectedCapital = "La Habana";
 
         ArrayList<Country> countries = app.getCountries_Region();
 
         assertEquals(expectedCode,countries.get(0).getCode());
-        assertEquals(expecteName,countries.get(0).getName());
+        assertEquals(expectedName,countries.get(0).getName());
         assertEquals(expectedContinent,countries.get(0).getContinent());
         assertEquals(expectedRegion,countries.get(0).getRegion());
-        assertEquals(expectedPopultaion,countries.get(0).getPopulation());
+        assertEquals(expectedPopulation,countries.get(0).getPopulation());
         assertEquals(expectedCapital,countries.get(0).getCapital());
 
         System.out.println("Testing to retrieve the countries in the region from largest population to smallest is successfully!!");
@@ -110,19 +110,19 @@ public class AppIntegrationTest {
     void testTopNCountries_World() {
 
         String expectedCode = "USA";
-        String expecteName = "United States";
+        String expectedName = "United States";
         String expectedContinent = "North America";
         String expectedRegion = "North America";
-        int expectedPopultaion = 278_357_000;
+        int expectedPopulation = 278_357_000;
         String expectedCapital = "Washington";
 
         ArrayList<Country> countries = app.getTopNPopulatedCountries_World();
 
         assertEquals(expectedCode,countries.get(2).getCode());
-        assertEquals(expecteName,countries.get(2).getName());
+        assertEquals(expectedName,countries.get(2).getName());
         assertEquals(expectedContinent,countries.get(2).getContinent());
         assertEquals(expectedRegion,countries.get(2).getRegion());
-        assertEquals(expectedPopultaion,countries.get(2).getPopulation());
+        assertEquals(expectedPopulation,countries.get(2).getPopulation());
         assertEquals(expectedCapital,countries.get(2).getCapital());
 
         System.out.println("Testing to retrieve Top N populated counties in the world is successfully!!");
@@ -136,19 +136,19 @@ public class AppIntegrationTest {
     void testTopNCountries_Continent() {
 
         String expectedCode = "MEX";
-        String expecteName = "Mexico";
+        String expectedName = "Mexico";
         String expectedContinent = "North America";
         String expectedRegion = "Central America";
-        int expectedPopultaion = 98_881_000;
+        int expectedPopulation = 98_881_000;
         String expectedCapital = "Ciudad de México";
 
         ArrayList<Country> countries = app.getTopNPopulatedCountries_Continent();
 
         assertEquals(expectedCode,countries.get(1).getCode());
-        assertEquals(expecteName,countries.get(1).getName());
+        assertEquals(expectedName,countries.get(1).getName());
         assertEquals(expectedContinent,countries.get(1).getContinent());
         assertEquals(expectedRegion,countries.get(1).getRegion());
-        assertEquals(expectedPopultaion,countries.get(1).getPopulation());
+        assertEquals(expectedPopulation,countries.get(1).getPopulation());
         assertEquals(expectedCapital,countries.get(1).getCapital());
 
         System.out.println("Testing to retrieve Top N populated counties in the continent is successfully!!");
@@ -165,7 +165,7 @@ public class AppIntegrationTest {
         String expecteName = "Indonesia";
         String expectedContinent = "Asia";
         String expectedRegion = "Southeast Asia";
-        int expectedPopultaion = 212_107_000;
+        int expectedPopulation = 212_107_000;
         String expectedCapital = "Jakarta";
 
         ArrayList<Country> countries = app.getTopNPopulatedCountries_Region();
@@ -174,7 +174,7 @@ public class AppIntegrationTest {
         assertEquals(expecteName,countries.get(0).getName());
         assertEquals(expectedContinent,countries.get(0).getContinent());
         assertEquals(expectedRegion,countries.get(0).getRegion());
-        assertEquals(expectedPopultaion,countries.get(0).getPopulation());
+        assertEquals(expectedPopulation,countries.get(0).getPopulation());
         assertEquals(expectedCapital,countries.get(0).getCapital());
 
         System.out.println("Testing to retrieve Top N populated counties in the region is successfully!!");
@@ -226,22 +226,22 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Cities in the world from largest population to smallest
+     * Function to integrated test for Cities in the world from the largest population to smallest
      */
     @Test
     void testCities_World() {
 
         String expectedName = "Seoul";
-        String expecteCountry = "South Korea";
+        String expectedCountry = "South Korea";
         String expectedDistrict = "Seoul";
-        int expectedPopultaion = 9_981_619;
+        int expectedPopulation = 9_981_619;
 
         ArrayList<City> cities = app.getCities_World();
 
         assertEquals(expectedName,cities.get(1).getName());
-        assertEquals(expecteCountry,cities.get(1).getCountry());
+        assertEquals(expectedCountry,cities.get(1).getCountry());
         assertEquals(expectedDistrict,cities.get(1).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(1).getPopulation());
+        assertEquals(expectedPopulation,cities.get(1).getPopulation());
 
         System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -254,16 +254,16 @@ public class AppIntegrationTest {
     void testCities_Continent() {
 
         String expectedName = "Mumbai (Bombay)";
-        String expecteCountry = "India";
+        String expectedCountry = "India";
         String expectedDistrict = "Maharashtra";
-        int expectedPopultaion = 10_500_000;
+        int expectedPopulation = 10_500_000;
 
         ArrayList<City> cities = app.getCities_Continent();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve the cities in the continent from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -276,16 +276,16 @@ public class AppIntegrationTest {
     void testCities_Region() {
 
         String expectedName = "Apia";
-        String expecteCountry = "Samoa";
+        String expectedCountry = "Samoa";
         String expectedDistrict = "Upolu";
-        int expectedPopultaion = 35_900;
+        int expectedPopulation = 35_900;
 
         ArrayList<City> cities = app.getCities_Region();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve the cities in the region from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -298,16 +298,16 @@ public class AppIntegrationTest {
     void testCities_District() {
 
         String expectedName = "Ahmedabad";
-        String expecteCountry = "India";
+        String expectedCountry = "India";
         String expectedDistrict = "Gujarat";
-        int expectedPopultaion = 2_876_710;
+        int expectedPopulation = 2_876_710;
 
         ArrayList<City> cities = app.getCities_District();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve the cities in the district from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -320,16 +320,16 @@ public class AppIntegrationTest {
     void testCities_Country() {
 
         String expectedName = "Shanghai";
-        String expecteCountry = "China";
+        String expectedCountry = "China";
         String expectedDistrict = "Shanghai";
-        int expectedPopultaion = 9_696_300;
+        int expectedPopulation = 9_696_300;
 
         ArrayList<City> cities = app.getCities_Country();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve the cities in the country from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
@@ -342,16 +342,16 @@ public class AppIntegrationTest {
     void testTopNCities_World() {
 
         String expectedName = "Mumbai (Bombay)";
-        String expecteCountry = "India";
+        String expectedCountry = "India";
         String expectedDistrict = "Maharashtra";
-        int expectedPopultaion = 10_500_000;
+        int expectedPopulation = 10_500_000;
 
         ArrayList<City> cities = app.getTopNPopulatedCity_World();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve Top N populated cities in the world is successfully!!");
         System.out.println("=================================================================================================");
@@ -364,16 +364,16 @@ public class AppIntegrationTest {
     void testTopNCities_Continent() {
 
         String expectedName = "Sydney";
-        String expecteCountry = "Australia";
+        String expectedCountry = "Australia";
         String expectedDistrict = "New South Wales";
-        int expectedPopultaion = 3_276_207;
+        int expectedPopulation = 3_276_207;
 
         ArrayList<City> cities = app.getTopNPopulatedCity_Continent();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve Top N populated cities in the continent is successfully!!");
         System.out.println("=================================================================================================");
@@ -386,16 +386,16 @@ public class AppIntegrationTest {
     void testTopNCities_Region() {
 
         String expectedName = "Jakarta";
-        String expecteCountry = "Jakarta";
+        String expectedCountry = "Indonesia";
         String expectedDistrict = "Jakarta Raya";
-        int expectedPopultaion = 9_604_900;
+        int expectedPopulation = 9_604_900;
 
         ArrayList<City> cities = app.getTopNPopulatedCity_Region();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve Top N populated cities in the region is successfully!!");
         System.out.println("=================================================================================================");
@@ -408,16 +408,16 @@ public class AppIntegrationTest {
     void testTopNCities_Country() {
 
         String expectedName = "København";
-        String expecteCountry = "Denmark";
+        String expectedCountry = "Denmark";
         String expectedDistrict = "København";
-        int expectedPopultaion = 495_699;
+        int expectedPopulation = 495_699;
 
         ArrayList<City> cities = app.getTopNPopulatedCity_Country();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve Top N populated cities in the country is successfully!!");
         System.out.println("=================================================================================================");
@@ -430,16 +430,38 @@ public class AppIntegrationTest {
     void testTopNCities_District() {
 
         String expectedName = "Mumbai (Bombay)";
-        String expecteCountry = "India";
+        String expectedCountry = "India";
         String expectedDistrict = "Maharashtra";
-        int expectedPopultaion = 10_500_000;
+        int expectedPopulation = 10_500_000;
 
         ArrayList<City> cities = app.getTopNPopulatedCity_District();
 
         assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
+
+        System.out.println("Testing to retrieve Top N populated cities in the district is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Capital Cities in the world from largest population to smallest
+     */
+    @Test
+    void testCapCities_Wrold() {
+
+        String expectedName = "Mumbai (Bombay)";
+        String expectedCountry = "India";
+        String expectedDistrict = "Maharashtra";
+        int expectedPopulation = 10_500_000;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_District();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expectedCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopulation,cities.get(0).getPopulation());
 
         System.out.println("Testing to retrieve Top N populated cities in the district is successfully!!");
         System.out.println("=================================================================================================");
