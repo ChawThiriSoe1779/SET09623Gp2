@@ -226,34 +226,51 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for city information in the world
+     * Function to integrated test for Cities in the world from largest population to smallest
      */
     @Test
     void testCities_World() {
 
-        String expectedName = "IDN";
-        String expecteCountry = "Indonesia";
-        String expectedDistrict = "Asia";
-        int expectedPopultaion = 212_107_000;
+        String expectedName = "Seoul";
+        String expecteCountry = "South Korea";
+        String expectedDistrict = "Seoul";
+        int expectedPopultaion = 9_981_619;
 
         ArrayList<City> cities = app.getCities_World();
+
+        assertEquals(expectedName,cities.get(1).getName());
+        assertEquals(expecteCountry,cities.get(1).getCountry());
+        assertEquals(expectedDistrict,cities.get(1).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(1).getPopulation());
+
+        System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Cities in the continent from largest population to smallest
+     */
+    @Test
+    void testCities_Continent() {
+
+        String expectedName = "Mumbai (Bombay)";
+        String expecteCountry = "India";
+        String expectedDistrict = "Maharashtra";
+        int expectedPopultaion = 10_500_000;
+
+        ArrayList<City> cities = app.getCities_Continent();
 
         assertEquals(expectedName,cities.get(0).getName());
         assertEquals(expecteCountry,cities.get(0).getCountry());
         assertEquals(expectedDistrict,cities.get(0).getDistrict());
         assertEquals(expectedPopultaion,cities.get(0).getPopulation());
 
-        System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
+        System.out.println("Testing to retrieve the cities in the continent from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
     }
 
     @Test
     void GetCityReportTest() {
-        // get city data of the continent
-        app.getCities_Continent();
-        System.out.println("Testing to retrieve the cities in the continent from largest population to smallest is successfully!!");
-        System.out.println("=================================================================================================");
-
         // get city data of the region
         app.getCities_Region();
         System.out.println("Testing to retrieve the cities in the region from largest population to smallest is successfully!!");
