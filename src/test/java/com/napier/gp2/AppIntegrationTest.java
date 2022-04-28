@@ -532,8 +532,7 @@ public class AppIntegrationTest {
     void testSizeOfPopulation_Continent() {
 
         ArrayList<Population> populations = app.getPopulation_Continent();
-        System.out.println(populations.size());
-        //assertEquals(20, populations.size());
+        assertEquals(6, populations.size());
 
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each continent is successfully!!");
         System.out.println("=================================================================================================");
@@ -546,8 +545,7 @@ public class AppIntegrationTest {
     void testSizeOfPopulation_Region() {
 
         ArrayList<Population> populations = app.getPopulation_Region();
-        System.out.println(populations.size());
-        //assertEquals(20, populations.size());
+        assertEquals(23, populations.size());
 
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each region is successfully!!");
         System.out.println("=================================================================================================");
@@ -560,8 +558,7 @@ public class AppIntegrationTest {
     void testSizeOfPopulation_Country() {
 
         ArrayList<Population> populations = app.getPopulation_Country();
-        System.out.println(populations.size());
-        //assertEquals(20, populations.size());
+        assertEquals(232, populations.size());
 
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each country is successfully!!");
         System.out.println("=================================================================================================");
