@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeAll;
@@ -453,9 +454,74 @@ public class AppIntegrationTest {
     void testSizeOfCapCities_World() {
 
         ArrayList<Capital> cap_cities = app.getCapCities_World();
-        assertEquals(213, cap_cities.size());
+        assertEquals(232, cap_cities.size());
 
         System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Capital Cities in the continent from the largest population to smallest
+     */
+    @Test
+    void testSizeOfCapCities_Continent() {
+
+        ArrayList<Capital> cap_cities = app.getCapCities_Continent();
+        assertEquals(27, cap_cities.size());
+
+        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Capital Cities in the region from the largest population to smallest
+     */
+    @Test
+    void testSizeOfCapCities_Region() {
+
+        ArrayList<Capital> cap_cities = app.getCapCities_Region();
+        assertEquals(24, cap_cities.size());
+
+        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Top N Capital Cities in the world
+     */
+    @Test
+    void testSizeOfTopNCapCities_World() {
+
+        ArrayList<Capital> cap_cities = app.getTopNPopulatedCapCity_World();
+        assertEquals(30, cap_cities.size());
+
+        System.out.println("Testing to retrieve Top N populated capital cities in the world is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Top N Capital Cities in the continent
+     */
+    @Test
+    void testSizeOfTopNCapCities_Continent() {
+
+        ArrayList<Capital> cap_cities = app.getTopNPopulatedCapCity_Continent();
+        assertEquals(21, cap_cities.size());
+
+        System.out.println("Testing to retrieve Top N populated capital cities in the continent is successfully!!");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for Top N Capital Cities in the region
+     */
+    @Test
+    void testSizeOfTopNCapCities_Region() {
+
+        ArrayList<Capital> cap_cities = app.getTopNPopulatedCapCity_Region();
+        assertEquals(20, cap_cities.size());
+
+        System.out.println("Testing to retrieve Top N populated capital cities in the region is successfully!!");
         System.out.println("=================================================================================================");
     }
 
