@@ -1565,7 +1565,7 @@ public class App
                 Language langu = new Language();
 
                 // Calculate percentage of people who speak a language in the world
-                languagenum = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
+                languagenum = result_1.getLong("totalpopulation");
                 population = result_2.getLong("Sum(Population)");
                 percent = ((float)languagenum / population) * (float)(100.00);
 
