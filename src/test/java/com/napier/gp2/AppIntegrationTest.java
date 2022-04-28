@@ -289,8 +289,6 @@ public class AppIntegrationTest {
     @Test
     void getLangaugePopulation() {
         //get and print population of speakers of langauges in the world with percentage
-        System.out.println("Testing to retrieve population of the chinese speaker in the world successful");
-        System.out.println("=================================================================================================");
 
         String expectedName = "Chinese";
         long expectedPopulation = 1_191_843_539L;
@@ -304,5 +302,8 @@ public class AppIntegrationTest {
         assertEquals(expectedName,actualName);
         assertEquals(expectedPopulation,actualPopulation);
         assertEquals(expectedPercentage,actualPercentage);
+
+        System.out.println("Testing to retrieve population of certain language speakers in the world successful");
+        System.out.println("=================================================================================================");
     }
 }
