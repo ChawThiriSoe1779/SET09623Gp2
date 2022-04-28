@@ -1193,16 +1193,16 @@ public class App
                 // Check Country contain null
                 if (coun == null){
                     continue;}
-                String emp_string =
+                String country_string =
                         String.format("%-5s %-15s %-20s %-20s %-20s %-20s",
                                 coun.getCode(), coun.getName(), coun.getContinent(), coun.getRegion(), coun.getPopulation(), coun.getCapital());
-                System.out.println(emp_string);
+                System.out.println(country_string);
             }
         }
         else
         {
-            String emp_string = "Country Report List is empty";
-            System.out.println(emp_string);
+            String country_string = "Country Report List is empty";
+            System.out.println(country_string);
         }
     }
 
@@ -1348,8 +1348,8 @@ public class App
         }
         else
         {
-            String emp_string = "Country Report List is empty";
-            System.out.println(emp_string);
+            String country_string = "Country Report List is empty";
+            System.out.println(country_string);
         }
     }
 
@@ -1635,8 +1635,8 @@ public class App
         }
         else
         {
-            String emp_string = "Country Report List is empty";
-            System.out.println(emp_string);
+            String country_string = "Country Report List is empty";
+            System.out.println(country_string);
         }
 
     }
