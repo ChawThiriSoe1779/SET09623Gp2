@@ -294,10 +294,9 @@ public class AppIntegrationTest {
 
         String expectedName = "Chinese";
         long expectedPopulation = 1_191_843_539L;
-        float expectedPercentage = (float) 19.61;
+        float expectedPercentage = (float) 19.606724;
 
         ArrayList<Language> langu = app.getpeopleSpeakPopulation();
-        System.out.println(langu);
         String actualName = String.valueOf(langu.get(0).getName());
         long actualPopulation = langu.get(0).getPopulation();
         float actualPercentage = langu.get(0).getPercentage();
