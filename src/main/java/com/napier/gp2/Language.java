@@ -7,7 +7,7 @@ public class Language {
     private String Name;
 
     //  Population of the language spoken
-    private int Population;
+    private long Population;
 
     // Percentage of language spoken in the world
     private float Percentage;
@@ -23,12 +23,12 @@ public class Language {
     }
 
     //      set Population of language spoken
-    public void setPopulation(int lpopulation){
+    public void setPopulation(long lpopulation){
         Population =  lpopulation;
     }
 
     //get Population of language spoken to be able to access by another class
-    public int getPopulation(){
+    public long getPopulation(){
         return Population;
     }
 
