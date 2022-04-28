@@ -480,16 +480,16 @@ public class AppTest
     /**
      * Output a normal language speaker.
      */
-    @Test
-    void outputlanguagespeakerReportTest()
-    {
-        System.out.println("Language speaker output Testing~~");
-        String lang_chinese = "testing purpose";
-        String lang_english = "testing purpose";
-        String lang_hindi = "testing purpose";
-        String lang_spanish = "testing purpose";
-        String lang_arabic = "testing purpose";
-        app.outputlanguagespeakerReport(lang_chinese,lang_english,lang_hindi,lang_spanish,lang_arabic, "language_speaker_output_testing.md");
-    }
+//    @Test
+//    void outputlanguagespeakerReportTest()
+//    {
+//        System.out.println("Language speaker output Testing~~");
+//        String lang_chinese = "testing purpose";
+//        String lang_english = "testing purpose";
+//        String lang_hindi = "testing purpose";
+//        String lang_spanish = "testing purpose";
+//        String lang_arabic = "testing purpose";
+//        app.outputlanguagespeakerReport(lang_chinese,lang_english,lang_hindi,lang_spanish,lang_arabic, "language_speaker_output_testing.md");
+//    }
 
 }
