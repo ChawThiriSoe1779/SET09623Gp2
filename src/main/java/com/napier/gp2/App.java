@@ -1832,7 +1832,7 @@ public class App
         sb.append("| --- | --- | --- |\r\n");
         
         for (Language lang : langu) {
-                sb.append("| ").append(lang.getName()).append(" | ").append(lang.getPopulation()).append(" | ").append(lang.getPercentage()).append(" | ").append(population.getNon_city_population()).append(" |\r\n");
+                sb.append("| ").append(lang.getName()).append(" | ").append(lang.getPopulation()).append(" | ").append(lang.getPercentage()).append(" |\r\n");
         }
         
 
