@@ -1,6 +1,7 @@
 package com.napier.gp2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -248,7 +249,7 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Cities in the continent from largest population to smallest
+     * Function to integrated test for Cities in the continent from the largest population to smallest
      */
     @Test
     void testCities_Continent() {
@@ -270,7 +271,7 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Cities in the region from largest population to smallest
+     * Function to integrated test for Cities in the region from the largest population to smallest
      */
     @Test
     void testCities_Region() {
@@ -292,7 +293,7 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Cities in the district from largest population to smallest
+     * Function to integrated test for Cities in the district from the largest population to smallest
      */
     @Test
     void testCities_District() {
@@ -314,7 +315,7 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Cities in the country from largest population to smallest
+     * Function to integrated test for Cities in the country from the largest population to smallest
      */
     @Test
     void testCities_Country() {
@@ -446,58 +447,15 @@ public class AppIntegrationTest {
     }
 
     /**
-     * Function to integrated test for Capital Cities in the world from largest population to smallest
+     * Function to integrated test for Capital Cities in the world from the largest population to smallest
      */
     @Test
-    void testCapCities_Wrold() {
+    void testSizeOfCapCities_World() {
 
-        String expectedName = "Mumbai (Bombay)";
-        String expectedCountry = "India";
-        String expectedDistrict = "Maharashtra";
-        int expectedPopulation = 10_500_000;
+        ArrayList<Capital> cap_cities = app.getCapCities_World();
+        assertEquals(213, cap_cities.size());
 
-        ArrayList<City> cities = app.getTopNPopulatedCity_District();
-
-        assertEquals(expectedName,cities.get(0).getName());
-        assertEquals(expectedCountry,cities.get(0).getCountry());
-        assertEquals(expectedDistrict,cities.get(0).getDistrict());
-        assertEquals(expectedPopulation,cities.get(0).getPopulation());
-
-        System.out.println("Testing to retrieve Top N populated cities in the district is successfully!!");
-        System.out.println("=================================================================================================");
-    }
-
-
-    @Test
-    void getCapitalReportTest() {
-        // get capital city data of the world
-        app.getCapCities_World();
         System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
-        System.out.println("=================================================================================================");
-
-        // get capital city data of the continent
-        app.getCapCities_Continent();
-        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
-        System.out.println("=================================================================================================");
-
-        // get capital city data of the region
-        app.getCapCities_Region();
-        System.out.println("Testing to retrieve the capital cities in the world from largest population to smallest is successfully!!");
-        System.out.println("=================================================================================================");
-
-        // get data of top N populated capital cities in the world
-        app.getTopNPopulatedCapCity_World();
-        System.out.println("Testing to retrieve Top N populated capital cities in the world is successfully!!");
-        System.out.println("=================================================================================================");
-
-        // get data of top N populated capital cities in the continent
-        app.getTopNPopulatedCapCity_Continent();
-        System.out.println("Testing to retrieve Top N populated capital cities in the continent is successfully!!");
-        System.out.println("=================================================================================================");
-
-        // get data of top N populated capital cities in the region
-        app.getTopNPopulatedCapCity_Region();
-        System.out.println("Testing to retrieve Top N populated capital cities in the region is successfully!!");
         System.out.println("=================================================================================================");
     }
 
@@ -597,8 +555,8 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void testLangaugePopulation() {
-        //get and print population of speakers of langauges in the world with percentage
+    void testLanguagePopulation() {
+        //get and print population of speakers of languages in the world with percentage
 
         String expectedName = "Chinese";
         long expectedPopulation = 1_191_843_539L;
