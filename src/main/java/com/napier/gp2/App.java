@@ -1570,7 +1570,7 @@ public class App
                 percent = ((float)languagenum / population) * (float)(100.00);
 
                 langu.setName(result_1.getString("countrylanguage.Language"));
-                langu.setPopulation(result_1.getInt("Sum(Population)"));
+                langu.setPopulation(result_2.getInt("worldpopulation"));
                 langu.setPercentage(percent);
             }
 
