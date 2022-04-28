@@ -64,7 +64,7 @@ public class AppIntegrationTest {
         int expectedPopultaion = 40_377_000;
         String expectedCapital = "Pretoria";
 
-        ArrayList<Country> countries = app.getCountries_World();
+        ArrayList<Country> countries = app.getCountries_Continent();
 
         assertEquals(expectedCode,countries.get(4).getCode());
         assertEquals(expecteName,countries.get(4).getCode());
@@ -199,7 +199,6 @@ public class AppIntegrationTest {
         System.out.println("Testing for countries in region array size not being zero completed");
         System.out.println("=================================================================================================");
 
-
     }
 
     @Test
@@ -228,11 +227,6 @@ public class AppIntegrationTest {
 
     @Test
     void GetCityReportTest() {
-        // get city data of the world
-        app.getCities_World();
-        System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
-        System.out.println("=================================================================================================");
-
         // get city data of the continent
         app.getCities_Continent();
         System.out.println("Testing to retrieve the cities in the continent from largest population to smallest is successfully!!");
