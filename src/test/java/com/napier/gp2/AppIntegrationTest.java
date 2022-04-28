@@ -67,7 +67,7 @@ public class AppIntegrationTest {
         ArrayList<Country> countries = app.getCountries_Continent();
 
         assertEquals(expectedCode,countries.get(4).getCode());
-        assertEquals(expecteName,countries.get(4).getCode());
+        assertEquals(expecteName,countries.get(4).getName());
         assertEquals(expectedContinent,countries.get(4).getContinent());
         assertEquals(expectedRegion,countries.get(4).getRegion());
         assertEquals(expectedPopultaion,countries.get(4).getPopulation());
@@ -222,6 +222,28 @@ public class AppIntegrationTest {
         ArrayList <Population> pop = app.getPopulation_Continent();
         assertEquals(pop.size()>0,true);
         System.out.println("Testing for population array size not being zero completed");
+        System.out.println("=================================================================================================");
+    }
+
+    /**
+     * Function to integrated test for city information in the world
+     */
+    @Test
+    void testCities_World() {
+
+        String expectedName = "IDN";
+        String expecteCountry = "Indonesia";
+        String expectedDistrict = "Asia";
+        int expectedPopultaion = 212_107_000;
+
+        ArrayList<City> cities = app.getCities_World();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
+        System.out.println("Testing to retrieve the cities in the world from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
     }
 
