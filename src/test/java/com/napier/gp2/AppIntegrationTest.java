@@ -187,17 +187,17 @@ public class AppIntegrationTest {
     @Test
     void GetCountriesEmpty(){
         ArrayList <Country> countriesworld = app.getCountries_World();
-        assertEquals(countriesworld.size()>0,true);
+        assertTrue(countriesworld.size() > 0);
         System.out.println("Testing for countries in world array size not being zero completed");
         System.out.println("=================================================================================================");
 
         ArrayList <Country> countriescontinent = app.getCountries_Continent();
-        assertEquals(countriescontinent.size()>0,true);
+        assertTrue(countriescontinent.size() > 0);
         System.out.println("Testing for countries in continent array size not being zero completed");
         System.out.println("=================================================================================================");
 
         ArrayList <Country> countries_region = app.getCountries_Region();
-        assertEquals(countries_region.size()>0,true);
+        assertTrue(countries_region.size() > 0);
         System.out.println("Testing for countries in region array size not being zero completed");
         System.out.println("=================================================================================================");
 
@@ -206,7 +206,7 @@ public class AppIntegrationTest {
     @Test
     void GetCitiesEmpty(){
         ArrayList <City> citiesworld = app.getCities_World();
-        assertEquals(citiesworld.size()>0,true);
+        assertTrue(citiesworld.size() > 0);
         System.out.println("Testing for city array size not being zero completed");
         System.out.println("=================================================================================================");
     }
@@ -214,7 +214,7 @@ public class AppIntegrationTest {
     @Test
     void GetCapitalEmpty(){
         ArrayList <Capital> capworld = app.getCapCities_World();
-        assertEquals(capworld.size()>0,true);
+        assertTrue(capworld.size() > 0);
         System.out.println("Testing for Capital city array size not being zero completed");
         System.out.println("=================================================================================================");
     }
@@ -222,7 +222,7 @@ public class AppIntegrationTest {
     @Test
     void GetPopulationEmpty(){
         ArrayList <Population> pop = app.getPopulation_Continent();
-        assertEquals(pop.size()>0,true);
+        assertTrue(pop.size() > 0);
         System.out.println("Testing for population array size not being zero completed");
         System.out.println("=================================================================================================");
     }
@@ -506,7 +506,7 @@ public class AppIntegrationTest {
     void testSizeOfTopNCapCities_Continent() {
 
         ArrayList<Capital> cap_cities = app.getTopNPopulatedCapCity_Continent();
-        assertEquals(21, cap_cities.size());
+        assertEquals(20, cap_cities.size());
 
         System.out.println("Testing to retrieve Top N populated capital cities in the continent is successfully!!");
         System.out.println("=================================================================================================");
@@ -525,20 +525,44 @@ public class AppIntegrationTest {
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Function to integrated test for information of number of population of people, people living in cities, and people not living in cities in each continent
+     * */
     @Test
-    void getPopulationReportTest() {
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each continent
-        app.getPopulation_Continent();
+    void testSizeOfPopulation_Continent() {
+
+        ArrayList<Population> populations = app.getPopulation_Continent();
+        System.out.println(populations.size());
+        //assertEquals(20, populations.size());
+
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each continent is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each region
-        app.getPopulation_Region();
+    /**
+     * Function to integrated test for information of number of population of people, people living in cities, and people not living in cities in each region
+     * */
+    @Test
+    void testSizeOfPopulation_Region() {
+
+        ArrayList<Population> populations = app.getPopulation_Region();
+        System.out.println(populations.size());
+        //assertEquals(20, populations.size());
+
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each region is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of number of population of people, people living in cities, and people not living in cities in each country
-        app.getPopulation_Country();
+    /**
+     * Function to integrated test for information of number of population of people, people living in cities, and people not living in cities in each country
+     * */
+    @Test
+    void testSizeOfPopulation_Country() {
+
+        ArrayList<Population> populations = app.getPopulation_Country();
+        System.out.println(populations.size());
+        //assertEquals(20, populations.size());
+
         System.out.println("Testing to retrieve the number of population of people, people living in cities, and people not living in cities in each country is successfully!!");
         System.out.println("=================================================================================================");
     }
