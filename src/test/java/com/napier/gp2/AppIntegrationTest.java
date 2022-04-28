@@ -51,39 +51,137 @@ public class AppIntegrationTest {
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Function to integrated test for Countries in the continent from largest population to smallest
+     */
     @Test
-    void GetCountriesReportTest() {
-        // Countries in the continent from largest population to smallest
-        app.getCountries_Continent();
+    void testCountries_Continent() {
+
+        String expectedCode = "ZAF";
+        String expecteName = "South Africa";
+        String expectedContinent = "Africa";
+        String expectedRegion = "Southern Africa";
+        int expectedPopultaion = 40_377_000;
+        String expectedCapital = "Pretoria";
+
+        ArrayList<Country> countries = app.getCountries_World();
+
+        assertEquals(expectedCode,countries.get(4).getCode());
+        assertEquals(expecteName,countries.get(4).getCode());
+        assertEquals(expectedContinent,countries.get(4).getContinent());
+        assertEquals(expectedRegion,countries.get(4).getRegion());
+        assertEquals(expectedPopultaion,countries.get(4).getPopulation());
+        assertEquals(expectedCapital,countries.get(4).getCapital());
+
         System.out.println("Testing to retrieve the countries in the continent from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
+    /**
+     * Function to integrated test for Countries in the region from largest population to smallest
+     */
+    @Test
+    void testCountries_Region() {
 
-        // Countries in the region from largest population to smallest
-        app.getCountries_Region();
+        String expectedCode = "CUB";
+        String expecteName = "Cuba";
+        String expectedContinent = "North America";
+        String expectedRegion = "Caribbean";
+        int expectedPopultaion = 11_201_000;
+        String expectedCapital = "La Habana";
+
+        ArrayList<Country> countries = app.getCountries_Region();
+
+        assertEquals(expectedCode,countries.get(0).getCode());
+        assertEquals(expecteName,countries.get(0).getName());
+        assertEquals(expectedContinent,countries.get(0).getContinent());
+        assertEquals(expectedRegion,countries.get(0).getRegion());
+        assertEquals(expectedPopultaion,countries.get(0).getPopulation());
+        assertEquals(expectedCapital,countries.get(0).getCapital());
+
         System.out.println("Testing to retrieve the countries in the region from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
+    /**
+     * Function to integrated test for Top N populated Country in the World
+     */
+    @Test
+    void testTopNCountries_World() {
 
-        // Top N populated Country in the World
-        app.getTopNPopulatedCountries_World();
+        String expectedCode = "USA";
+        String expecteName = "United States";
+        String expectedContinent = "North America";
+        String expectedRegion = "North America";
+        int expectedPopultaion = 278_357_000;
+        String expectedCapital = "Washington";
+
+        ArrayList<Country> countries = app.getTopNPopulatedCountries_World();
+
+        assertEquals(expectedCode,countries.get(2).getCode());
+        assertEquals(expecteName,countries.get(2).getName());
+        assertEquals(expectedContinent,countries.get(2).getContinent());
+        assertEquals(expectedRegion,countries.get(2).getRegion());
+        assertEquals(expectedPopultaion,countries.get(2).getPopulation());
+        assertEquals(expectedCapital,countries.get(2).getCapital());
+
         System.out.println("Testing to retrieve Top N populated counties in the world is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
+    /**
+     * Function to integrated test for Top N populated Country in the Continent
+     */
+    @Test
+    void testTopNCountries_Continent() {
 
-        // Top N populated Country in the continent
-        app.getTopNPopulatedCountries_Continent();
+        String expectedCode = "MEX";
+        String expecteName = "Mexico";
+        String expectedContinent = "North America";
+        String expectedRegion = "Central America";
+        int expectedPopultaion = 98_881_000;
+        String expectedCapital = "Ciudad de México";
+
+        ArrayList<Country> countries = app.getTopNPopulatedCountries_Continent();
+
+        assertEquals(expectedCode,countries.get(1).getCode());
+        assertEquals(expecteName,countries.get(1).getName());
+        assertEquals(expectedContinent,countries.get(1).getContinent());
+        assertEquals(expectedRegion,countries.get(1).getRegion());
+        assertEquals(expectedPopultaion,countries.get(1).getPopulation());
+        assertEquals(expectedCapital,countries.get(1).getCapital());
+
         System.out.println("Testing to retrieve Top N populated counties in the continent is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
+    /**
+     * Function to integrated test for Top N populated Country in the Region
+     */
+    @Test
+    void testTopNCountries_Region() {
 
-        // Top N populated Country in the region
-        app.getTopNPopulatedCountries_Region();
+        String expectedCode = "IDN";
+        String expecteName = "Indonesia";
+        String expectedContinent = "Asia";
+        String expectedRegion = "Southeast Asia";
+        int expectedPopultaion = 212_107_000;
+        String expectedCapital = "Jakarta";
+
+        ArrayList<Country> countries = app.getTopNPopulatedCountries_Region();
+
+        assertEquals(expectedCode,countries.get(0).getCode());
+        assertEquals(expecteName,countries.get(0).getName());
+        assertEquals(expectedContinent,countries.get(0).getContinent());
+        assertEquals(expectedRegion,countries.get(0).getRegion());
+        assertEquals(expectedPopultaion,countries.get(0).getPopulation());
+        assertEquals(expectedCapital,countries.get(0).getCapital());
+
         System.out.println("Testing to retrieve Top N populated counties in the region is successfully!!");
         System.out.println("=================================================================================================");
-
-
     }
+
+
     @Test
     void GetCountriesEmpty(){
         ArrayList <Country> countriesworld = app.getCountries_World();
