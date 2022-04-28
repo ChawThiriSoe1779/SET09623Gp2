@@ -287,23 +287,23 @@ public class AppIntegrationTest {
     }
 
     @Test
-    void getLanguagePopulation() {
-        //get and print population of chinese speakers in the world with percentage
+    void getLangaugePopulation() {
+        //get and print population of speakers of langauges in the world with percentage
         System.out.println("Testing to retrieve population of the chinese speaker in the world successful");
         System.out.println("=================================================================================================");
 
-        //expected output
-        ArrayList <Language> expectedOutput = new ArrayList<>();
-        Language lang = new Language();
-        lang.setName("Chinese");
-        lang.setPopulation(1191843539);
-        lang.setPercentage((float) 19.606724);
+        String expectedName = "Chinese";
+        long expectedPopulation = 1_191_843_539L;
+        float expectedPercentage = (float) 19.61;
 
-        expectedOutput.add(lang);
+        ArrayList<Language> langu = app.getpeopleSpeakPopulation();
+        System.out.println(langu);
+        String actualName = String.valueOf(langu.get(0).getName());
+        long actualPopulation = langu.get(0).getPopulation();
+        float actualPercentage = langu.get(0).getPercentage();
 
-
-        //actual output
-        ArrayList <Language> actualOutput = app.getpeopleSpeakPopulation();
-        assertEquals(expectedOutput.get(0), actualOutput.get(0));
+        assertEquals(expectedName,actualName);
+        assertEquals(expectedPopulation,actualPopulation);
+        assertEquals(expectedPercentage,actualPercentage);
     }
 }
