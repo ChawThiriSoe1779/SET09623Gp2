@@ -1316,6 +1316,45 @@ public class App
         }
     }
 
+    /** Function to Print populations
+     * @param language to print list of populations **/
+
+    public void printLanguageReport(ArrayList<Language> language)
+    {
+        // Check data is not null
+        if (language == null)
+        {
+            System.out.println("No Data");
+            return;
+        }
+        // Print header
+        System.out.printf("%-30s %-30s %-30s%n","Language","Population","Percentage");
+        System.out.println("===========================================================================================");
+
+        // Check Country is not empty
+        if (!language.isEmpty())
+        {
+            // Loop over all countries in the list
+            for (Language langu : language)
+            {
+                // Check Country contain null
+                if (langu == null){
+                    continue;}
+                String lan_string =
+                        String.format("%-30s %-30s %-30s%n",
+                                langu.getName(),langu.getPopulation(),langu.getPercentage());
+                System.out.println(lan_string);
+            }
+        }
+        else
+        {
+            String emp_string = "Country Report List is empty";
+            System.out.println(emp_string);
+        }
+    }
+
+
+
     /***
      Get the population of the world and print it
      */
@@ -1499,14 +1538,15 @@ public class App
     }
 
     /**
-     * Get and print how much people in the world speak @parameter language = language with percentage*/
-    public String peopleSpeakPopulation(String language){
-        String lang = "";
+     * Get and print how much people in the world speak @parameter language = language with percentage
+     * @return*/
+    public ArrayList<Language> getpeopleSpeakPopulation(){
+
         try
         {
             Statement stmt_1 = con.createStatement();  // Create a first SQL statement
             // Create string for the first SQL statement
-            String getPeopleSpeakLanguage = "select Sum((country.Population)*((countrylanguage.percentage)/100)) from country INNER JOIN countrylanguage on countrylanguage.CountryCode = country.Code WHERE countrylanguage.Language='"+language+"';";
+            String getPeopleSpeakLanguage = "SELECT countrylanguage.Language, Sum((countrylanguage.Percentage/100)*country.Population) as totalpopulation FROM countrylanguage, country WHERE country.Code = countrylanguage.CountryCode and countrylanguage.Language IN ('Chinese', 'English', 'Hindi','Spanish','Arabic' ) GROUP BY countrylanguage.Language  ORDER BY totalpopulation desc";
             // Execute the first SQL statement
             ResultSet result_1 = stmt_1.executeQuery(getPeopleSpeakLanguage);
 
@@ -1516,27 +1556,35 @@ public class App
             // Execute the second SQL statement
             ResultSet result_2 = stmt_2.executeQuery(getWorldPopulation);
 
-            long languagenum = 0;
+            long languagenum;
             float population;
-            float percent = 0;
+            float percent;
 
+            ArrayList<Language> language = new ArrayList<>();
             while (result_1.next() & result_2.next()) {
+                Language langu = new Language();
+
                 // Calculate percentage of people who speak a language in the world
                 languagenum = result_1.getLong("Sum((country.Population)*((countrylanguage.percentage)/100))");
                 population = result_2.getLong("Sum(Population)");
                 percent = ((float)languagenum / population) * (float)(100.00);
+
+                langu.setName(result_1.getString("countrylanguage.Language"));
+                langu.setPopulation(result_1.getInt("Sum(Population)"));
+                langu.setPercentage(percent);
             }
 
-            System.out.println("\nNumber of people who speak "+language+" in the world: "+languagenum+" \nwhich is "+String.format("%.2f%%", percent) +" of the world population");
-            System.out.println("=================================================================================================\n");
-            lang = "Number of people who speak "+language+" in the world: "+languagenum+" which is "+String.format("%.2f%%", percent) +" of the world population";
+            return language;
+
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population of "+language+" speakers");
+            System.out.println("Failed to get population of speakers");
+            return null;
+
         }
-        return lang;
+
     }
 
     /**
@@ -2027,23 +2075,15 @@ public class App
         // print total population data into markdown file
         a.outputtotalpopulationReport(world,continent,region,country,district,city, "total_population.md");
 
-        // get and print population of chinese speakers in the world with percentage into markdown file
-        String lang_chinese = a.peopleSpeakPopulation("Chinese");
+        // Extract language spoken population
+        ArrayList<Language> langu = a.getpeopleSpeakPopulation();
+        // print language data
+        a.printLanguageReport(langu);
 
-        // get and print population of english speakers in the world with percentage into markdown file
-        String lang_english = a.peopleSpeakPopulation("English");
 
-        // get and print population of hindi speakers in the world with percentage into markdown file
-        String lang_hindi = a.peopleSpeakPopulation("Hindi");
-
-        // get and print population of spanish speakers in the world with percentage into markdown file
-        String lang_spanish = a.peopleSpeakPopulation("Spanish");
-
-        // get and print population of arabic speakers in the world with percentage into markdown file
-        String lang_arabic = a.peopleSpeakPopulation("Arabic");
 
         // print language speaker data into markdown file
-        a.outputlanguagespeakerReport(lang_chinese,lang_english,lang_hindi,lang_spanish,lang_arabic, "language_speaker.md");
+//        a.outputlanguagespeakerReport(langu, "language_speaker.md");
 
         // Disconnect from database
         a.disconnect();
