@@ -269,48 +269,182 @@ public class AppIntegrationTest {
         System.out.println("=================================================================================================");
     }
 
+    /**
+     * Function to integrated test for Cities in the region from largest population to smallest
+     */
     @Test
-    void GetCityReportTest() {
-        // get city data of the region
-        app.getCities_Region();
+    void testCities_Region() {
+
+        String expectedName = "Apia";
+        String expecteCountry = "Samoa";
+        String expectedDistrict = "Upolu";
+        int expectedPopultaion = 35_900;
+
+        ArrayList<City> cities = app.getCities_Region();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve the cities in the region from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // get city data of the district
-        app.getCities_District();
+    /**
+     * Function to integrated test for Cities in the district from largest population to smallest
+     */
+    @Test
+    void testCities_District() {
+
+        String expectedName = "Ahmedabad";
+        String expecteCountry = "India";
+        String expectedDistrict = "Gujarat";
+        int expectedPopultaion = 2_876_710;
+
+        ArrayList<City> cities = app.getCities_District();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve the cities in the district from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // get city data of the country
-        app.getCities_Country();
+    /**
+     * Function to integrated test for Cities in the country from largest population to smallest
+     */
+    @Test
+    void testCities_Country() {
+
+        String expectedName = "Shanghai";
+        String expecteCountry = "China";
+        String expectedDistrict = "Shanghai";
+        int expectedPopultaion = 9_696_300;
+
+        ArrayList<City> cities = app.getCities_Country();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve the cities in the country from largest population to smallest is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of top N populated cities in the world
-        app.getTopNPopulatedCity_World();
+    /**
+     * Function to integrated test for Top N populated Cities in the world
+     */
+    @Test
+    void testTopNCities_World() {
+
+        String expectedName = "Mumbai (Bombay)";
+        String expecteCountry = "India";
+        String expectedDistrict = "Maharashtra";
+        int expectedPopultaion = 10_500_000;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_World();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve Top N populated cities in the world is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of top N populated cities in a continent
-        app.getTopNPopulatedCity_Continent();
+    /**
+     * Function to integrated test for Top N populated Cities in the Continent
+     */
+    @Test
+    void testTopNCities_Continent() {
+
+        String expectedName = "Sydney";
+        String expecteCountry = "Australia";
+        String expectedDistrict = "New South Wales";
+        int expectedPopultaion = 3_276_207;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_Continent();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve Top N populated cities in the continent is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of top N populated cities in a region
-        app.getTopNPopulatedCity_Region();
+    /**
+     * Function to integrated test for Top N populated Cities in the region
+     */
+    @Test
+    void testTopNCities_Region() {
+
+        String expectedName = "Jakarta";
+        String expecteCountry = "Jakarta";
+        String expectedDistrict = "Jakarta Raya";
+        int expectedPopultaion = 9_604_900;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_Region();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve Top N populated cities in the region is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of top N populated cities in a country
-        app.getTopNPopulatedCity_Country();
+    /**
+     * Function to integrated test for Top N populated Cities in the country
+     */
+    @Test
+    void testTopNCities_Country() {
+
+        String expectedName = "København";
+        String expecteCountry = "Denmark";
+        String expectedDistrict = "København";
+        int expectedPopultaion = 495_699;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_Country();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve Top N populated cities in the country is successfully!!");
         System.out.println("=================================================================================================");
+    }
 
-        // Extract information of top N populated cities in a district
-        app.getTopNPopulatedCity_District();
+    /**
+     * Function to integrated test for Top N populated Cities in the district
+     */
+    @Test
+    void testTopNCities_District() {
+
+        String expectedName = "Mumbai (Bombay)";
+        String expecteCountry = "India";
+        String expectedDistrict = "Maharashtra";
+        int expectedPopultaion = 10_500_000;
+
+        ArrayList<City> cities = app.getTopNPopulatedCity_District();
+
+        assertEquals(expectedName,cities.get(0).getName());
+        assertEquals(expecteCountry,cities.get(0).getCountry());
+        assertEquals(expectedDistrict,cities.get(0).getDistrict());
+        assertEquals(expectedPopultaion,cities.get(0).getPopulation());
+
         System.out.println("Testing to retrieve Top N populated cities in the district is successfully!!");
         System.out.println("=================================================================================================");
     }
+
 
     @Test
     void getCapitalReportTest() {
