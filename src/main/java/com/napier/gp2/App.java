@@ -1538,8 +1538,8 @@ public class App
     }
 
     /**
-     * Get and print how much people in the world speak @parameter language = language with percentage
-     * @return*/
+     * Get population data of language spoken from greatest to lowest number with percentage of world population
+     */
     public ArrayList<Language> getpeopleSpeakPopulation(){
 
         try
