@@ -1,7 +1,4 @@
-| Languages Speaker Report |
-| --- |
-| testing purpose |
-| testing purpose |
-| testing purpose |
-| testing purpose |
-| testing purpose |
+| Language | Population | Percentage |
+| --- | --- | --- |
+| Chinese | 1191843539 | 19% |
+

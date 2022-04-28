@@ -1,7 +1,8 @@
-| Languages Speaker Report |
-| --- |
-| Number of people who speak Chinese in the world: 1191843539 which is 19.61% of the world population |
-| Number of people who speak English in the world: 347077867 which is 5.71% of the world population |
-| Number of people who speak Hindi in the world: 405633070 which is 6.67% of the world population |
-| Number of people who speak Hindi in the world: 355029462 which is 5.84% of the world population |
-| Number of people who speak Arabic in the world: 233839238 which is 3.85% of the world population |
+| Language | Population | Percentage |
+|----------|------------|------------|
+| Chinese  | 1191843539 | 19.61%     |
+| Hindi    | 405633070  | 6.67%      |
+| Spanish  | 355029462  | 5.84%      |
+| English  | 347077867  | 5.71%      |
+| Arabic   | 233839238  | 3.85%      |
+
